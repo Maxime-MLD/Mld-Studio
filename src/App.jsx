@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import Noise from "./Noise.jsx";
 
 const navItems = [
   { label: "Projets", href: "#projets" },
@@ -12,21 +13,18 @@ const projects = [
     name: "MLD Swiss",
     services: ["Identité", "Développement"],
     year: "2026",
-    className: "project-sand",
     imagePosition: "50% 54%",
   },
   {
     name: "Nomade",
     services: ["Web design", "Développement"],
     year: "2026",
-    className: "project-petrol",
     imagePosition: "68% 48%",
   },
   {
     name: "Ligne 42",
     services: ["Design", "Référencement"],
     year: "2026",
-    className: "project-ember",
     imagePosition: "34% 56%",
   },
 ];
@@ -295,7 +293,7 @@ function Hero() {
     <main id="accueil" className="hero">
       <img className="hero-image" src="/assets/hero.png" alt="Ordinateur en aluminium posé sur un bloc de pierre noire" />
       <div className="hero-shade" aria-hidden="true" />
-      <div className="hero-noise" aria-hidden="true" />
+      <Noise className="hero-noise" opacity={0.11} />
 
       <Header menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 
@@ -307,6 +305,8 @@ function Hero() {
       </div>
 
       <section className="hero-frame" aria-labelledby="hero-title">
+        <Noise className="hero-frame-noise" opacity={0.11} />
+
         <i className="corner-marker marker-top-left" aria-hidden="true" />
         <i className="corner-marker marker-top-right" aria-hidden="true" />
         <i className="corner-marker marker-bottom-left" aria-hidden="true" />
@@ -350,7 +350,7 @@ function Hero() {
 
       <div className="hero-signature" aria-label="Site signature">
         <span>SITE</span>
-        <em>signature.</em>
+        <em>Signature.</em>
       </div>
 
       <div className="local-time">
@@ -436,6 +436,7 @@ function StrategySection() {
 
         <figure className="strategy-visual reveal-item">
           <img src="/assets/hero.png" alt="Détail d’un ordinateur en aluminium dans un décor architectural" />
+          <Noise className="media-noise" opacity={0.11} />
         </figure>
 
         <div className="strategy-stat reveal-item">
@@ -506,6 +507,7 @@ function BuildSection() {
 
         <figure className="build-visual build-reveal">
           <img src="/assets/hero.png" alt="Ordinateur MLD dans un décor architectural en noir et blanc" />
+          <Noise className="media-noise" opacity={0.11} />
         </figure>
 
         <a className="build-scroll build-reveal" href="#realisations">
@@ -525,9 +527,12 @@ function PortfolioSection() {
   return (
     <section id="realisations" className="portfolio-section" aria-label="Projets sélectionnés">
       {projects.map((project, index) => (
-        <article key={project.name} className={`project-slide ${project.className}`}>
+        <article key={project.name} className="project-slide">
           <div className="project-backdrop" aria-hidden="true">
             <img src="/assets/hero.png" alt="" style={{ objectPosition: project.imagePosition }} />
+            {/* Fond teinté sombre : le grain neutre y perd du contraste, d'où une
+                valeur plus haute que sur les images de premier plan. */}
+            <Noise className="media-noise" opacity={0.2} />
           </div>
 
           <div className="project-pinned-track">
@@ -543,6 +548,7 @@ function PortfolioSection() {
 
               <a className="project-media" href="#contact" aria-label={`Découvrir le projet ${project.name}`}>
                 <img src="/assets/hero.png" alt={`Aperçu du projet ${project.name}`} style={{ objectPosition: project.imagePosition }} />
+                <Noise className="media-noise" opacity={0.11} />
               </a>
 
               <div className="project-details">
@@ -756,6 +762,7 @@ function ServicesSection() {
                     </div>
                     <figure className="service-visual">
                       <img src="/assets/hero.png" alt="Aperçu d’une création web MLD" style={{ objectPosition: service.imagePosition }} />
+                      <Noise className="media-noise" opacity={0.11} />
                     </figure>
                   </div>
                 </div>
@@ -979,6 +986,8 @@ function PricingSection() {
 
   return (
     <section ref={sectionRef} id="tarifs" className="pricing-section" aria-labelledby="pricing-title">
+      <Noise className="noise-behind" opacity={0.11} />
+
       <div className="pricing-inner">
         <div className="pricing-thought">
           <div className="pricing-thought-top">
@@ -1185,6 +1194,7 @@ function ReviewsSection() {
             </div>
             <div className="review-image-stage" aria-label={`Portrait de ${review.name}`}>
               <img className="review-image-background" src={review.image} alt="" aria-hidden="true" />
+              <Noise className="media-noise" opacity={0.11} />
               <figure className="review-image-foreground">
                 <img src={review.image} alt={`Portrait de ${review.name}`} />
               </figure>
@@ -1264,6 +1274,7 @@ function NewsSection() {
                       aria-hidden="true"
                       style={{ objectPosition: article.imagePosition }}
                     />
+                    <Noise className="media-noise" opacity={0.11} />
                   </figure>
                   <div className="news-card-copy">
                     <h3>{article.title}</h3>
@@ -1315,12 +1326,15 @@ function SiteFooter() {
 
   return (
     <footer ref={footerRef} id="contact" className="site-footer">
+      <Noise className="noise-behind" opacity={0.11} />
+
       <div className="footer-inner">
         <div className="footer-main">
           <div className="footer-left-column">
             <div className="footer-visual">
               <div className="footer-image-panel">
                 <img src="/assets/hero.png" alt="Création graphique MLD Studio" />
+                <Noise className="noise-behind" opacity={0.11} />
                 <div className="footer-visual-shade" aria-hidden="true" />
                 <div className="footer-visual-logo">
                   <FooterMark />

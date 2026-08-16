@@ -6,6 +6,15 @@
   font-display: swap;
 }
 
+/* Anglaise pour la signature de la hero. Sous-ensemble latin uniquement. */
+@font-face {
+  font-family: "Great Vibes";
+  src: url("/assets/GreatVibes-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
 :root {
   --orange: #ff4400;
   --grey: #e9e9e9;
@@ -107,6 +116,11 @@ a {
   animation: image-in 1.6s cubic-bezier(.2,.72,.2,1) both;
 }
 
+.hero-noise {
+  z-index: -2;
+  pointer-events: none;
+}
+
 .hero-shade {
   z-index: -3;
   background:
@@ -114,13 +128,6 @@ a {
     linear-gradient(90deg, rgba(0, 0, 0, .22), transparent 42%, rgba(0, 0, 0, .12));
 }
 
-.hero-noise {
-  z-index: -2;
-  pointer-events: none;
-  opacity: .22;
-  mix-blend-mode: soft-light;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
-}
 
 .site-header {
   position: absolute;
@@ -333,9 +340,22 @@ a {
   animation: frame-in 1s .3s cubic-bezier(.2,.7,.2,1) both;
 }
 
+/* Au-dessus de .hero-frame-content (z-index 1) : le grain passe sur le titre
+   et le texte du cadre. */
+.hero-frame-noise {
+  z-index: 2;
+}
+
+/* Grain posé sous les calques suivants : fonds de section (contenu en z-index 1)
+   et panneau image du footer (ombre, logo et portrait restent nets). */
+.noise-behind {
+  z-index: 0;
+}
+
 .hero-frame-content {
   position: absolute;
   inset: 0;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -579,16 +599,18 @@ a {
   font-weight: 570;
 }
 
+/* Signature manuscrite. Pas de rotation : elle reste sur la même ligne que
+   « SITE », le centrage vertical étant assuré par le flex du parent. */
 .hero-signature em {
   color: var(--orange);
-  font-family: "Segoe Script", "Brush Script MT", cursive;
-  font-size: clamp(1.05rem, 1.32vw, 1.55rem);
+  font-family: "Great Vibes", "Segoe Script", cursive;
+  font-size: clamp(1.35rem, 1.75vw, 2rem);
   font-style: normal;
-  font-weight: 600;
-  letter-spacing: -.075em;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1;
   text-transform: none;
-  transform: rotate(-4deg) translateY(-.08em);
-  transform-origin: left center;
+  translate: 0 -.06em;
 }
 
 .local-time {
@@ -1106,28 +1128,6 @@ a {
   pointer-events: none;
 }
 
-.project-stage::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  background: var(--project-tint);
-  mix-blend-mode: color;
-  pointer-events: none;
-}
-
-.project-sand {
-  --project-tint: rgba(130, 96, 70, .52);
-}
-
-.project-petrol {
-  --project-tint: rgba(0, 58, 58, .72);
-}
-
-.project-ember {
-  --project-tint: rgba(159, 47, 7, .6);
-}
-
 .project-backdrop {
   position: absolute;
   z-index: 0;
@@ -1135,18 +1135,21 @@ a {
   overflow: hidden;
 }
 
+/* Arrière-plan : image floutée -> voile noir -> grain.
+   Le flou porte la mise au point sur le premier plan, le voile ne fait
+   qu'appuyer le retrait. Le grain reste net : il est posé au-dessus du flou. */
 .project-backdrop::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(10,10,10,.25);
+  background: rgba(0, 0, 0, .35);
 }
 
 .project-backdrop img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: blur(25px) saturate(.45) contrast(1.08) brightness(.68);
+  filter: blur(16px);
   transform: scale(1.14);
 }
 
@@ -1204,16 +1207,8 @@ a {
   overflow: hidden;
 }
 
-.project-media::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--project-tint);
-  opacity: .22;
-  mix-blend-mode: color;
-  transition: opacity .4s ease;
-}
-
+/* Premier plan : image nette, sans voile ni filtre -> grain uniquement.
+   Aucun état de survol : l'image ne change pas au passage de la souris. */
 .project-media img {
   position: absolute;
   top: -4rem;
@@ -1221,18 +1216,8 @@ a {
   width: 100%;
   height: calc(100% + 8rem);
   object-fit: cover;
-  filter: grayscale(.2) contrast(1.08);
   transform: scale(1.04);
-  transition: filter .45s ease;
   will-change: transform;
-}
-
-.project-media:hover::after {
-  opacity: 0;
-}
-
-.project-media:hover img {
-  filter: grayscale(0) contrast(1.03);
 }
 
 .project-details {
@@ -3069,6 +3054,7 @@ a {
 }
 
 .news-card-image {
+  position: relative;
   width: 100%;
   margin: 0;
   overflow: hidden;
