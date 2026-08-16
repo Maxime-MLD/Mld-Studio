@@ -1,0 +1,216 @@
+
+> mattis-studio-fr@0.1.0 dev
+> vite --host 127.0.0.1 --port 4173
+
+
+  [32m[1mVITE[22m v8.2.1[39m  [2mready in [0m[1m99[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://127.0.0.1:[1m4173[22m/[39m
+[2m[32m  ➜[39m[22m[2m  press [22m[1mh + enter[22m[2m to show help[22m
+[2m00:26:29[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m00:35:37[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/App.jsx[22m
+[2m00:35:37[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2mindex.html[22m
+[2m00:36:57[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/App.jsx[22m
+[2m00:36:57[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m00:37:18[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/App.jsx[22m
+[2m00:37:18[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m00:42:35[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/App.jsx[22m
+[2m00:43:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m00:43:55[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m00:45:08[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m00:53:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/App.jsx[22m
+[2m00:53:56[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/App.jsx[22m
+[2m00:54:06[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m00:54:42[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m00:54:55[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m00:56:20[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m01:02:36[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m01:03:01[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/App.jsx[22m
+[2m01:03:32[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m01:03:52[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m01:04:37[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/App.jsx[22m
+[2m01:04:37[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m01:04:42[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m01:27:48[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/App.jsx[22m
+[2m01:28:11[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m01:28:22[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/App.jsx[22m
+[2m01:28:22[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m01:28:28[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m01:41:12[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/App.jsx[22m
+[2m01:41:25[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m01:41:34[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m01:41:38[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m01:53:52[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/App.jsx[22m
+[2m01:53:52[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled error] [1mReferenceError[22m: sectionRef is not defined
+[39m > PortfolioSection src/App.jsx:334:18
+    332 |  function PortfolioSection() {
+    333 |    return (
+    334 |      <section ref={sectionRef} id="realisations" className="portfolio-section" aria-label="Projets sélectionnés">
+        |                    ^
+    335 |        {projects.map((project, index) => (
+    336 |          <article key={project.name} className={`project-slide ${project.className}`}>
+ > Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:25904:19
+ > renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:7662:21
+ > updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10166:18
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:11778:17
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:871:29
+ > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:17641:21
+ > workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:17469:40
+ > renderRootSync node_modules/react-dom/cjs/react-dom-client.development.js:17450:10
+ > performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:16583:34
+
+[2m01:53:52[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mAn error occurred in the <PortfolioSection> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+[2m01:53:53[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [31m[Unhandled error] [1mReferenceError[22m: sectionRef is not defined
+[39m > PortfolioSection src/App.jsx:334:18
+    332 |  function PortfolioSection() {
+    333 |    return (
+    334 |      <section ref={sectionRef} id="realisations" className="portfolio-section" aria-label="Projets sélectionnés">
+        |                    ^
+    335 |        {projects.map((project, index) => (
+    336 |          <article key={project.name} className={`project-slide ${project.className}`}>
+ > Object.react_stack_bottom_frame node_modules/react-dom/cjs/react-dom-client.development.js:25904:19
+ > renderWithHooks node_modules/react-dom/cjs/react-dom-client.development.js:7662:21
+ > updateFunctionComponent node_modules/react-dom/cjs/react-dom-client.development.js:10166:18
+ > beginWork node_modules/react-dom/cjs/react-dom-client.development.js:11778:17
+ > runWithFiberInDEV node_modules/react-dom/cjs/react-dom-client.development.js:871:29
+ > performUnitOfWork node_modules/react-dom/cjs/react-dom-client.development.js:17641:21
+ > workLoopSync node_modules/react-dom/cjs/react-dom-client.development.js:17469:40
+ > renderRootSync node_modules/react-dom/cjs/react-dom-client.development.js:17450:10
+ > performWorkOnRoot node_modules/react-dom/cjs/react-dom-client.development.js:16583:34
+
+[2m01:53:53[22m [33m[1m[vite][22m[39m [33m[2m(client)[22m[39m [2m[console.warn] [22mAn error occurred in the <PortfolioSection> component.
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries.
+
+[2m01:54:07[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/App.jsx[22m
+[2m01:54:19[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m02:04:15[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/App.jsx[22m
+[2m02:04:15[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m02:05:21[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/App.jsx[22m
+[2m02:23:26[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/App.jsx[22m
+[2m02:23:26[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m02:25:12[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/App.jsx[22m
+[2m02:35:52[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/App.jsx[22m
+[2m02:35:52[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m02:35:52[22m [31m[1m[vite][22m[39m [31mInternal server error: [postcss] E:/Documents/CODE/Chat Gpt/mattis-studio-fr/src/styles.css:1844:1: Unexpected }[39m
+  Plugin: [35mvite:css[39m
+  File: [36mE:/Documents/CODE/Chat Gpt/mattis-studio-fr/src/styles.css[39m:1844:0
+[33m  1842 |    font-size: .6rem;
+  1843 |  }
+  1844 |  }
+       |  ^
+  1845 |  
+  1846 |  @keyframes image-in {[39m
+      at Input.error (E:\Documents\CODE\Chat Gpt\mattis-studio-fr\node_modules\postcss\lib\input.js:135:16)
+      at Parser.unexpectedClose (E:\Documents\CODE\Chat Gpt\mattis-studio-fr\node_modules\postcss\lib\parser.js:594:22)
+      at Parser.end (E:\Documents\CODE\Chat Gpt\mattis-studio-fr\node_modules\postcss\lib\parser.js:337:12)
+      at Parser.parse (E:\Documents\CODE\Chat Gpt\mattis-studio-fr\node_modules\postcss\lib\parser.js:463:16)
+      at parse (E:\Documents\CODE\Chat Gpt\mattis-studio-fr\node_modules\postcss\lib\parse.js:11:12)
+      at new LazyResult (E:\Documents\CODE\Chat Gpt\mattis-studio-fr\node_modules\postcss\lib\lazy-result.js:171:16)
+      at Processor.process (E:\Documents\CODE\Chat Gpt\mattis-studio-fr\node_modules\postcss\lib\processor.js:53:14)
+      at runPostCSS (file:///E:/Documents/CODE/Chat%20Gpt/mattis-studio-fr/node_modules/vite/dist/node/chunks/node.js:23164:66)
+      at async compilePostCSS (file:///E:/Documents/CODE/Chat%20Gpt/mattis-studio-fr/node_modules/vite/dist/node/chunks/node.js:23148:6)
+      at async compileCSS (file:///E:/Documents/CODE/Chat%20Gpt/mattis-studio-fr/node_modules/vite/dist/node/chunks/node.js:23078:26)
+[2m02:35:52[22m [31m[1m[vite][22m[39m [31mInternal server error: [postcss] E:/Documents/CODE/Chat Gpt/mattis-studio-fr/src/styles.css:1844:1: Unexpected }[39m
+  Plugin: [35mvite:css[39m
+  File: [36mE:/Documents/CODE/Chat Gpt/mattis-studio-fr/src/styles.css[39m:1844:0
+[33m  1842 |    font-size: .6rem;
+  1843 |  }
+  1844 |  }
+       |  ^
+  1845 |  
+  1846 |  @keyframes image-in {[39m
+      at Input.error (E:\Documents\CODE\Chat Gpt\mattis-studio-fr\node_modules\postcss\lib\input.js:135:16)
+      at Parser.unexpectedClose (E:\Documents\CODE\Chat Gpt\mattis-studio-fr\node_modules\postcss\lib\parser.js:594:22)
+      at Parser.end (E:\Documents\CODE\Chat Gpt\mattis-studio-fr\node_modules\postcss\lib\parser.js:337:12)
+      at Parser.parse (E:\Documents\CODE\Chat Gpt\mattis-studio-fr\node_modules\postcss\lib\parser.js:463:16)
+      at parse (E:\Documents\CODE\Chat Gpt\mattis-studio-fr\node_modules\postcss\lib\parse.js:11:12)
+      at new LazyResult (E:\Documents\CODE\Chat Gpt\mattis-studio-fr\node_modules\postcss\lib\lazy-result.js:171:16)
+      at Processor.process (E:\Documents\CODE\Chat Gpt\mattis-studio-fr\node_modules\postcss\lib\processor.js:53:14)
+      at runPostCSS (file:///E:/Documents/CODE/Chat%20Gpt/mattis-studio-fr/node_modules/vite/dist/node/chunks/node.js:23164:66)
+      at async compilePostCSS (file:///E:/Documents/CODE/Chat%20Gpt/mattis-studio-fr/node_modules/vite/dist/node/chunks/node.js:23148:6)
+      at async compileCSS (file:///E:/Documents/CODE/Chat%20Gpt/mattis-studio-fr/node_modules/vite/dist/node/chunks/node.js:23078:26)
+[2m02:35:52[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22m[vite] Failed to reload /src/styles.css. This could be due to syntax errors or importing non-existent modules. (see errors above)
+[2m02:35:52[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22m[vite] Failed to reload /src/styles.css. This could be due to syntax errors or importing non-existent modules. (see errors above)
+[2m02:35:52[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: [postcss] E:/Documents/CODE/Chat Gpt/mattis-studio-fr/src/styles.css:1844:1: Unexpected }
+  Plugin: [35mvite:css[39m
+  File: [36mE:/Documents/CODE/Chat Gpt/mattis-studio-fr/src/styles.css[39m:1844:0
+[33m  1842 |    font-size: .6rem;
+  1843 |  }
+  1844 |  }
+       |  ^
+  1845 |  
+  1846 |  @keyframes image-in {[39m
+[2m02:35:52[22m [31m[1m[vite][22m[39m [31mInternal server error: [postcss] E:/Documents/CODE/Chat Gpt/mattis-studio-fr/src/styles.css:1844:1: Unexpected }[39m
+  Plugin: [35mvite:css[39m
+  File: [36mE:/Documents/CODE/Chat Gpt/mattis-studio-fr/src/styles.css[39m:1844:0
+[33m  1842 |    font-size: .6rem;
+  1843 |  }
+  1844 |  }
+       |  ^
+  1845 |  
+  1846 |  @keyframes image-in {[39m
+      at Input.error (E:\Documents\CODE\Chat Gpt\mattis-studio-fr\node_modules\postcss\lib\input.js:135:16)
+      at Parser.unexpectedClose (E:\Documents\CODE\Chat Gpt\mattis-studio-fr\node_modules\postcss\lib\parser.js:594:22)
+      at Parser.end (E:\Documents\CODE\Chat Gpt\mattis-studio-fr\node_modules\postcss\lib\parser.js:337:12)
+      at Parser.parse (E:\Documents\CODE\Chat Gpt\mattis-studio-fr\node_modules\postcss\lib\parser.js:463:16)
+      at parse (E:\Documents\CODE\Chat Gpt\mattis-studio-fr\node_modules\postcss\lib\parse.js:11:12)
+      at new LazyResult (E:\Documents\CODE\Chat Gpt\mattis-studio-fr\node_modules\postcss\lib\lazy-result.js:171:16)
+      at Processor.process (E:\Documents\CODE\Chat Gpt\mattis-studio-fr\node_modules\postcss\lib\processor.js:53:14)
+      at runPostCSS (file:///E:/Documents/CODE/Chat%20Gpt/mattis-studio-fr/node_modules/vite/dist/node/chunks/node.js:23164:66)
+      at async compilePostCSS (file:///E:/Documents/CODE/Chat%20Gpt/mattis-studio-fr/node_modules/vite/dist/node/chunks/node.js:23148:6)
+      at async compileCSS (file:///E:/Documents/CODE/Chat%20Gpt/mattis-studio-fr/node_modules/vite/dist/node/chunks/node.js:23078:26)
+[2m02:35:53[22m [31m[1m[vite][22m[39m [31mInternal server error: [postcss] E:/Documents/CODE/Chat Gpt/mattis-studio-fr/src/styles.css:1844:1: Unexpected }[39m
+  Plugin: [35mvite:css[39m
+  File: [36mE:/Documents/CODE/Chat Gpt/mattis-studio-fr/src/styles.css[39m:1844:0
+[33m  1842 |    font-size: .6rem;
+  1843 |  }
+  1844 |  }
+       |  ^
+  1845 |  
+  1846 |  @keyframes image-in {[39m
+      at Input.error (E:\Documents\CODE\Chat Gpt\mattis-studio-fr\node_modules\postcss\lib\input.js:135:16)
+      at Parser.unexpectedClose (E:\Documents\CODE\Chat Gpt\mattis-studio-fr\node_modules\postcss\lib\parser.js:594:22)
+      at Parser.end (E:\Documents\CODE\Chat Gpt\mattis-studio-fr\node_modules\postcss\lib\parser.js:337:12)
+      at Parser.parse (E:\Documents\CODE\Chat Gpt\mattis-studio-fr\node_modules\postcss\lib\parser.js:463:16)
+      at parse (E:\Documents\CODE\Chat Gpt\mattis-studio-fr\node_modules\postcss\lib\parse.js:11:12)
+      at new LazyResult (E:\Documents\CODE\Chat Gpt\mattis-studio-fr\node_modules\postcss\lib\lazy-result.js:171:16)
+      at Processor.process (E:\Documents\CODE\Chat Gpt\mattis-studio-fr\node_modules\postcss\lib\processor.js:53:14)
+      at runPostCSS (file:///E:/Documents/CODE/Chat%20Gpt/mattis-studio-fr/node_modules/vite/dist/node/chunks/node.js:23164:66)
+      at async compilePostCSS (file:///E:/Documents/CODE/Chat%20Gpt/mattis-studio-fr/node_modules/vite/dist/node/chunks/node.js:23148:6)
+      at async compileCSS (file:///E:/Documents/CODE/Chat%20Gpt/mattis-studio-fr/node_modules/vite/dist/node/chunks/node.js:23078:26)
+[2m02:36:25[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
+[2m02:36:25[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: [postcss] E:/Documents/CODE/Chat Gpt/mattis-studio-fr/src/styles.css:1844:1: Unexpected }
+  Plugin: [35mvite:css[39m
+  File: [36mE:/Documents/CODE/Chat Gpt/mattis-studio-fr/src/styles.css[39m:1844:0
+[33m  1842 |    font-size: .6rem;
+  1843 |  }
+  1844 |  }
+       |  ^
+  1845 |  
+  1846 |  @keyframes image-in {[39m
+[2m02:36:25[22m [31m[1m[vite][22m[39m [31mInternal server error: [postcss] E:/Documents/CODE/Chat Gpt/mattis-studio-fr/src/styles.css:1844:1: Unexpected }[39m
+  Plugin: [35mvite:css[39m
+  File: [36mE:/Documents/CODE/Chat Gpt/mattis-studio-fr/src/styles.css[39m:1844:0
+[33m  1842 |    font-size: .6rem;
+  1843 |  }
+  1844 |  }
+       |  ^
+  1845 |  
+  1846 |  @keyframes image-in {[39m
+      at Input.error (E:\Documents\CODE\Chat Gpt\mattis-studio-fr\node_modules\postcss\lib\input.js:135:16)
+      at Parser.unexpectedClose (E:\Documents\CODE\Chat Gpt\mattis-studio-fr\node_modules\postcss\lib\parser.js:594:22)
+      at Parser.end (E:\Documents\CODE\Chat Gpt\mattis-studio-fr\node_modules\postcss\lib\parser.js:337:12)
+      at Parser.parse (E:\Documents\CODE\Chat Gpt\mattis-studio-fr\node_modules\postcss\lib\parser.js:463:16)
+      at parse (E:\Documents\CODE\Chat Gpt\mattis-studio-fr\node_modules\postcss\lib\parse.js:11:12)
+      at new LazyResult (E:\Documents\CODE\Chat Gpt\mattis-studio-fr\node_modules\postcss\lib\lazy-result.js:171:16)
+      at Processor.process (E:\Documents\CODE\Chat Gpt\mattis-studio-fr\node_modules\postcss\lib\processor.js:53:14)
+      at runPostCSS (file:///E:/Documents/CODE/Chat%20Gpt/mattis-studio-fr/node_modules/vite/dist/node/chunks/node.js:23164:66)
+      at async compilePostCSS (file:///E:/Documents/CODE/Chat%20Gpt/mattis-studio-fr/node_modules/vite/dist/node/chunks/node.js:23148:6)
+      at async compileCSS (file:///E:/Documents/CODE/Chat%20Gpt/mattis-studio-fr/node_modules/vite/dist/node/chunks/node.js:23078:26)
+[2m02:36:54[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles.css[22m
