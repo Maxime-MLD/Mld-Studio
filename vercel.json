@@ -1,0 +1,50 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "//": [
+    "En-tetes de securite appliques a toutes les routes.",
+    "La CSP est en mode Content-Security-Policy-Report-Only : elle NE bloque RIEN,",
+    "elle se contente de signaler les violations dans la console du navigateur.",
+    "Procedure d'activation : ouvrir la console, naviguer sur le site ET envoyer le",
+    "formulaire de contact, verifier qu'aucune violation CSP n'apparait, puis renommer",
+    "la cle 'Content-Security-Policy-Report-Only' en 'Content-Security-Policy'.",
+    "Note : 'unsafe-inline' sur script-src est un compromis courant avec React/Vite ;",
+    "a durcir plus tard en le remplacant par des hashes ou un nonce."
+  ],
+  "rewrites": [
+    {
+      "source": "/((?!assets/|og/|.*\\.[a-zA-Z0-9]+$).*)",
+      "destination": "/"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        },
+        {
+          "key": "Content-Security-Policy-Report-Only",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.web3forms.com; form-action 'self' https://api.web3forms.com; frame-ancestors 'none'; base-uri 'self'; object-src 'none'"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,252 @@
+/*
+  Page légale — réutilise le système visuel du site (variables, breakpoints).
+  Aucun style existant n'est modifié : on ne fait qu'appliquer le MÊME mécanisme
+  que les sections du site (bande sombre + grain, ligne verticale centrale via
+  ::before, effet "cascade" via un bloc demi-largeur qui déborde vers le haut,
+  grille 2 colonnes titre-à-gauche / texte-collé-à-droite-de-la-ligne).
+  Calqué sur .faq-section / .contact-section déjà présents dans styles.css.
+*/
+
+/* ---------- Bande sombre (titre de page) : même base que .contact-section ---------- */
+.legal-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(7rem, 14vw, 11rem) var(--page-pad) clamp(4rem, 8vw, 6rem);
+  background: #000000;
+  color: var(--text-white);
+  text-align: center;
+}
+
+.legal-hero-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-items: center;
+  gap: 1.1rem;
+  width: min(100%, 90rem);
+  margin: 0 auto;
+}
+
+.legal-hero-eyebrow {
+  margin: 0;
+  color: var(--text-muted-light);
+  font-size: var(--copy-size);
+  font-weight: 560;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.legal-hero-title {
+  display: grid;
+  margin: 0;
+  font-size: clamp(2.4rem, 6vw, 4.75rem);
+  font-weight: 560;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+}
+
+.legal-hero-sub {
+  max-width: 34rem;
+  margin: 0.4rem 0 0;
+  color: var(--text-muted-light);
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.legal-hero-date {
+  margin: 0.5rem 0 0;
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 0.65rem;
+  font-weight: 560;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ---------- Corps clair avec ligne centrale : même base que .faq-section ---------- */
+.legal-body {
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
+  padding: clamp(2.5rem, 5vw, 4rem) var(--page-pad) clamp(3.5rem, 7vw, 5.5rem);
+  background: var(--grey);
+  color: var(--black);
+}
+
+/* Ligne verticale centrale (identique à .faq-section::before). */
+.legal-body::before {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: rgba(10, 10, 10, 0.14);
+  content: "";
+  pointer-events: none;
+}
+
+/* Effet "cascade" : bloc gris demi-largeur qui déborde sur la bande sombre
+   (identique à .faq-top-accent). */
+.legal-body-accent {
+  position: absolute;
+  z-index: 2;
+  top: -1.875rem;
+  right: 0;
+  width: 50%;
+  height: 1.875rem;
+  background: var(--grey);
+  pointer-events: none;
+}
+
+.legal-inner {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 90rem);
+  margin: 0 auto;
+}
+
+/* Un bloc = titre à gauche (collé à la ligne, aligné à droite) + texte à droite
+   de la ligne. Même logique que .faq-header / .faq-heading / .faq-list. */
+.legal-block {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding: clamp(1.75rem, 3vw, 2.5rem) 0;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.12);
+}
+
+.legal-block-head {
+  display: grid;
+  grid-column: 1;
+  align-content: start;
+  gap: 0.5rem;
+  padding-right: clamp(1.5rem, 3vw, 3rem);
+  text-align: right;
+}
+
+.legal-block-num {
+  color: var(--orange);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.legal-block-head h2 {
+  margin: 0;
+  color: var(--black);
+  font-size: clamp(1.05rem, 1.6vw, 1.4rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.legal-block-body {
+  grid-column: 2;
+  max-width: 36rem;
+  padding-left: clamp(1.5rem, 3vw, 3rem);
+}
+
+.legal-block-body p {
+  margin: 0 0 0.85rem;
+  color: rgba(11, 11, 11, 0.72);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.legal-block-body p:last-child {
+  margin-bottom: 0;
+}
+
+.legal-block-body ul {
+  margin: 0.3rem 0 0.85rem;
+  padding-left: 1.1rem;
+}
+
+.legal-block-body li {
+  margin-bottom: 0.3rem;
+  color: rgba(11, 11, 11, 0.72);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.legal-block-body a {
+  color: var(--black);
+  font-weight: 560;
+  border-bottom: 1px solid rgba(11, 11, 11, 0.32);
+}
+
+.legal-block-body a:hover {
+  border-bottom-color: var(--black);
+}
+
+.legal-back {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  margin: 2.25rem 0 0 50%;
+  padding-left: clamp(1.5rem, 3vw, 3rem);
+  color: var(--text-muted-dark);
+  font-size: 0.7rem;
+  font-weight: 560;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  transition: color 0.25s ease;
+}
+
+.legal-back:hover {
+  color: var(--black);
+}
+
+/* ---------- Mobile : plus de ligne, tout en un seul bloc pleine largeur ----------
+   Même breakpoint que le reste du site (cf. .faq-section mobile). */
+@media (max-width: 809.98px) {
+  .legal-hero {
+    padding: clamp(6rem, 22vw, 8rem) 20px clamp(2.5rem, 8vw, 3.5rem);
+  }
+
+  .legal-hero-title {
+    font-size: clamp(2rem, 12vw, 3rem);
+  }
+
+  .legal-body {
+    padding: 28px 20px 40px;
+  }
+
+  .legal-body::before,
+  .legal-body-accent {
+    display: none;
+  }
+
+  .legal-inner {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .legal-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    padding: 1.6rem 0;
+  }
+
+  .legal-block-head {
+    gap: 0.35rem;
+    padding-right: 0;
+    text-align: left;
+  }
+
+  .legal-block-body {
+    max-width: 100%;
+    padding-left: 0;
+  }
+
+  .legal-back {
+    margin: 2rem 0 0;
+    padding-left: 0;
+  }
+}
