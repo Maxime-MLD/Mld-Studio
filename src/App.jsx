@@ -13,6 +13,8 @@ import Footer from "./components/sections/Footer.jsx";
 import { Routes, Route } from "react-router-dom";
 import MentionsLegales from "./pages/MentionsLegales.jsx";
 import PolitiqueConfidentialite from "./pages/PolitiqueConfidentialite.jsx";
+import RealisationsPage from "./pages/RealisationsPage.jsx";
+import BlogPage from "./pages/BlogPage.jsx";
 
 // Page d'accueil : l'enchaînement de sections existant, inchangé.
 function Home() {
@@ -38,6 +40,8 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/realisations" element={<RealisationsPage />} />
+      <Route path="/blog" element={<BlogPage />} />
       <Route path="/mentions-legales" element={<MentionsLegales />} />
       <Route
         path="/politique-confidentialite"

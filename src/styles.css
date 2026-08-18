@@ -21,7 +21,8 @@
   --white: #f6f6f6;
   --text-white: #ffffff;
   --black: #0b0b0b;
-  --line: rgba(255, 255, 255, 0.18);
+  --section-black: #000000;
+  --line: rgba(255, 255, 255, 0.14);
   --line-light: rgba(10, 10, 10, 0.14);
   --page-pad: clamp(1.25rem, 2.2vw, 2.75rem);
   --text-muted-light: rgba(255, 255, 255, 0.6);
@@ -936,7 +937,10 @@ a {
   width: calc(100% - (var(--page-pad) * 2));
   max-width: 1500px;
   margin: 0 auto;
-  height: calc(14.145rem + var(--page-pad) + 1.8rem + var(--page-pad) + 15.5rem + var(--page-pad) + 1.25rem);
+  height: calc(
+    14.145rem + var(--page-pad) + 1.8rem + var(--page-pad) + 15.5rem +
+      var(--page-pad) + 1.25rem
+  );
 }
 
 .build-section::before {
@@ -1092,7 +1096,10 @@ a {
 .build-scroll {
   position: absolute;
   z-index: 3;
-  top: calc(14.145rem + var(--page-pad) + 1.8rem + var(--page-pad) + 15.5rem + var(--page-pad));
+  top: calc(
+    14.145rem + var(--page-pad) + 1.8rem + var(--page-pad) + 15.5rem +
+      var(--page-pad)
+  );
   bottom: auto;
   left: 0;
   display: flex;
@@ -4025,7 +4032,10 @@ a {
   /* Réalisations — intro « Nous créons des sites web » */
   .build-inner {
     aspect-ratio: auto;
-    height: calc(10.455rem + var(--page-pad) + 1.8rem + var(--page-pad) + 12.5rem + var(--page-pad) + 1.25rem);
+    height: calc(
+      10.455rem + var(--page-pad) + 1.8rem + var(--page-pad) + 12.5rem +
+        var(--page-pad) + 1.25rem
+    );
   }
 
   .build-copy {
@@ -4044,7 +4054,10 @@ a {
   }
 
   .build-scroll {
-    top: calc(10.455rem + var(--page-pad) + 1.8rem + var(--page-pad) + 12.5rem + var(--page-pad));
+    top: calc(
+      10.455rem + var(--page-pad) + 1.8rem + var(--page-pad) + 12.5rem +
+        var(--page-pad)
+    );
     bottom: auto;
     left: 0;
   }

@@ -7,6 +7,8 @@ MLD Dev est une agence web freelance basée à Roanne (Loire). Elle intervient s
 ## Pages
 
 - [Accueil](https://mld-dev.com/) — présentation de l'agence et des services.
+- [Réalisations](https://mld-dev.com/realisations) — portfolio des sites vitrines créés par l'agence.
+- [Blog](https://mld-dev.com/blog) — conseils et actualités sur la création de sites et le référencement local.
 - [Mentions légales](https://mld-dev.com/mentions-legales) — informations légales sur l'éditeur du site.
 - [Politique de confidentialité](https://mld-dev.com/politique-confidentialite) — traitement des données du formulaire de contact.
 

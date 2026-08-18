@@ -24,7 +24,7 @@ function Footer() {
               <p className="footer-eyebrow">Navigation</p>
               <nav aria-label="Navigation du pied de page">
                 <a href="#accueil">Accueil</a>
-                <a href="#realisations">Réalisations</a>
+                <Link to="/realisations">Réalisations</Link>
                 <a href="#services">Services</a>
                 <a href="#journal">Journal</a>
                 <a href="#contact">Contact</a>

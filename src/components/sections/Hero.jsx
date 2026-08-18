@@ -1,20 +1,14 @@
-import { useState } from "react";
 import Noise from "../Noise.jsx";
-import Header from "../layout/Header.jsx";
-import { useMenuBodyLock } from "../../scripts/hero.js";
+import Navbar from "../layout/Navbar.jsx";
 
 function Hero() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  useMenuBodyLock(menuOpen);
-
   return (
     <main id="accueil" className="hero">
       <img className="hero-image" src="/assets/hero.png" alt="Ordinateur en aluminium posé sur un bloc de pierre noire" />
       <div className="hero-shade" aria-hidden="true" />
       <Noise className="hero-noise" opacity={0.11} />
 
-      <Header menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+      <Navbar />
 
       <div className="hero-axis-lines" aria-hidden="true">
         <i className="axis-v-top" />
