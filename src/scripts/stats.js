@@ -1,10 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
-// Section Stats : compteurs animés (note Google + % de recommandations)
-// déclenchés à l'entrée dans le viewport.
 export function useStatsCounters() {
   const sectionRef = useRef(null);
-  const [countProgress, setCountProgress] = useState(0);
+  const ratingRef = useRef(null);
+  const referralsRef = useRef(null);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -20,7 +19,8 @@ export function useStatsCounters() {
       section.classList.add("is-visible");
 
       if (prefersReducedMotion) {
-        setCountProgress(1);
+        if (ratingRef.current) ratingRef.current.textContent = "/4.9+";
+        if (referralsRef.current) referralsRef.current.textContent = "/80%";
         return;
       }
 
@@ -29,7 +29,12 @@ export function useStatsCounters() {
       const update = (now) => {
         const elapsed = Math.min(1, (now - startedAt) / duration);
         const eased = 1 - ((1 - elapsed) ** 3);
-        setCountProgress(eased);
+        if (ratingRef.current) {
+          ratingRef.current.textContent = `/${(4.9 * eased).toFixed(1)}+`;
+        }
+        if (referralsRef.current) {
+          referralsRef.current.textContent = `/${Math.round(80 * eased)}%`;
+        }
         if (elapsed < 1) frameId = window.requestAnimationFrame(update);
       };
 
@@ -49,9 +54,5 @@ export function useStatsCounters() {
     };
   }, []);
 
-  return {
-    sectionRef,
-    rating: (4.9 * countProgress).toFixed(1),
-    referrals: Math.round(80 * countProgress),
-  };
+  return { sectionRef, ratingRef, referralsRef };
 }

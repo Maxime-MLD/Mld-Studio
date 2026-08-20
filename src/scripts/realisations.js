@@ -11,8 +11,13 @@ export function useRealisationsAnimation() {
 
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const observer = new IntersectionObserver(
-      ([entry]) => entry.isIntersecting && section.classList.add("is-visible"),
-      { threshold: 0.2 },
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          section.classList.add("is-visible");
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 },
     );
 
     observer.observe(section);
@@ -21,6 +26,10 @@ export function useRealisationsAnimation() {
     const updateProgress = () => {
       const rect = section.getBoundingClientRect();
       const viewport = window.innerHeight;
+      if (rect.bottom < -50 || rect.top > viewport + 50) {
+        ticking = false;
+        return;
+      }
       const progress = Math.min(1, Math.max(0, (viewport - rect.top) / (viewport + rect.height)));
       const imageOffset = (0.5 - progress) * 110;
       section.style.setProperty("--build-image-y", `${imageOffset.toFixed(1)}px`);
@@ -45,4 +54,33 @@ export function useRealisationsAnimation() {
   }, []);
 
   return sectionRef;
+}
+
+// Marquee de titre à vitesse uniforme et boucle infinie continue sans à-coup
+export function useProjectMarquee(selector = ".portfolio-section") {
+  useEffect(() => {
+    const SPEED = 75; // px/s : vitesse linéaire constante (calquée sur Paysagiste)
+
+    const updateMarquees = () => {
+      const wrappers = document.querySelectorAll(`${selector} .project-marquee-wrapper`);
+      wrappers.forEach((wrapper) => {
+        const group = wrapper.querySelector(".project-marquee-group");
+        if (!group) return;
+        const groupWidth = group.getBoundingClientRect().width;
+        if (!groupWidth) return;
+        const duration = groupWidth / SPEED;
+        const allGroups = wrapper.querySelectorAll(".project-marquee-group");
+        allGroups.forEach((g) => {
+          g.style.animationDuration = `${duration.toFixed(2)}s`;
+        });
+      });
+    };
+
+    updateMarquees();
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(updateMarquees);
+    }
+    window.addEventListener("resize", updateMarquees);
+    return () => window.removeEventListener("resize", updateMarquees);
+  }, [selector]);
 }

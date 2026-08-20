@@ -1,10 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
-// Section Methode : compteurs animés (projets livrés, temps de chargement,
-// taux de sur-mesure) déclenchés à l'entrée dans le viewport.
 export function useMethodeCounters() {
   const sectionRef = useRef(null);
-  const [countProgress, setCountProgress] = useState(0);
+  const projectCountRef = useRef(null);
+  const loadingTimeRef = useRef(null);
+  const tailoredRateRef = useRef(null);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -12,7 +12,9 @@ export function useMethodeCounters() {
 
     let frameId = 0;
     let hasPlayed = false;
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
 
     const reveal = () => {
       if (hasPlayed) return;
@@ -20,7 +22,9 @@ export function useMethodeCounters() {
       section.classList.add("is-visible");
 
       if (prefersReducedMotion) {
-        setCountProgress(1);
+        if (projectCountRef.current) projectCountRef.current.textContent = "20+";
+        if (loadingTimeRef.current) loadingTimeRef.current.textContent = "3,2 S";
+        if (tailoredRateRef.current) tailoredRateRef.current.textContent = "100%";
         return;
       }
 
@@ -28,7 +32,16 @@ export function useMethodeCounters() {
       const duration = 1600;
       const update = (now) => {
         const elapsed = Math.min(1, (now - startedAt) / duration);
-        setCountProgress(1 - ((1 - elapsed) ** 3));
+        const eased = 1 - (1 - elapsed) ** 3;
+        if (projectCountRef.current) {
+          projectCountRef.current.textContent = `${Math.round(20 * eased)}+`;
+        }
+        if (loadingTimeRef.current) {
+          loadingTimeRef.current.textContent = `${(3.2 * eased).toFixed(1).replace(".", ",")} S`;
+        }
+        if (tailoredRateRef.current) {
+          tailoredRateRef.current.textContent = `${Math.round(100 * eased)}%`;
+        }
         if (elapsed < 1) frameId = window.requestAnimationFrame(update);
       };
 
@@ -49,8 +62,8 @@ export function useMethodeCounters() {
 
   return {
     sectionRef,
-    projectCount: Math.round(24 * countProgress),
-    loadingTime: (1.5 * countProgress).toFixed(1).replace(".", ","),
-    tailoredRate: Math.round(100 * countProgress),
+    projectCountRef,
+    loadingTimeRef,
+    tailoredRateRef,
   };
 }

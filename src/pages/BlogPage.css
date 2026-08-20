@@ -271,9 +271,9 @@
   filter: grayscale(1) contrast(1.15);
 }
 
+/* Masquage de la flèche sur les cartes de la page blog */
 .blog-articles .news-arrow {
-  z-index: 3;
-  color: var(--text-white);
+  display: none !important;
 }
 
 /* Dégradé pleine largeur au bas de la carte (lisibilité), indépendant du texte. */

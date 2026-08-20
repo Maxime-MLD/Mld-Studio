@@ -1,0 +1,295 @@
+/*
+  Page À propos — même système visuel que Réalisations / Blog.
+  Hero noir + noise + ligne centrale (titre H2 92px collé à droite de la ligne),
+  puis main gris (texte noir à droite de la ligne, photo en bas à gauche), le tout
+  enchaîné avec l'effet cascade (bloc demi-largeur qui déborde, cf. .faq-top-accent)
+  vers le hero au-dessus et vers la section Contact en dessous.
+*/
+
+/* ---------- Hero ---------- */
+.about-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  box-sizing: border-box;
+  min-height: 82vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 var(--page-pad) clamp(1.5rem, 2.8vh, 2.25rem);
+  background: #000000;
+  color: var(--text-white);
+}
+
+/* Ligne verticale centrale (claire sur fond noir). */
+.about-hero::before {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: var(--line);
+  content: "";
+  pointer-events: none;
+}
+
+.about-hero-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  row-gap: clamp(0.75rem, 1.4vh, 1.25rem);
+  width: 100%;
+  /* Même marge sous le paragraphe que les autres heros (gap sous la sous-ligne). */
+  margin-bottom: clamp(1.25rem, 3vh, 2rem);
+}
+
+/* Titre H2 92px, colonne droite = collé à droite de la ligne (comme Réalisations). */
+.about-hero-title {
+  grid-column: 2;
+  grid-row: 1;
+  margin: 0;
+  padding-left: 1px;
+  font-size: 92px;
+  font-weight: 560;
+  line-height: 0.82;
+  letter-spacing: -0.075em;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.about-hero-title span {
+  display: block;
+}
+
+/* Paragraphe hero : sous le H2, à gauche de la ligne (collé à la ligne),
+   mêmes gap/marges/style que la sous-ligne des heros Réalisations / Blog. */
+.about-hero-sub {
+  grid-column: 1;
+  grid-row: 2;
+  justify-self: end;
+  max-width: 22rem;
+  margin: 0;
+  padding-right: 1px;
+  color: var(--text-muted-light);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.about-hero-sub strong {
+  color: var(--text-white);
+  font-weight: 600;
+}
+
+/* ---------- Contenu principal (gris) ---------- */
+.about-main {
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+  overflow: visible;
+  box-sizing: border-box;
+  padding: 1.875rem var(--page-pad) clamp(3.5rem, 6vw, 5rem);
+  background: var(--grey);
+  color: var(--black);
+}
+
+/* Ligne verticale centrale (sombre sur fond gris). */
+.about-main::before {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: rgba(10, 10, 10, 0.14);
+  content: "";
+  pointer-events: none;
+}
+
+/* Cascade hero → main : le gris déborde vers le haut sur le hero (demi-largeur). */
+.about-main-accent-top {
+  position: absolute;
+  z-index: 2;
+  top: -1.875rem;
+  right: 0;
+  width: 50%;
+  height: 1.875rem;
+  background: var(--grey);
+  pointer-events: none;
+}
+
+/* Cascade main → Contact : le noir (Contact) remonte dans le gris (demi-largeur). */
+.about-main-accent-bottom {
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  height: 1.875rem;
+  background: #000000;
+  pointer-events: none;
+}
+
+/* Largeur du contenu principal = largeur des sections du site (1440px, centré). */
+.about-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto 1fr;
+  align-items: start;
+  row-gap: 1.875rem;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* Eyebrow « À PROPOS » : même style que le « Pourquoi nous ? » des sections. */
+.about-eyebrow {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: start;
+  align-self: start;
+  margin: 0;
+  color: var(--text-muted-dark);
+  font-size: var(--copy-size);
+  font-weight: 540;
+  text-transform: uppercase;
+}
+
+/* Photo : à gauche, centrée verticalement dans sa colonne. */
+.about-photo {
+  position: relative;
+  grid-column: 1;
+  grid-row: 2;
+  justify-self: start;
+  align-self: center;
+  margin: 0;
+  overflow: hidden;
+}
+
+.about-photo img {
+  display: block;
+  width: 360px;
+  height: 454px;
+  object-fit: cover;
+}
+
+/* Texte : à droite, collé à droite de la ligne. */
+.about-text {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  display: grid;
+  gap: 1rem;
+  max-width: 30rem;
+  padding-left: 1px;
+  align-self: start;
+}
+
+/* Paragraphe : noir opacity 0.85, mots forts en opacity 1 (style des autres sections). */
+.about-text p {
+  margin: 0;
+  color: rgba(11, 11, 11, 0.85);
+  font-size: var(--copy-size);
+  font-weight: 520;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.about-text p strong {
+  color: var(--black);
+  font-weight: 600;
+}
+
+/* ---------- Tablette (810px - 1120px) ---------- */
+@media (min-width: 810px) and (max-width: 1120px) {
+  .about-hero {
+    min-height: 74vh;
+  }
+
+  .about-photo img {
+    width: 300px;
+    height: 378px;
+  }
+}
+
+/* ---------- Mobile (≤ 809.98px) ---------- */
+@media (max-width: 809.98px) {
+  .about-hero {
+    min-height: 0;
+    display: block;
+    padding: clamp(6rem, 18vw, 8rem) 20px clamp(2.5rem, 8vw, 3.5rem);
+  }
+
+  .about-hero::before {
+    display: none;
+  }
+
+  .about-hero-inner {
+    display: block;
+  }
+
+  .about-hero-title {
+    grid-column: auto;
+    padding-left: 0;
+    font-size: 64px;
+  }
+
+  .about-hero-sub {
+    grid-column: auto;
+    justify-self: start;
+    max-width: 100%;
+    margin-top: 1rem;
+    padding-right: 0;
+    text-align: left;
+  }
+
+  /* Un seul bloc vertical empilé, pleine largeur, sans ligne ni cascade. */
+  .about-main {
+    padding: 40px 20px;
+  }
+
+  .about-main::before,
+  .about-main-accent-top,
+  .about-main-accent-bottom {
+    display: none;
+  }
+
+  .about-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    align-items: stretch;
+  }
+
+  .about-eyebrow {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .about-photo {
+    grid-column: auto;
+    grid-row: auto;
+    justify-self: stretch;
+  }
+
+  .about-photo img {
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+    aspect-ratio: 360 / 454;
+  }
+
+  .about-text {
+    grid-column: auto;
+    grid-row: auto;
+    max-width: 100%;
+    padding-left: 0;
+  }
+}

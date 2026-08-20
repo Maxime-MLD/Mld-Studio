@@ -1,6 +1,7 @@
 import Noise from "../Noise.jsx";
 import { pricingPlans, pricingFeatures } from "../../data/prix.js";
 import { usePrixAnimation } from "../../scripts/prix.js";
+import prixImage from "../../assets/images/prix-image.webp";
 
 // Section Prix : tableau comparatif desktop + cartes empilées sur mobile.
 function Prix() {
@@ -23,9 +24,10 @@ function Prix() {
             <div className="pricing-profile">
               <figure>
                 <img
-                  src="/assets/pricing-portrait.jpg"
+                  src={prixImage}
                   alt="Portrait de la direction créative MLD"
                 />
+                <Noise className="media-noise" opacity={0.11} />
               </figure>
               <div className="pricing-profile-copy">
                 <strong>MLD Studio</strong>
@@ -40,11 +42,21 @@ function Prix() {
 
           <div className="pricing-quote-row">
             <blockquote>
-              <span className="pricing-quote-line">"Le plus difficile dans la création</span>
-              <span className="pricing-quote-line">d’un site n’est pas le code —</span>
-              <span className="pricing-quote-line">c’est de savoir quoi retirer.</span>
-              <span className="pricing-quote-line">Chaque élément qui n’aide pas</span>
-              <span className="pricing-quote-line">le visiteur travaille contre vous."</span>
+              <span className="pricing-quote-line">
+                "Le plus difficile dans la création
+              </span>
+              <span className="pricing-quote-line">
+                d’un site n’est pas le code —
+              </span>
+              <span className="pricing-quote-line">
+                c’est de savoir quoi retirer.
+              </span>
+              <span className="pricing-quote-line">
+                Chaque élément qui n’aide pas
+              </span>
+              <span className="pricing-quote-line">
+                le visiteur travaille contre vous."
+              </span>
             </blockquote>
             <p>
               Nous traitons la <strong>simplicité</strong> comme une{" "}

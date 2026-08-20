@@ -34,24 +34,26 @@ function getTile() {
 }
 
 function Noise({ opacity = 0.05, fps = 24, className = "" }) {
+  const containerRef = useRef(null);
   const layerRef = useRef(null);
 
   useEffect(() => {
     const layer = layerRef.current;
-    if (!layer) return;
+    const container = containerRef.current;
+    if (!layer || !container) return undefined;
 
     layer.style.backgroundImage = `url(${getTile()})`;
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (fps <= 0 || reducedMotion) return undefined;
 
-    let animationId;
+    let animationId = 0;
+    let isVisible = false;
     let last = 0;
     const interval = 1000 / fps;
 
-    // Shifting the oversized layer by less than a tile reshuffles the grain
-    // without ever exposing an edge.
     const loop = (time) => {
+      if (!isVisible) return;
       if (time - last >= interval) {
         last = time;
         const x = Math.random() * TILE;
@@ -61,12 +63,35 @@ function Noise({ opacity = 0.05, fps = 24, className = "" }) {
       animationId = window.requestAnimationFrame(loop);
     };
 
-    animationId = window.requestAnimationFrame(loop);
-    return () => window.cancelAnimationFrame(animationId);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          if (!isVisible) {
+            isVisible = true;
+            last = 0;
+            animationId = window.requestAnimationFrame(loop);
+          }
+        } else {
+          isVisible = false;
+          if (animationId) {
+            window.cancelAnimationFrame(animationId);
+            animationId = 0;
+          }
+        }
+      },
+      { rootMargin: "50px" }
+    );
+
+    observer.observe(container);
+
+    return () => {
+      observer.disconnect();
+      if (animationId) window.cancelAnimationFrame(animationId);
+    };
   }, [fps]);
 
   return (
-    <div className={`noise-overlay ${className}`.trim()} style={{ opacity }} aria-hidden="true">
+    <div ref={containerRef} className={`noise-overlay ${className}`.trim()} style={{ opacity }} aria-hidden="true">
       <i ref={layerRef} className="noise-layer" />
     </div>
   );

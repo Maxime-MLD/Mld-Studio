@@ -6,29 +6,20 @@ import Contact from "../components/sections/Contact.jsx";
 import Footer from "../components/sections/Footer.jsx";
 import { realisationsPageProjects } from "../data/realisations-page.js";
 import { faqRealisationsItems } from "../data/faq-realisations.js";
+import { useProjectMarquee } from "../scripts/realisations.js";
 import "./RealisationsPage.css";
 
 // Page /realisations.
-// Réutilise STRICTEMENT le système du site :
-//   - <Noise> pour le grain (même composant que Contact / page légale) ;
-//   - les classes .portfolio-section / .project-* de styles.css pour la liste
-//     de projets : la ligne centrale, le scroll épinglé (pur CSS via sticky) et
-//     le z-index (ligne en arrière-plan, image de projet au-dessus) sont donc
-//     déjà en place, rien n'est recréé ;
-//   - les composants <Faq>, <Contact>, <Footer> existants tels quels.
-// Les projets ouvrent le site en ligne dans un nouvel onglet (target=_blank +
-// rel="noopener noreferrer" obligatoire pour la sécurité).
 export default function RealisationsPage() {
   const fallbackImage = "/assets/hero.png";
 
-  // Si le visuel d'un projet est absent (placeholder pas encore fourni), on
-  // retombe sur une image existante : le premier plan reste plein, donc le
-  // titre défilant passe bien DERRIÈRE l'image comme pour les autres projets.
   const handleImageError = (event) => {
     if (!event.currentTarget.src.endsWith(fallbackImage)) {
       event.currentTarget.src = fallbackImage;
     }
   };
+
+  useProjectMarquee(".realis-projects");
 
   return (
     <>
@@ -84,6 +75,7 @@ export default function RealisationsPage() {
                   <img
                     src={image}
                     alt=""
+                    loading="lazy"
                     style={{ objectPosition: project.imagePosition }}
                     onError={handleImageError}
                   />
@@ -94,13 +86,25 @@ export default function RealisationsPage() {
                   <div className="project-stage">
                     <p className="project-number">(0{index + 1})</p>
                     <p className="project-label">Portfolio</p>
-                    <h3 aria-label={project.name}>
-                      {Array.from({ length: 6 }).map((_, repeatIndex) => (
-                        <span key={repeatIndex} aria-hidden={repeatIndex !== 0}>
-                          {project.name}
-                        </span>
-                      ))}
-                    </h3>
+                    <div
+                      className="project-marquee-wrapper"
+                      role="heading"
+                      aria-level="3"
+                      aria-label={project.name}
+                    >
+                      <div className="project-marquee-group">
+                        {Array.from({ length: 8 }).map((_, repeatIndex) => (
+                          <span key={repeatIndex} aria-hidden={repeatIndex !== 0}>
+                            {project.name}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="project-marquee-group" aria-hidden="true">
+                        {Array.from({ length: 8 }).map((_, repeatIndex) => (
+                          <span key={repeatIndex}>{project.name}</span>
+                        ))}
+                      </div>
+                    </div>
 
                     {/* Chaque projet ouvre le site en ligne dans un nouvel onglet. */}
                     <a
@@ -112,7 +116,8 @@ export default function RealisationsPage() {
                     >
                       <img
                         src={image}
-                        alt={`Aperçu du projet ${project.name}`}
+                        alt={project.alt || `Aperçu du projet ${project.name}`}
+                        loading="lazy"
                         style={{ objectPosition: project.imagePosition }}
                         onError={handleImageError}
                       />

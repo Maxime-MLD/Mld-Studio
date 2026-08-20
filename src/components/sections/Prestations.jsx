@@ -9,14 +9,21 @@ function Prestations() {
   const sectionRef = usePrestationsAnimation(activeService);
 
   return (
-    <section ref={sectionRef} id="prestations" className="services-section" aria-labelledby="services-title">
+    <section
+      ref={sectionRef}
+      id="prestations"
+      className="services-section"
+      aria-labelledby="services-title"
+    >
       <div className="services-top-accent" aria-hidden="true" />
 
       <div className="services-inner">
         <header className="services-header">
           <p>Prestations</p>
           <p id="services-title" className="services-intro">
-            Chaque projet commence par la <strong>compréhension de votre activité</strong>, de vos clients et de ce qui les empêche aujourd’hui de <strong>vous choisir.</strong>
+            Chaque projet commence par la{" "}
+            <strong>compréhension de votre activité</strong>, de vos clients et
+            de ce qui les empêche aujourd’hui de <strong>vous choisir.</strong>
           </p>
         </header>
 
@@ -26,7 +33,10 @@ function Prestations() {
             const panelId = `service-panel-${index + 1}`;
 
             return (
-              <article key={service.title} className={`service-item ${isOpen ? "is-open" : ""}`}>
+              <article
+                key={service.title}
+                className={`service-item ${isOpen ? "is-open" : ""}`}
+              >
                 <button
                   className="service-toggle"
                   type="button"
@@ -48,13 +58,23 @@ function Prestations() {
                   </span>
                 </button>
 
-                <div id={panelId} className="service-details" aria-hidden={!isOpen}>
+                <div
+                  id={panelId}
+                  className="service-details"
+                  aria-hidden={!isOpen}
+                >
                   <div className="service-details-inner">
                     <div className="service-copy">
-                      {service.description.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                      {service.description.map((paragraph) => (
+                        <p key={paragraph}>{paragraph}</p>
+                      ))}
                     </div>
                     <figure className="service-visual">
-                      <img src="/assets/hero.png" alt="Aperçu d’une création web MLD" style={{ objectPosition: service.imagePosition }} />
+                      <img
+                        src={service.image}
+                        alt="Aperçu d’une création web MLD"
+                        style={{ objectPosition: service.imagePosition }}
+                      />
                       <Noise className="media-noise" opacity={0.11} />
                     </figure>
                   </div>

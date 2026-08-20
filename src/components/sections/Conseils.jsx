@@ -7,7 +7,12 @@ function Conseils() {
   const sectionRef = useConseilsAnimation();
 
   return (
-    <section ref={sectionRef} id="journal" className="news-section" aria-labelledby="news-title">
+    <section
+      ref={sectionRef}
+      id="journal"
+      className="news-section"
+      aria-labelledby="news-title"
+    >
       <div className="news-inner">
         <div className="news-heading-row">
           <a className="news-more" href="/blog">
@@ -36,6 +41,8 @@ function Conseils() {
                     src={article.image}
                     alt=""
                     aria-hidden="true"
+                    loading="lazy"
+                    decoding="async"
                     style={{ objectPosition: article.imagePosition }}
                   />
                   <svg
@@ -65,6 +72,8 @@ function Conseils() {
                       src={article.image}
                       alt=""
                       aria-hidden="true"
+                      loading="lazy"
+                      decoding="async"
                       style={{ objectPosition: article.imagePosition }}
                     />
                     <Noise className="media-noise" opacity={0.11} />

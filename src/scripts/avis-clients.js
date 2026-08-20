@@ -32,10 +32,14 @@ export function useAvisAnimation(activeReview) {
     let ticking = false;
 
     const updateParallax = () => {
+      if (!visual) {
+        ticking = false;
+        return;
+      }
       const rect = visual.getBoundingClientRect();
       const viewportHeight = window.innerHeight;
 
-      if (rect.bottom >= 0 && rect.top <= viewportHeight) {
+      if (rect.bottom >= -50 && rect.top <= viewportHeight + 50) {
         const progress = Math.min(1, Math.max(0, (viewportHeight - rect.top) / (viewportHeight + rect.height)));
         const centered = (progress - 0.5) * 2;
         const backgroundTravel = Math.min(34, rect.height * 0.08);

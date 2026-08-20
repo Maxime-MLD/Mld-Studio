@@ -1,7 +1,26 @@
+import { useState, useEffect } from "react";
 import Noise from "../Noise.jsx";
 import Navbar from "../layout/Navbar.jsx";
 
+function getParisTime() {
+  return new Intl.DateTimeFormat("fr-FR", {
+    timeZone: "Europe/Paris",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  }).format(new Date());
+}
+
 function Hero() {
+  const [parisTime, setParisTime] = useState(getParisTime);
+
+  useEffect(() => {
+    const updateTime = () => setParisTime(getParisTime());
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <main id="accueil" className="hero">
       <img className="hero-image" src="/assets/hero.png" alt="Ordinateur en aluminium posé sur un bloc de pierre noire" />
@@ -68,7 +87,7 @@ function Hero() {
 
       <div className="local-time">
         <span>Heure locale :</span>
-        <time>Paris — 13:30</time>
+        <time>Paris — {parisTime}</time>
       </div>
 
     </main>

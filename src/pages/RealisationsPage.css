@@ -200,3 +200,69 @@
     display: none;
   }
 }
+
+/* ---------- Cadre + image de premier plan des cartes projet ----------
+   Scopé à la page Réalisations (le portfolio de l'accueil n'est pas touché).
+   Cause du rognage : le cadre n'avait pas de ratio fixe (hauteur et largeur
+   indépendantes) → son ratio variait selon la fenêtre, et l'image débordait
+   volontairement du cadre (top:-4rem; height:calc(100%+8rem); scale).
+   → On verrouille le cadre au ratio 16:10 (= ratio des images) et l'image le
+   remplit exactement. On CONSERVE la hauteur et la position d'origine ; c'est la
+   largeur qui est dérivée du ratio, pour ne rien décaler d'autre (les libellés
+   ne débordent pas sur l'image). z-index (ligne centrale derrière) et effet de
+   scroll épinglé inchangés. */
+.realis-projects .project-media img {
+  top: 0;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: none;
+}
+
+/* Desktop : hauteur conservée (58,5%), largeur dérivée du ratio, recentré.
+   Le texte sous l'image reçoit EXACTEMENT la même largeur (hauteur × ratio) et
+   le même centrage → il ne dépasse plus la largeur de l'image. */
+@media (min-width: 1121px) {
+  .realis-projects .project-media {
+    width: auto;
+    aspect-ratio: 1304 / 815;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .realis-projects .project-details {
+    left: 50%;
+    width: calc(58.5svh * 1304 / 815);
+    transform: translateX(-50%);
+  }
+}
+
+/* Tablette : hauteur définie (40%), largeur dérivée du ratio, recentré.
+   Le texte sous l'image est calé sur la même largeur. */
+@media (min-width: 810px) and (max-width: 1120px) {
+  .realis-projects .project-media {
+    width: auto;
+    height: 40%;
+    aspect-ratio: 1304 / 815;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .realis-projects .project-details {
+    left: 50%;
+    width: calc(40svh * 1304 / 815);
+    transform: translateX(-50%);
+  }
+}
+
+/* Mobile : largeur plafonnée (20px de marge) pour éviter tout débordement,
+   hauteur dérivée du ratio (le centrage translate(-50%,-50%) du mobile est
+   conservé). Les libellés mobiles gardent leurs marges de 20px = celles de
+   l'image, donc ils ne dépassent pas non plus. */
+@media (max-width: 809.98px) {
+  .realis-projects .project-media {
+    width: min(360px, calc(100% - 40px));
+    height: auto;
+    aspect-ratio: 1304 / 815;
+  }
+}

@@ -21,6 +21,10 @@ export function useConstatAnimation() {
     const updateProgress = () => {
       const rect = section.getBoundingClientRect();
       const viewport = window.innerHeight;
+      if (rect.bottom < -100 || rect.top > viewport + 100) {
+        ticking = false;
+        return;
+      }
       const progress = Math.min(1, Math.max(0, (viewport - rect.top) / (viewport + rect.height)));
       section.style.setProperty("--section-progress", progress.toFixed(3));
       const imageOffset = (0.5 - progress) * 150;
