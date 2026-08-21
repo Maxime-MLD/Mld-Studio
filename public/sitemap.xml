@@ -1,40 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://mld-dev.com/</loc>
-    <lastmod>2026-08-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
+    <loc>https://www.mld-dev.com/</loc>
+    <lastmod>2026-08-20</lastmod>
   </url>
-
   <url>
-    <loc>https://mld-dev.com/realisations</loc>
-    <lastmod>2026-08-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://www.mld-dev.com/realisations</loc>
+    <lastmod>2026-08-20</lastmod>
   </url>
-
   <url>
-    <loc>https://mld-dev.com/blog</loc>
-    <lastmod>2026-08-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://www.mld-dev.com/blog</loc>
+    <lastmod>2026-08-20</lastmod>
   </url>
-
   <url>
-    <loc>https://mld-dev.com/a-propos</loc>
-    <lastmod>2026-08-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://www.mld-dev.com/blog/importance-site-internet-roanne-2026</loc>
+    <lastmod>2026-08-20</lastmod>
   </url>
-
-  <!--
-    Pour chaque nouvelle page, dupliquez ce bloc :
-    <url>
-      <loc>https://mld-dev.com/exemple-de-page</loc>
-      <lastmod>2026-08-18</lastmod>
-      <changefreq>monthly</changefreq>
-      <priority>0.8</priority>
-    </url>
-  -->
+  <url>
+    <loc>https://www.mld-dev.com/blog/google-maps-roanne-fiche-optimisee</loc>
+    <lastmod>2026-08-20</lastmod>
+  </url>
+  <url>
+    <loc>https://www.mld-dev.com/blog/erreurs-seo-local-roanne</loc>
+    <lastmod>2026-08-20</lastmod>
+  </url>
+  <url>
+    <loc>https://www.mld-dev.com/blog/site-monopage-multipage-loire</loc>
+    <lastmod>2026-08-20</lastmod>
+  </url>
+  <url>
+    <loc>https://www.mld-dev.com/a-propos</loc>
+    <lastmod>2026-08-20</lastmod>
+  </url>
+  <url>
+    <loc>https://www.mld-dev.com/contact</loc>
+    <lastmod>2026-08-20</lastmod>
+  </url>
 </urlset>

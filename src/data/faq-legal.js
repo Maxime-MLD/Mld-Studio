@@ -4,7 +4,7 @@ export const faqLegalItems = [
   {
     question: "Est-ce que mes données sont stockées ?",
     answer:
-      "Non. Le formulaire de contact envoie simplement un email via le service Web3Forms. Aucune donnée n’est conservée dans une base de données par l’éditeur : seul le message reçu par email existe.",
+      "Le formulaire transmet votre demande à une fonction Vercel, puis à Web3Forms pour l’acheminement par email. MLD Studio conserve uniquement le message reçu pendant la durée nécessaire à son traitement et au suivi de la relation commerciale.",
   },
   {
     question: "Utilisez-vous des cookies de suivi ?",

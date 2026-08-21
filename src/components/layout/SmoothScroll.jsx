@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import Lenis from "lenis";
 import "lenis/dist/lenis.css";
@@ -6,6 +6,7 @@ import "lenis/dist/lenis.css";
 // Moteur de défilement inertiel haut de gamme (Lenis / Momentum Scrolling)
 export default function SmoothScroll({ children }) {
   const location = useLocation();
+  const lenisRef = useRef(null);
 
   useEffect(() => {
     // Respecte les préférences d'accessibilité (motion réduite)
@@ -29,6 +30,7 @@ export default function SmoothScroll({ children }) {
       infinite: false,
     });
 
+    lenisRef.current = lenis;
     window.lenis = lenis;
 
     let rafId;
@@ -37,16 +39,6 @@ export default function SmoothScroll({ children }) {
       rafId = requestAnimationFrame(raf);
     }
     rafId = requestAnimationFrame(raf);
-
-    // Replacer le scroll en haut lors des transitions de route (sauf si ancre présente)
-    if (!location.hash) {
-      lenis.scrollTo(0, { immediate: true });
-    } else {
-      const target = document.querySelector(location.hash);
-      if (target) {
-        lenis.scrollTo(target, { immediate: true });
-      }
-    }
 
     // Gestion fluide des clics sur les liens d'ancres (<a href="#...">)
     const handleAnchorClick = (e) => {
@@ -67,9 +59,28 @@ export default function SmoothScroll({ children }) {
       document.removeEventListener("click", handleAnchorClick);
       cancelAnimationFrame(rafId);
       lenis.destroy();
+      lenisRef.current = null;
       delete window.lenis;
     };
-  }, [location.pathname]);
+  }, []);
+
+  // Une transition de route repositionne le moteur existant sans le détruire
+  // puis le recréer. Cela évite un à-coup et une nouvelle boucle RAF au montage
+  // initial des pages Blog et Article.
+  useEffect(() => {
+    const lenis = lenisRef.current;
+    const target = location.hash
+      ? document.querySelector(location.hash)
+      : null;
+
+    if (lenis) {
+      lenis.scrollTo(target || 0, { immediate: true });
+    } else if (target) {
+      target.scrollIntoView({ block: "start" });
+    } else {
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    }
+  }, [location.pathname, location.hash]);
 
   return children;
 }

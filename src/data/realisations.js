@@ -1,34 +1,36 @@
 // Projets présentés dans la diapo des réalisations (section Realisations).
-import heroPaysagiste from "../assets/images/hero-paysagiste1.webp";
-import heroNails from "../assets/images/hero-nails1.webp";
-import heroDentiste from "../assets/images/hero-dentiste1.webp";
+import heroSunglases from "../assets/images/presta-signa-mid.webp";
+import heroClim from "../assets/images/presta-mono.webp";
+import heroPhoto from "../assets/images/presta-multi-hero.webp";
+import movieSunglases from "../assets/movies/movie-sunglases.mp4";
 
 export const projects = [
   {
-    name: "Paysagiste",
+    name: "Sunglases",
     services: ["SEO", "Design", "Développement"],
     year: "2026",
     imagePosition: "50% 54%",
-    image: heroPaysagiste,
-    alt: "Site vitrine pour paysagiste",
-    url: "[URL_SITE]",
+    image: heroSunglases,
+    video: movieSunglases,
+    aspectRatio: "16 / 9",
+    alt: "Concept de site vitrine pour opticien conçu par MLD Studio",
   },
   {
-    name: "Nails",
+    name: "Snow Clim",
     services: ["SEO", "Design", "Développement"],
     year: "2026",
     imagePosition: "68% 48%",
-    image: heroNails,
-    alt: "Site vitrine pour onglerie",
-    url: "[URL_SITE]",
+    image: heroClim,
+    aspectRatio: "16 / 9",
+    alt: "Concept de site vitrine pour un poseur de climatisation conçu par MLD Studio",
   },
   {
-    name: "Dentiste",
+    name: "Fashion",
     services: ["SEO", "Design", "Développement"],
     year: "2026",
     imagePosition: "34% 56%",
-    image: heroDentiste,
-    alt: "Site vitrine pour cabinet dentaire",
-    url: "[URL_SITE]",
+    image: heroPhoto,
+    aspectRatio: "16 / 9",
+    alt: "Concept de site vitrine pour une photographe conçu par MLD Studio",
   },
 ];

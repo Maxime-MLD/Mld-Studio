@@ -13,7 +13,7 @@ export const faqItems = [
   {
     question: "Le référencement local est-il inclus ?",
     answer:
-      "Oui. Chaque site bénéficie de bases SEO locales solides : structure claire, balises essentielles, contenu orienté vers votre zone d’activité, responsive et performance. La fiche Google Business peut compléter ce travail pour renforcer votre présence dans Google Maps.",
+      "Oui. Chaque site bénéficie de bases SEO locales solides : structure claire, balises essentielles, contenu orienté vers votre zone d’activité, responsive et performance. Une fiche Google Business peut compléter ce travail uniquement si l’activité respecte les règles d’éligibilité de Google, notamment le contact en personne avec les clients.",
   },
   {
     question: "Que comprend la création d’une fiche Google ?",

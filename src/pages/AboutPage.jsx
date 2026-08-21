@@ -3,8 +3,12 @@ import Noise from "../components/Noise.jsx";
 import Navbar from "../components/layout/Navbar.jsx";
 import Contact from "../components/sections/Contact.jsx";
 import Footer from "../components/sections/Footer.jsx";
-import aboutMax from "../assets/images/about-max.webp";
-import "./AboutPage.css";
+import aboutMld from "../assets/images/about-mld.webp";
+import "../styles/AboutPage.css";
+import { buildGraph } from "../seo/jsonld/graph.js";
+import { buildBreadcrumb } from "../seo/jsonld/breadcrumb.js";
+import { organizationJsonLd } from "../seo/jsonld/organization.js";
+import { personJsonLd } from "../seo/jsonld/person.js";
 
 // Page /a-propos. Réutilise STRICTEMENT le système du site :
 //   - <Navbar />, <Contact />, <Footer /> existants ;
@@ -16,9 +20,17 @@ export default function AboutPage() {
   return (
     <>
       <SEO
-        title="À propos"
+        title="À propos de notre studio web à Roanne"
         path="/a-propos"
-        description="MLD Studio, c'est Maxime : création de sites web modernes et sur-mesure pour les entreprises de Roanne et de la Loire."
+        description="Découvrez MLD Studio et Maxime Lagraa, designer et développeur de sites internet modernes à Roanne, dans la Loire et partout en France."
+        jsonLd={buildGraph(
+          organizationJsonLd,
+          personJsonLd,
+          buildBreadcrumb([
+            { name: "Accueil", path: "/" },
+            { name: "À propos", path: "/a-propos" },
+          ]),
+        )}
       />
 
       <main>
@@ -28,15 +40,26 @@ export default function AboutPage() {
         <section className="about-hero" aria-labelledby="about-title">
           <Noise className="noise-behind" opacity={0.11} />
 
-          <div className="about-hero-inner">
-            <h2 id="about-title" className="about-hero-title">
-              <span>MLD</span>
-              <span>Studio</span>
-            </h2>
-            <p className="about-hero-sub">
-              Nous créons des <strong>sites web</strong> pour des entreprises
-              soucieuses des <strong>résultats</strong>.
-            </p>
+          <div className="about-hero-content">
+            <div className="about-hero-grid">
+              <div className="about-hero-left">
+                <p className="about-hero-sub">
+                  Nous créons des <strong>sites web</strong> pour des entreprises
+                  soucieuses des <strong>résultats</strong>.
+                </p>
+              </div>
+
+              <div className="about-hero-right">
+                <h1 id="about-title" className="about-hero-title">
+                  <span>MLD</span>
+                  <span>Studio</span>
+                </h1>
+              </div>
+            </div>
+
+            <div className="about-hero-bottom">
+              <span className="about-hero-year">2026©</span>
+            </div>
           </div>
         </section>
 
@@ -51,7 +74,7 @@ export default function AboutPage() {
             {/* Photo à gauche, en bas du conteneur — [PHOTO_A_PROPOS] à remplacer. */}
             <figure className="about-photo">
               <img
-                src={aboutMax}
+                src={aboutMld}
                 alt="Maxime, créateur de MLD Studio"
                 width="360"
                 height="454"
@@ -79,15 +102,46 @@ export default function AboutPage() {
                 ressemble et qui attire vraiment des clients.
               </p>
               <p>
-                Basé à <strong>Roanne</strong>, nous travaillons avec les
-                entreprises <strong>locales</strong> et de la{" "}
-                <strong>Loire</strong>.
+                Basé à <strong>Roanne</strong>, je travaille à distance avec des
+                entreprises de la <strong>Loire</strong> et de toute la
+                <strong> France</strong>.
               </p>
               <p>
                 Sites vitrines et <strong>référencement local</strong> à{" "}
-                <strong>Roanne</strong>, Riorges, Le Coteau, Mably, Charlieu ...
-                et dans toute la <strong>Loire</strong> — pour être trouvé par
-                vos futurs clients.
+                <strong>Roanne</strong>, Riorges, Le Coteau, Mably, Villerest,
+                Charlieu et dans toute la <strong>Loire</strong> — pour être
+                trouvé par vos futurs clients.
+              </p>
+              <p>
+                Chaque projet est suivi <strong>directement par moi</strong>, de
+                la première discussion jusqu’à la mise en ligne. Vous gardez un
+                interlocuteur unique pour le contenu, le design, le
+                développement et les ajustements techniques.
+              </p>
+              <p>
+                Le travail commence par la compréhension de votre activité : vos
+                services, vos clients, leurs questions et les éléments qui
+                doivent les rassurer. Cette base permet de construire une
+                hiérarchie claire avant de choisir les couleurs, les images ou
+                les animations.
+              </p>
+              <p>
+                Les sites sont développés pour être <strong>responsives</strong>
+                , accessibles et rapides. Les animations servent la lecture et
+                la perception de qualité ; elles ne doivent pas masquer le
+                contenu ni ralentir inutilement la navigation sur mobile.
+              </p>
+              <p>
+                MLD Studio travaille sans boutique ni accueil physique. Les
+                échanges, validations et livraisons se font à distance, ce qui
+                permet d’accompagner aussi bien une entreprise du bassin
+                roannais qu’un client situé ailleurs en France.
+              </p>
+              <p>
+                La transparence fait partie de la méthode : les maquettes
+                personnelles sont présentées comme des <strong>concepts</strong>
+                , et seuls les projets ou avis authentiques seront publiés comme
+                des références clients.
               </p>
             </div>
           </div>

@@ -1,23 +1,54 @@
 // Images réelles des projets (import Vite → URL résolue au build,
 // ne jamais mettre un chemin string "src/assets/..." qui casserait au build).
+import heroSunglases from "../assets/images/presta-signa-left.webp";
+import heroClim from "../assets/images/presta-mono.webp";
+import heroPhoto from "../assets/images/presta-multi-hero.webp";
 import heroPaysagiste from "../assets/images/hero-paysagiste1.webp";
 import heroNails from "../assets/images/hero-nails1.webp";
-import heroDentiste from "../assets/images/hero-dentiste1.webp";
 import heroSoudure from "../assets/images/hero-soudure.webp";
+import heroDentiste from "../assets/images/hero-dentiste1.webp";
+import movieSunglases from "../assets/movies/movie-sunglases.mp4";
 
-// Projets affichés sur la page /realisations UNIQUEMENT.
-// 3 vrais projets clients (avec leur visuel + alt SEO) + 2 cartes placeholder
-// à compléter plus tard. Le même visuel sert au fond et au premier plan
-// (le composant utilise le champ `image` aux deux endroits).
+// Concepts créatifs affichés sur /realisations. Ils illustrent les directions
+// visuelles de MLD Studio sans être présentés comme de faux projets clients.
 export const realisationsPageProjects = [
+  {
+    name: "Sunglases",
+    services: ["SEO", "Design", "Développement"],
+    year: "2026",
+    imagePosition: "50% 50%",
+    image: heroSunglases,
+    video: movieSunglases,
+    aspectRatio: "16 / 9",
+    alt: "Concept de site vitrine pour un opticien conçu par MLD Studio",
+  },
+  {
+    name: "Snow Clim",
+    services: ["SEO", "Design", "Développement"],
+    year: "2026",
+    imagePosition: "50% 50%",
+    image: heroClim,
+    aspectRatio: "16 / 9",
+    alt: "Concept de site vitrine pour un poseur de climatisation conçu par MLD Studio",
+  },
+  {
+    name: "Photographe",
+    services: ["SEO", "Design", "Développement"],
+    year: "2026",
+    imagePosition: "50% 50%",
+    image: heroPhoto,
+    aspectRatio: "16 / 9",
+    alt: "Concept de site vitrine pour un paysagiste / aménagement d'extérieur conçu par MLD Studio",
+  },
+
   {
     name: "Paysagiste",
     services: ["SEO", "Design", "Développement"],
     year: "2026",
     imagePosition: "50% 50%",
     image: heroPaysagiste,
-    alt: "Site vitrine pour paysagiste",
-    url: "[URL_SITE]",
+    aspectRatio: "16 / 10",
+    alt: "Concept de site vitrine pour un paysagiste conçu par MLD Studio",
   },
   {
     name: "Nails",
@@ -25,8 +56,17 @@ export const realisationsPageProjects = [
     year: "2026",
     imagePosition: "50% 50%",
     image: heroNails,
-    alt: "Site vitrine pour onglerie",
-    url: "[URL_SITE]",
+    aspectRatio: "16 / 10",
+    alt: "Concept de site vitrine pour une prothésiste ongulaire conçu par MLD Studio",
+  },
+  {
+    name: "Soudure",
+    services: ["SEO", "Design", "Développement"],
+    year: "2026",
+    imagePosition: "50% 50%",
+    image: heroSoudure,
+    aspectRatio: "16 / 10",
+    alt: "Concept de site vitrine pour un artisan soudeur conçu par MLD Studio",
   },
   {
     name: "Dentiste",
@@ -34,24 +74,7 @@ export const realisationsPageProjects = [
     year: "2026",
     imagePosition: "50% 50%",
     image: heroDentiste,
-    alt: "Site vitrine pour cabinet dentaire",
-    url: "[URL_SITE]",
-  },
-
-  // --- 2 projets placeholder à compléter (image, nom, secteur, lien) ---
-  {
-    name: "Denis Soudure",
-    services: ["SEO", "Design", "Développement"],
-    year: "2026",
-    imagePosition: "50% 50%",
-    image: heroSoudure,
-    url: "[URL_SITE]",
-  },
-  {
-    name: "[TITRE_PROJET]",
-    services: ["[SECTEUR]"],
-    year: "2026",
-    imagePosition: "50% 50%",
-    url: "[URL_SITE]",
+    aspectRatio: "16 / 10",
+    alt: "Concept de site vitrine pour un cabinet dentaire conçu par MLD Studio",
   },
 ];

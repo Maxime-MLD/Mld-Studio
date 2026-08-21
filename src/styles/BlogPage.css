@@ -1,0 +1,323 @@
+/*
+  Page Blog — même système que la page Réalisations (inspiré de Mattis /blog).
+  blog-hero : ligne verticale centrale ; H1 à DROITE de la ligne (en haut),
+  paragraphe à GAUCHE de la ligne (plus bas, sous le titre), année en bas à droite.
+  Hauteur ~90vh (pas 100vh). Le reste de la page réutilise des composants
+  existants (<Conseils />, <Faq>, <Contact>, <Footer>) — rien à styler ici.
+*/
+
+/* ---------- Hero Blog ---------- */
+.blog-hero {
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  min-height: 600px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 0 var(--page-pad) clamp(1.5rem, 2.8vh, 2.25rem);
+  background: var(--section-black);
+  color: var(--text-white);
+}
+
+/* Ligne verticale centrale */
+.blog-hero::before {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: var(--line);
+  content: "";
+  pointer-events: none;
+}
+
+/* Contenu poussé vers le bas : bloc titre/paragraphe puis l'année. */
+.blog-hero-content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.25rem, 3vh, 2rem);
+}
+
+/* Grille 50/50 autour de la ligne : titre colonne droite / ligne 1,
+   paragraphe colonne gauche / ligne 2. */
+.blog-hero-grid {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  row-gap: clamp(0.75rem, 1.4vh, 1.25rem);
+  width: 100%;
+}
+
+/* H1 — à droite de la ligne, bord gauche collé à la ligne */
+.blog-hero-right {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  min-width: 0;
+  margin: 0;
+  padding: 0 0 0 1px;
+}
+
+.blog-hero-title {
+  margin: 0;
+  padding: 0;
+  font-size: 98px;
+  font-weight: 560;
+  line-height: 0.82;
+  letter-spacing: -0.075em;
+  text-transform: uppercase;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.blog-hero-title span {
+  display: block;
+}
+
+/* Paragraphe — sous le titre, à gauche de la ligne, bord droit collé à la ligne */
+.blog-hero-left {
+  grid-column: 1;
+  grid-row: 2;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  margin: 0;
+  padding: 0 1px 0 0;
+}
+
+.blog-hero-sub {
+  max-width: 22rem;
+  margin: 0;
+  padding: 0;
+  color: var(--text-muted-light);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.blog-hero-sub strong {
+  color: var(--text-white);
+  font-weight: 600;
+}
+
+/* Année — en bas à droite */
+.blog-hero-bottom {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.blog-hero-year {
+  color: var(--text-muted-light);
+  font-size: 12px;
+  font-weight: 550;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* ---------- Tablette (810px - 1120px) ---------- */
+@media (min-width: 810px) and (max-width: 1120px) {
+  .blog-hero {
+    height: 82vh;
+    min-height: 480px;
+  }
+
+  .blog-hero-title {
+    font-size: 68px;
+  }
+
+  .blog-hero-sub {
+    max-width: 18rem;
+  }
+}
+
+/* ---------- Mobile (≤ 809.98px) ---------- */
+@media (max-width: 809.98px) {
+  .blog-hero {
+    height: 85vh;
+    min-height: 520px;
+    max-height: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: clamp(5rem, 14vw, 7rem) 20px clamp(1.5rem, 3vh, 2rem);
+  }
+
+  .blog-hero::before {
+    display: none;
+  }
+
+  /* Empilé : titre au-dessus (2e dans le DOM), paragraphe en dessous */
+  .blog-hero-grid {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .blog-hero-left,
+  .blog-hero-right {
+    grid-column: auto;
+    grid-row: auto;
+    width: 100%;
+    justify-content: flex-start;
+    padding: 0;
+  }
+
+  .blog-hero-title {
+    font-size: 63px;
+    line-height: 0.85;
+    white-space: normal;
+  }
+
+  .blog-hero-sub {
+    max-width: 100%;
+    text-align: left;
+    font-size: 12px;
+    line-height: 1.35;
+  }
+
+  .blog-hero-bottom {
+    margin-top: 0.5rem;
+    justify-content: flex-end;
+  }
+}
+
+/* ---------- Grille d'articles (scopée à la page blog) ----------
+   Cartes carrées uniformes, 2 colonnes desktop/tablette, 1 colonne mobile.
+   Marges égales : espace entre les cartes = marge sur les côtés (= var(--page-pad)).
+   Tailles de référence (max) : 718px desktop, 384px tablette, ~382px mobile.
+   Scopé à .blog-articles → la section Conseils de l'accueil reste intacte. */
+.blog-articles .news-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 10px; /* 2px de chaque côté de la ligne centrale */
+  row-gap: 10px; /* 2px entre les cartes */
+  align-items: stretch;
+}
+
+/* Annule les décalages « bento » (marges staggered) des cartes. */
+.blog-articles .news-card,
+.blog-articles .news-card:nth-child(1),
+.blog-articles .news-card:nth-child(2) {
+  margin: 0;
+}
+
+/* Chaque carte = carré plein : image en fond, texte superposé en bas. */
+.blog-articles .news-card {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #d9d9d9;
+}
+
+.blog-articles .news-card-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+}
+
+/* Carte « feature » (avatar + fond blanc) → image plein cadre comme les autres. */
+.blog-articles .news-feature-card {
+  position: absolute;
+  inset: 0;
+  min-height: 0;
+  height: 100%;
+  padding: 0;
+  background: none;
+}
+
+/* Image plus haute que la carte (top: -50px, height: calc(100% + 100px)) :
+   permet à l'image de monter/descendre au scroll (parallaxe verticale)
+   à l'intérieur du cadre fixe de la carte (overflow: hidden).
+   Zoom progressif au hover (scale: 1.05) calqué sur la section Conseils. */
+.blog-articles .news-card-image img,
+.blog-articles .news-feature-card > img {
+  position: absolute;
+  left: 0;
+  top: -50px;
+  width: 100%;
+  height: calc(100% + 100px);
+  border-radius: 0;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.08);
+  transform: translate3d(0, var(--card-parallax-y, 0px), 0);
+  scale: 1.001;
+  will-change: transform, scale;
+  transition:
+    scale 0.7s cubic-bezier(0.2, 0.72, 0.2, 1),
+    filter 0.7s ease;
+}
+
+.blog-articles .news-card:hover .news-card-image img,
+.blog-articles .news-card:hover .news-feature-card > img {
+  scale: 1.05;
+  filter: grayscale(1) contrast(1.15);
+}
+
+/* Masquage de la flèche sur les cartes de la page blog */
+.blog-articles .news-arrow {
+  display: none !important;
+}
+
+/* Dégradé pleine largeur au bas de la carte (lisibilité), indépendant du texte. */
+.blog-articles .news-card-image::after,
+.blog-articles .news-feature-card::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: auto 0 0 0;
+  height: 58%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0));
+  pointer-events: none;
+}
+
+/* Conteneur de texte : en bas à GAUCHE, ne prend pas toute la largeur de la carte. */
+.blog-articles .news-card-copy,
+.blog-articles .news-feature-card .news-card-copy {
+  position: absolute;
+  z-index: 3;
+  inset: auto auto 0 0;
+  max-width: 80%;
+  gap: 0.3rem;
+  padding: 1.25rem;
+  background: none;
+  color: var(--text-white);
+  box-sizing: border-box;
+}
+
+.blog-articles .news-card-copy h3 {
+  color: var(--text-white);
+  font-size: 26px;
+  line-height: 1.15;
+}
+
+.blog-articles .news-card-copy time {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Mobile : une seule colonne pleine largeur, marges égales
+   (côtés = espace entre cartes = var(--page-pad)). */
+@media (max-width: 809.98px) {
+  .blog-articles .news-grid {
+    grid-template-columns: minmax(0, 1fr);
+    column-gap: var(--page-pad);
+    row-gap: var(--page-pad);
+  }
+}

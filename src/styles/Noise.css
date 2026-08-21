@@ -1,0 +1,22 @@
+.noise-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+  contain: paint;
+}
+
+.noise-layer {
+  position: absolute;
+  /* Une marge d'une tuile suffit pour les sauts du grain, sans recréer le
+     gigantesque calque 400 % du site de référence. */
+  inset: -256px;
+  background-image: url("../assets/images/noise-texture.png");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+  image-rendering: pixelated;
+  will-change: transform;
+}

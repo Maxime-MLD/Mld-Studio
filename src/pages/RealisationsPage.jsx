@@ -7,7 +7,9 @@ import Footer from "../components/sections/Footer.jsx";
 import { realisationsPageProjects } from "../data/realisations-page.js";
 import { faqRealisationsItems } from "../data/faq-realisations.js";
 import { useProjectMarquee } from "../scripts/realisations.js";
-import "./RealisationsPage.css";
+import "../styles/RealisationsPage.css";
+import { buildGraph } from "../seo/jsonld/graph.js";
+import { buildBreadcrumb } from "../seo/jsonld/breadcrumb.js";
 
 // Page /realisations.
 export default function RealisationsPage() {
@@ -24,9 +26,15 @@ export default function RealisationsPage() {
   return (
     <>
       <SEO
-        title="Réalisations"
+        title="Concepts de sites web"
         path="/realisations"
-        description="Découvrez les sites vitrines créés par MLD Dev pour des artisans, restaurants et commerces à Roanne et dans la Loire."
+        description="Découvrez les concepts de sites vitrines imaginés par MLD Studio pour illustrer différentes directions créatives et métiers."
+        jsonLd={buildGraph(
+          buildBreadcrumb([
+            { name: "Accueil", path: "/" },
+            { name: "Concepts de sites web", path: "/realisations" },
+          ]),
+        )}
       />
 
       <main>
@@ -47,14 +55,14 @@ export default function RealisationsPage() {
 
               <div className="realis-hero-right">
                 <h1 id="realis-hero-title" className="realis-hero-title">
-                  <span>Projets</span>
-                  <span>réalisés.</span>
+                  <span>Concepts</span>
+                  <span>créatifs.</span>
                 </h1>
               </div>
             </div>
 
             <div className="realis-hero-bottom">
-              <span className="realis-hero-year">2019–26©</span>
+              <span className="realis-hero-year">2026©</span>
             </div>
           </div>
         </section>
@@ -64,13 +72,17 @@ export default function RealisationsPage() {
             pour masquer la ligne sur mobile sans toucher la home. */}
         <section
           className="portfolio-section realis-projects"
-          aria-label="Projets réalisés"
+          aria-label="Concepts créatifs de sites web"
         >
           {realisationsPageProjects.map((project, index) => {
             const image = project.image || fallbackImage;
 
             return (
-              <article key={index} className="project-slide">
+              <article
+                key={index}
+                className="project-slide"
+                style={{ "--project-ratio": project.aspectRatio || "16 / 10" }}
+              >
                 <div className="project-backdrop" aria-hidden="true">
                   <img
                     src={image}
@@ -79,13 +91,12 @@ export default function RealisationsPage() {
                     style={{ objectPosition: project.imagePosition }}
                     onError={handleImageError}
                   />
-                  <Noise className="media-noise" opacity={0.2} />
                 </div>
 
                 <div className="project-pinned-track">
                   <div className="project-stage">
                     <p className="project-number">(0{index + 1})</p>
-                    <p className="project-label">Portfolio</p>
+                    <p className="project-label">Concept</p>
                     <div
                       className="project-marquee-wrapper"
                       role="heading"
@@ -94,7 +105,10 @@ export default function RealisationsPage() {
                     >
                       <div className="project-marquee-group">
                         {Array.from({ length: 8 }).map((_, repeatIndex) => (
-                          <span key={repeatIndex} aria-hidden={repeatIndex !== 0}>
+                          <span
+                            key={repeatIndex}
+                            aria-hidden={repeatIndex !== 0}
+                          >
                             {project.name}
                           </span>
                         ))}
@@ -106,23 +120,30 @@ export default function RealisationsPage() {
                       </div>
                     </div>
 
-                    {/* Chaque projet ouvre le site en ligne dans un nouvel onglet. */}
-                    <a
-                      className="project-media"
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`Voir le site du projet ${project.name} (nouvel onglet)`}
-                    >
-                      <img
-                        src={image}
-                        alt={project.alt || `Aperçu du projet ${project.name}`}
-                        loading="lazy"
-                        style={{ objectPosition: project.imagePosition }}
-                        onError={handleImageError}
-                      />
+                    <Noise className="project-stage-noise" opacity={0.15} />
+
+                    <div className="project-media">
+                      {project.video ? (
+                        <video
+                          src={project.video}
+                          poster={image}
+                          autoPlay
+                          muted
+                          loop
+                          playsInline
+                          preload="auto"
+                        />
+                      ) : (
+                        <img
+                          src={image}
+                          alt={project.alt || `Aperçu du projet ${project.name}`}
+                          loading="lazy"
+                          style={{ objectPosition: project.imagePosition }}
+                          onError={handleImageError}
+                        />
+                      )}
                       <Noise className="media-noise" opacity={0.11} />
-                    </a>
+                    </div>
 
                     <div className="project-details">
                       <strong>{project.name}</strong>

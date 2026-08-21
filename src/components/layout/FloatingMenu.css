@@ -1,0 +1,342 @@
+/* ============================================================
+   FLOATING BURGER MENU (Bottom Center on Scroll)
+   ============================================================ */
+
+.floating-menu-wrapper {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* Backdrop sombre flouté */
+.floating-menu-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floating-menu-backdrop.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Bouton Burger flottant en bas au centre */
+.floating-menu-btn {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  width: 48px;
+  height: 48px;
+  background: rgba(22, 22, 22, 0.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  pointer-events: none;
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.3s ease,
+              background 0.25s ease,
+              border-color 0.25s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.floating-menu-wrapper.is-visible .floating-menu-btn {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.floating-menu-btn:hover {
+  background: rgba(30, 30, 30, 0.9);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+/* Icône Burger 3 lignes -> Croix (X) */
+.floating-menu-icon {
+  position: relative;
+  width: 18px;
+  height: 13px;
+  display: block;
+}
+
+.icon-bar {
+  display: block;
+  height: 1.5px;
+  background: #ffffff;
+  position: absolute;
+  left: 0;
+  transition: width 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              top 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.2s ease;
+}
+
+/* 3 barres horizontales quand fermé */
+.icon-bar.bar-1 {
+  top: 0;
+  width: 58%;
+}
+
+.icon-bar.bar-2 {
+  top: 6px;
+  width: 100%;
+}
+
+.icon-bar.bar-3 {
+  top: 12px;
+  width: 100%;
+}
+
+/* Au survol (hover), la ligne du haut s'agrandit pour faire la même taille */
+.floating-menu-btn:hover .icon-bar.bar-1 {
+  width: 100%;
+}
+
+/* Quand le menu est ouvert : transformation des 3 lignes en croix (X) */
+.floating-menu-btn.is-active .icon-bar.bar-1 {
+  top: 6px;
+  width: 100%;
+  transform: rotate(45deg);
+}
+
+.floating-menu-btn.is-active .icon-bar.bar-2 {
+  top: 6px;
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.floating-menu-btn.is-active .icon-bar.bar-3 {
+  top: 6px;
+  width: 100%;
+  transform: rotate(-45deg);
+}
+
+/* ============================================================
+   CARTE POPUP DU MENU OUVERT (Semi-transparente)
+   ============================================================ */
+
+.floating-menu-card {
+  position: fixed;
+  bottom: 84px;
+  left: 50%;
+  transform: translateX(-50%) translateY(24px) scale(0.96);
+  width: min(460px, calc(100vw - 32px));
+  background: rgba(18, 18, 18, 0.78);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 0;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75), 0 4px 16px rgba(0, 0, 0, 0.4);
+  z-index: 5;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.3s ease,
+              visibility 0.3s ease;
+  box-sizing: border-box;
+}
+
+.floating-menu-card.is-open {
+  transform: translateX(-50%) translateY(0) scale(1);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.floating-menu-content {
+  padding: 32px 36px 28px 36px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* Ligne supérieure (2 colonnes) */
+.floating-menu-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  width: 100%;
+}
+
+.floating-menu-heading {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 16px;
+}
+
+/* Colonne Gauche : Navigation */
+.floating-menu-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.floating-menu-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.floating-nav-link {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: inline-block;
+  width: fit-content;
+}
+
+.floating-nav-link:hover {
+  color: var(--orange);
+  transform: translateX(3px);
+}
+
+/* Colonne Droite : Contact & Légal */
+.floating-menu-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  justify-content: space-between;
+}
+
+.floating-menu-right .floating-menu-heading {
+  text-align: right;
+  width: 100%;
+}
+
+.floating-menu-contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-end;
+}
+
+.floating-contact-link {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  word-break: break-all;
+}
+
+.floating-contact-link:hover {
+  color: var(--orange);
+}
+
+.floating-menu-legal {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-end;
+  margin-top: 24px;
+}
+
+.floating-legal-link {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s ease;
+}
+
+.floating-legal-link:hover {
+  color: #ffffff;
+}
+
+/* Bouton CTA en bas */
+.floating-menu-cta {
+  margin-top: 28px;
+  width: 100%;
+  height: 48px;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+  box-sizing: border-box;
+}
+
+.floating-menu-cta:hover {
+  background: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+}
+
+/* ============================================================
+   RESPONSIVE ADAPTATIONS
+   ============================================================ */
+@media (max-width: 480px) {
+  .floating-menu-card {
+    width: calc(100vw - 24px);
+    bottom: 80px;
+  }
+
+  .floating-menu-content {
+    padding: 24px 20px 20px 20px;
+  }
+
+  .floating-menu-top {
+    gap: 16px;
+  }
+
+  .floating-nav-link {
+    font-size: 19px;
+  }
+
+  .floating-contact-link {
+    font-size: 12px;
+  }
+
+  .floating-legal-link {
+    font-size: 9px;
+  }
+
+  .floating-menu-cta {
+    margin-top: 20px;
+    height: 44px;
+    font-size: 11px;
+  }
+
+  .floating-menu-btn {
+    bottom: 16px;
+    width: 44px;
+    height: 44px;
+  }
+}

@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import Noise from "../Noise.jsx";
 import FooterMark from "../layout/FooterMark.jsx";
 import { useContactAnimation } from "../../scripts/contact.js";
@@ -7,6 +9,40 @@ import contactImage from "../../assets/images/contact-image.webp";
 // Partage le fond sombre du bas de page avec le Footer (voir .contact-section).
 function Contact() {
   const sectionRef = useContactAnimation();
+  const [formState, setFormState] = useState({ status: "idle", message: "" });
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    setFormState({ status: "sending", message: "Envoi en cours…" });
+
+    try {
+      const payload = Object.fromEntries(new FormData(form).entries());
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok) throw new Error(result.error || "Envoi impossible.");
+
+      form.reset();
+      setFormState({
+        status: "success",
+        message:
+          "Merci, votre message a bien été envoyé. Je vous répond sous 24h.",
+      });
+    } catch (error) {
+      setFormState({
+        status: "error",
+        message:
+          error instanceof Error
+            ? error.message
+            : "Envoi impossible. Écrivez-nous à contact@mld-dev.com.",
+      });
+    }
+  };
 
   return (
     <section ref={sectionRef} id="contact" className="contact-section">
@@ -17,7 +53,14 @@ function Contact() {
           <div className="footer-left-column">
             <div className="footer-visual">
               <div className="footer-image-panel">
-                <img src={contactImage} alt="Création graphique MLD Studio" />
+                <img
+                  src={contactImage}
+                  alt="Création graphique MLD Studio"
+                  width="2560"
+                  height="1707"
+                  loading="lazy"
+                  decoding="async"
+                />
                 <Noise className="media-noise" opacity={0.11} />
                 <div className="footer-visual-logo">
                   <FooterMark />
@@ -27,6 +70,8 @@ function Contact() {
                   <img
                     src="/assets/pricing-portrait.jpg"
                     alt="Portrait de Maxime Lagraa"
+                    width="270"
+                    height="341"
                   />
                 </div>
               </div>
@@ -43,12 +88,16 @@ function Contact() {
               <p className="footer-eyebrow">Contact</p>
               <address>
                 <strong>Roanne 42300</strong>
-                <a href="mailto:contact@mld-studio.fr">contact@mld-studio.fr</a>
+                <a href="mailto:contact@mld-dev.com">contact@mld-dev.com</a>
+                <a href="tel:+33662599771">06 62 59 97 71</a>
               </address>
-              <p>Nous répondons habituellement aux demandes sous 24h.</p>
+              <p>
+                Du lundi au vendredi, de 9 h à 19 h. Réponse habituelle sous 24
+                h.
+              </p>
               <a
                 className="footer-brand-link"
-                href="#accueil"
+                href="/"
                 aria-label="MLD, retour à l’accueil"
               >
                 <FooterMark withName />
@@ -69,10 +118,16 @@ function Contact() {
               </p>
             </header>
 
-            <form
-              className="footer-form"
-              onSubmit={(event) => event.preventDefault()}
-            >
+            <form className="footer-form" onSubmit={handleSubmit}>
+              <label className="form-honeypot" aria-hidden="true">
+                <span>Entreprise</span>
+                <input
+                  type="text"
+                  name="company"
+                  tabIndex="-1"
+                  autoComplete="off"
+                />
+              </label>
               <label>
                 <span>
                   Nom <b aria-hidden="true">*</b>
@@ -131,7 +186,11 @@ function Contact() {
               </label>
 
               <div className="footer-form-actions">
-                <button type="submit">
+                <button
+                  type="submit"
+                  disabled={formState.status === "sending"}
+                  aria-busy={formState.status === "sending"}
+                >
                   <span className="footer-button-label">
                     <span>Envoyer le message</span>
                     <span aria-hidden="true">Envoyer le message</span>
@@ -139,9 +198,19 @@ function Contact() {
                 </button>
                 <p>
                   En envoyant ce formulaire, vous acceptez notre{" "}
-                  <a href="#confidentialite">politique de confidentialité</a>.
+                  <Link to="/politique-confidentialite">
+                    politique de confidentialité
+                  </Link>
+                  .
                 </p>
               </div>
+              <p
+                className={`footer-form-status is-${formState.status}`}
+                role="status"
+                aria-live="polite"
+              >
+                {formState.message}
+              </p>
             </form>
           </div>
         </div>

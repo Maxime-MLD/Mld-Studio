@@ -211,7 +211,8 @@
    largeur qui est dérivée du ratio, pour ne rien décaler d'autre (les libellés
    ne débordent pas sur l'image). z-index (ligne centrale derrière) et effet de
    scroll épinglé inchangés. */
-.realis-projects .project-media img {
+.realis-projects .project-media img,
+.realis-projects .project-media video {
   top: 0;
   height: 100%;
   object-fit: cover;
@@ -219,50 +220,161 @@
   transform: none;
 }
 
+
+
 /* Desktop : hauteur conservée (58,5%), largeur dérivée du ratio, recentré.
    Le texte sous l'image reçoit EXACTEMENT la même largeur (hauteur × ratio) et
    le même centrage → il ne dépasse plus la largeur de l'image. */
 @media (min-width: 1121px) {
   .realis-projects .project-media {
     width: auto;
-    aspect-ratio: 1304 / 815;
+    aspect-ratio: var(--project-ratio, 16 / 10);
     left: 50%;
     transform: translateX(-50%);
   }
 
   .realis-projects .project-details {
     left: 50%;
-    width: calc(58.5svh * 1304 / 815);
+    width: calc(58.5svh * var(--project-ratio, 16 / 10));
     transform: translateX(-50%);
   }
 }
 
-/* Tablette : hauteur définie (40%), largeur dérivée du ratio, recentré.
-   Le texte sous l'image est calé sur la même largeur. */
+/* Tablette : 70svh de hauteur, 518.67px x 298.63px */
 @media (min-width: 810px) and (max-width: 1120px) {
+  .realis-projects .project-slide {
+    height: 70svh;
+  }
+
+  .realis-projects .project-pinned-track {
+    top: -70svh;
+    height: 210svh;
+  }
+
+  .realis-projects .project-stage {
+    height: 70svh;
+  }
+
   .realis-projects .project-media {
-    width: auto;
-    height: 40%;
-    aspect-ratio: 1304 / 815;
+    top: 50%;
+    width: 518.67px;
+    height: 298.63px;
+    max-height: none;
+    aspect-ratio: 518.67 / 298.63;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, calc(-50% - 20px));
   }
 
   .realis-projects .project-details {
+    position: absolute;
+    top: calc(50% + (298.63px / 2) - 8px);
     left: 50%;
-    width: calc(40svh * 1304 / 815);
+    width: 518.67px;
     transform: translateX(-50%);
+    display: grid;
+    grid-template-columns: 50% 25% 25%;
+    align-items: start;
   }
 }
 
-/* Mobile : largeur plafonnée (20px de marge) pour éviter tout débordement,
-   hauteur dérivée du ratio (le centrage translate(-50%,-50%) du mobile est
-   conservé). Les libellés mobiles gardent leurs marges de 20px = celles de
-   l'image, donc ils ne dépassent pas non plus. */
+/* Mobile : 80svh de hauteur, 390px x 224.55px */
 @media (max-width: 809.98px) {
+  .realis-projects .project-slide {
+    height: 80svh;
+    --project-card-w: min(390px, calc(100% - 40px));
+    --project-card-h: calc(min(390px, calc(100% - 40px)) * 224.55 / 390);
+  }
+
+  .realis-projects .project-pinned-track {
+    top: -80svh;
+    height: 240svh;
+  }
+
+  .realis-projects .project-stage {
+    height: 80svh;
+  }
+
   .realis-projects .project-media {
-    width: min(360px, calc(100% - 40px));
-    height: auto;
-    aspect-ratio: 1304 / 815;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: var(--project-card-w);
+    height: var(--project-card-h);
+    overflow: hidden;
+    border-radius: 0;
+    z-index: 3;
+    margin: 0;
+  }
+
+  .realis-projects .project-details {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: var(--project-card-w);
+    height: var(--project-card-h);
+    pointer-events: none;
+    display: block;
+    z-index: 4;
+  }
+
+  .realis-projects .project-details p {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateY(calc(-100% - 12px));
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+  }
+
+  .realis-projects .project-details p span {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.95);
+    line-height: 1.25;
+    display: block;
+  }
+
+  .realis-projects .project-details strong {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translateY(calc(100% + 12px));
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: #fff;
+    line-height: 1.2;
+    display: block;
+    white-space: nowrap;
+  }
+
+  .realis-projects .project-details time {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translateY(calc(100% + 30px));
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.2;
+    display: block;
+  }
+}
+
+/* iPad Mini : 728px x 419.16px */
+@media (min-width: 768px) and (max-width: 809.98px) {
+  .realis-projects .project-slide {
+    --project-card-w: min(728px, calc(100% - 40px));
+    --project-card-h: calc(min(728px, calc(100% - 40px)) * 419.16 / 728);
   }
 }

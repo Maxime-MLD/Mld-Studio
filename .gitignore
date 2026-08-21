@@ -1,0 +1,12 @@
+node_modules/
+dist/
+dist-ssr/
+.vercel/
+.env
+.env.*
+!.env.example
+*.log
+lighthouse-*.json
+coverage/
+.DS_Store
+Thumbs.db

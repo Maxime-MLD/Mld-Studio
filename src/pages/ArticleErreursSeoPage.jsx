@@ -4,16 +4,35 @@ import Navbar from "../components/layout/Navbar.jsx";
 import Contact from "../components/sections/Contact.jsx";
 import Footer from "../components/sections/Footer.jsx";
 import blogRoad from "../assets/images/blog-road.webp";
-import "./ArticlePage.css";
+import blogRoadMobile from "../assets/images/blog-road-mobile.webp";
+import "../styles/ArticlePage.css";
+import { buildArticleGraph } from "../seo/articleSeo.js";
+import ArticleRelatedLinks from "../components/article/ArticleRelatedLinks.jsx";
+
+const article = {
+  headline: "7 erreurs SEO qui limitent votre visibilité à Roanne",
+  description:
+    "Découvrez sept erreurs techniques et éditoriales qui compliquent la visibilité d'un site professionnel à Roanne, avec des corrections concrètes.",
+  path: "/blog/erreurs-seo-local-roanne",
+  image: blogRoad,
+  datePublished: "2026-07-29",
+  dateModified: "2026-08-20",
+};
 
 // Page d'article : « 7 erreurs qui empêchent votre site d’être trouvé à Roanne et ses environs »
 export default function ArticleErreursSeoPage() {
   return (
     <>
       <SEO
-        title="7 erreurs qui bloquent votre visibilité à Roanne et ses environs"
-        path="/blog/erreurs-seo-local-roanne"
-        description="Découvrez les 7 pièges fréquents qui empêchent un site professionnel d'apparaître sur Google à Roanne et comment les corriger."
+        title="7 erreurs SEO à corriger à Roanne"
+        path={article.path}
+        description={article.description}
+        image={blogRoad}
+        imageAlt="Analyse des erreurs SEO d'un site professionnel à Roanne"
+        type="article"
+        publishedTime={article.datePublished}
+        modifiedTime={article.dateModified}
+        jsonLd={buildArticleGraph(article)}
       />
 
       <main>
@@ -22,7 +41,16 @@ export default function ArticleErreursSeoPage() {
         {/* Hero avec image de la card en fond + Noise + ligne centrale */}
         <section className="article-hero" aria-labelledby="article-title">
           <div className="article-hero-bg" aria-hidden="true">
-            <img src={blogRoad} alt="" />
+            <img
+              src={blogRoad}
+              srcSet={`${blogRoadMobile} 800w, ${blogRoad} 1920w`}
+              sizes="100vw"
+              alt=""
+              width="1920"
+              height="2560"
+              decoding="async"
+              fetchPriority="high"
+            />
             <Noise className="media-noise" opacity={0.14} />
           </div>
 
@@ -33,7 +61,8 @@ export default function ArticleErreursSeoPage() {
               <span>à Roanne</span>
             </h1>
             <p className="article-hero-sub">
-              Conseils & SEO / <strong>29 juillet 2026</strong>
+              Conseils & SEO /{" "}
+              <time dateTime="2026-07-29">29 juillet 2026</time> / Par Maxime Lagraa
             </p>
           </div>
         </section>
@@ -53,7 +82,11 @@ export default function ArticleErreursSeoPage() {
             <figure className="article-side-visual">
               <img
                 src={blogRoad}
+                srcSet={`${blogRoadMobile} 800w, ${blogRoad} 1920w`}
+                sizes="(max-width: 809px) calc(100vw - 40px), 36vw"
                 alt="Audit SEO local et erreurs de visibilité à Roanne"
+                width="1920"
+                height="2560"
                 loading="lazy"
                 decoding="async"
               />
@@ -63,64 +96,117 @@ export default function ArticleErreursSeoPage() {
             {/* Corps de texte à droite de la ligne centrale */}
             <div className="article-text">
               <p>
-                Avoir un site en ligne ne garantit pas d'attirer des clients. Si
-                votre site est introuvable sur Google à <strong>Roanne</strong>{" "}
-                ou dans la <strong>Loire</strong>, l'une de ces{" "}
-                <strong>7 erreurs courantes</strong> en est très probablement la
-                cause.
+                Mettre un site en ligne ne garantit ni son indexation ni sa
+                visibilité. Google doit pouvoir accéder aux pages, comprendre
+                leur sujet et proposer un résultat utile à la personne qui
+                effectue la recherche. Ces sept erreurs sont fréquentes sur les
+                sites d’artisans, commerces et petites entreprises de
+                <strong> Roanne</strong> et de la <strong>Loire</strong>.
               </p>
 
-              <h3>1. Oublier de cibler précisément Roanne et ses communes</h3>
+              <h2>1. Décrire son activité avec un contenu trop vague</h2>
               <p>
-                Un site qui parle de ses services sans jamais mentionner{" "}
-                <strong>Roanne</strong>, <strong>Riorges</strong> ou le{" "}
-                <strong>bassin roannais</strong> dans ses titres et balises clés
-                est invisible pour les algorithmes locaux de Google.
+                Une page intitulée « Nos services » qui ne détaille ni la
+                prestation, ni le public, ni la zone couverte fournit peu
+                d’informations. Expliquez concrètement le problème résolu, votre
+                méthode et les limites du service. Mentionnez Roanne ou une
+                commune voisine uniquement lorsque cela apporte une information
+                réelle, sans répéter artificiellement la ville dans chaque
+                phrase.
               </p>
 
-              <h3>2. Un temps de chargement trop long</h3>
+              <h2>2. Rendre le contenu essentiel dépendant d’une interaction</h2>
               <p>
-                Plus de <strong>53% des visiteurs quittent un site</strong> qui
-                met plus de 3 secondes à s'afficher sur mobile. Un site lourd ou
-                mal optimisé est pénalisé par Google dans son positionnement.
+                Le texte principal, les liens et les métadonnées doivent être
+                accessibles au chargement de la page. Google déconseille de
+                charger le contenu essentiel uniquement après un clic, un
+                balayage ou une saisie. Pour une application React, le
+                pré-rendu permet aussi de fournir un HTML complet aux moteurs et
+                aux robots de partage avant l’exécution de JavaScript.
               </p>
 
-              <h3>3. Une mauvaise expérience sur smartphone</h3>
+              <h2>3. Négliger la vitesse et la stabilité sur mobile</h2>
               <p>
-                Aujourd’hui, Google évalue et classe les sites web uniquement
-                sur leur <strong>version mobile (Mobile-First)</strong>. Un
-                texte trop petit ou un menu illisible sur téléphone fait chuter
-                vos conversions.
+                Une image hero trop lourde, un JavaScript important ou un
+                déplacement de mise en page peut rendre la première visite
+                pénible. Mesurez le LCP, l’INP et le CLS, puis corrigez en
+                priorité l’élément principal visible. Google précise néanmoins
+                que de bons Core Web Vitals ne remplacent pas un contenu
+                pertinent : performance et utilité doivent progresser ensemble.
               </p>
 
-              <h3>4. Des coordonnées (NAP) incohérentes</h3>
+              <h2>4. Proposer moins d’informations sur smartphone</h2>
               <p>
-                Si votre <strong>Nom</strong>, votre <strong>Adresse</strong> ou
-                votre <strong>Numéro de téléphone</strong> diffèrent entre votre
-                site, votre fiche Google et vos annuaires, Google perd confiance
-                et rétrograde votre position.
+                Google utilise la version mobile du contenu pour l’indexation.
+                Le responsive peut réorganiser une page, mais il ne doit pas
+                supprimer les informations importantes, les titres, les liens
+                ou les données structurées. Les accordéons restent possibles si
+                leur contenu est présent dans le HTML et accessible sans
+                difficulté.
               </p>
 
-              <h3>5. Un contenu générique sans preuves concrètes</h3>
+              <h2>5. Dupliquer les titles, descriptions ou canonicals</h2>
               <p>
-                Des textes impersonnels sans photos de réalisations ni retours
-                clients n'incitent personne à l'action. Vos prospects ont besoin
-                de voir votre travail réel pour vous contacter.
+                Chaque URL indexable doit posséder un title descriptif, une
+                description utile et une canonical cohérente. Deux titles ou
+                deux descriptions dans le même document rendent le signal moins
+                clair. Une canonical ne corrige pas une mauvaise architecture :
+                les doublons inutiles doivent être redirigés vers l’URL retenue.
               </p>
 
-              <h3>6. Ne pas déclarer les zones d'intervention voisines</h3>
+              <h2>6. Isoler les pages sans liens internes</h2>
               <p>
-                Ne vous limitez pas au centre de Roanne : intégrez
-                naturellement les communes limitrophes (Le Coteau, Mably,
-                Charlieu, Commelle-Vernay) pour élargir votre zone de chalandise.
+                Les moteurs découvrent une grande partie des pages grâce aux
+                liens. Un article sans lien depuis le blog, absent du sitemap et
+                sans relation avec les services du site est plus difficile à
+                comprendre. Reliez les contenus proches avec des ancres
+                descriptives. Par exemple, l’article sur{" "}
+                <a href="/blog/google-maps-roanne-fiche-optimisee">
+                  l’optimisation d’une fiche Google Business
+                </a>{" "}
+                complète naturellement ce guide.
               </p>
 
-              <h3>7. L'absence d'appels à l'action visibles</h3>
+              <h2>7. Publier des preuves ou coordonnées incohérentes</h2>
               <p>
-                Un numéro de téléphone masqué ou un formulaire trop long
-                découragent les prospects. Un bouton d'appel direct en un clic
-                sur mobile multiplie immédiatement vos contacts.
+                Une marque écrite différemment, deux emails concurrents ou des
+                avis fictifs fragilisent la confiance. Utilisez la même identité
+                publique, le même téléphone et le même email sur les pages du
+                site. Présentez les maquettes comme des concepts tant qu’elles
+                ne correspondent pas à de vrais clients, et ne publiez une note
+                que lorsqu’elle est vérifiable.
               </p>
+
+              <h2>Contrôle rapide avant publication</h2>
+              <ul>
+                <li>une seule version canonique de chaque URL ;</li>
+                <li>un H1 clair et un contenu visible sans interaction ;</li>
+                <li>une navigation mobile contenant les mêmes informations ;</li>
+                <li>des liens internes vers les services et articles connexes ;</li>
+                <li>un sitemap contenant toutes les pages indexables ;</li>
+                <li>des coordonnées et preuves exactes.</li>
+              </ul>
+
+              <ArticleRelatedLinks currentPath={article.path} />
+
+              <h2>Sources officielles</h2>
+              <ul className="article-sources">
+                <li>
+                  <a href="https://developers.google.com/search/docs/crawling-indexing/mobile/mobile-sites-mobile-first-indexing" target="_blank" rel="noopener noreferrer">
+                    Google Search Central — Indexation orientée mobile
+                  </a>
+                </li>
+                <li>
+                  <a href="https://developers.google.com/search/docs/appearance/page-experience" target="_blank" rel="noopener noreferrer">
+                    Google Search Central — Expérience sur la page
+                  </a>
+                </li>
+                <li>
+                  <a href="https://developers.google.com/search/docs/fundamentals/seo-starter-guide" target="_blank" rel="noopener noreferrer">
+                    Google Search Central — Guide de démarrage SEO
+                  </a>
+                </li>
+              </ul>
 
               <div className="article-cta-row">
                 <a className="article-back-link" href="/blog">

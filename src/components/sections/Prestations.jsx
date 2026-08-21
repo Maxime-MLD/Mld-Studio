@@ -3,6 +3,54 @@ import Noise from "../Noise.jsx";
 import { services } from "../../data/prestations.js";
 import { usePrestationsAnimation } from "../../scripts/prestations.js";
 
+// Carrousel de visuels (utilisé pour « multipage » et « signature »).
+// Réutilise .service-visual pour conserver le ratio 16:9 stable sans collapse de hauteur.
+function ServiceCarousel({ images, imagePosition }) {
+  const [index, setIndex] = useState(0);
+  const count = images.length;
+  const go = (e, direction) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIndex((i) => (i + direction + count) % count);
+  };
+
+  return (
+    <figure className="service-visual service-carousel">
+      <div className="service-carousel-track">
+        {images.map((imgSrc, i) => (
+          <img
+            key={imgSrc}
+            src={imgSrc}
+            alt={`Aperçu ${i + 1} d’une prestation web MLD`}
+            loading="eager"
+            decoding="async"
+            className={`service-carousel-img ${i === index ? "is-active" : ""}`}
+            style={{ objectPosition: imagePosition }}
+          />
+        ))}
+      </div>
+      <Noise className="media-noise" opacity={0.11} />
+
+      <button
+        type="button"
+        className="service-carousel-arrow service-carousel-prev"
+        onClick={(e) => go(e, -1)}
+        aria-label="Image précédente"
+      >
+        <i aria-hidden="true" />
+      </button>
+      <button
+        type="button"
+        className="service-carousel-arrow service-carousel-next"
+        onClick={(e) => go(e, 1)}
+        aria-label="Image suivante"
+      >
+        <i aria-hidden="true" />
+      </button>
+    </figure>
+  );
+}
+
 // Section Prestations : accordéon des offres avec parallaxe des visuels.
 function Prestations() {
   const [activeService, setActiveService] = useState(0);
@@ -69,14 +117,23 @@ function Prestations() {
                         <p key={paragraph}>{paragraph}</p>
                       ))}
                     </div>
-                    <figure className="service-visual">
-                      <img
-                        src={service.image}
-                        alt="Aperçu d’une création web MLD"
-                        style={{ objectPosition: service.imagePosition }}
+                    {service.images ? (
+                      <ServiceCarousel
+                        images={service.images}
+                        imagePosition={service.imagePosition}
                       />
-                      <Noise className="media-noise" opacity={0.11} />
-                    </figure>
+                    ) : (
+                      <figure className="service-visual">
+                        <img
+                          src={service.image}
+                          alt="Aperçu d’une création web MLD"
+                          loading="lazy"
+                          decoding="async"
+                          style={{ objectPosition: service.imagePosition }}
+                        />
+                        <Noise className="media-noise" opacity={0.11} />
+                      </figure>
+                    )}
                   </div>
                 </div>
               </article>

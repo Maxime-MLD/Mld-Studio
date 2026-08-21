@@ -5,6 +5,7 @@ import {
   useProjectMarquee,
 } from "../../scripts/realisations.js";
 import reaImage from "../../assets/images/rea-image.webp";
+import reaImageMobile from "../../assets/images/rea-image-mobile.webp";
 
 // Bloc d'introduction « Nous créons des sites web » qui mène à la diapo.
 function RealisationsIntro() {
@@ -36,10 +37,21 @@ function RealisationsIntro() {
         </p>
 
         <figure className="build-visual build-reveal">
-          <img
-            src={reaImage}
-            alt="Ordinateur MLD dans un décor architectural en noir et blanc"
-          />
+          <picture>
+            <source
+              media="(max-width: 809px)"
+              srcSet={reaImageMobile}
+              type="image/webp"
+            />
+            <img
+              src={reaImage}
+              alt="Ordinateur MLD dans un décor architectural en noir et blanc"
+              loading="lazy"
+              decoding="async"
+              width="2560"
+              height="1708"
+            />
+          </picture>
           <Noise className="media-noise" opacity={0.11} />
         </figure>
 
@@ -59,10 +71,14 @@ function RealisationsSlides() {
     <section
       id="realisations"
       className="portfolio-section"
-      aria-label="Projets sélectionnés"
+      aria-label="Concepts de sites sélectionnés"
     >
       {projects.map((project, index) => (
-        <article key={project.name} className="project-slide">
+        <article
+          key={project.name}
+          className="project-slide"
+          style={{ "--project-ratio": project.aspectRatio || "16 / 10" }}
+        >
           <div className="project-backdrop" aria-hidden="true">
             <img
               src={project.image}
@@ -71,15 +87,12 @@ function RealisationsSlides() {
               loading={index === 0 ? "eager" : "lazy"}
               style={{ objectPosition: project.imagePosition }}
             />
-            {/* Fond teinté sombre : le grain neutre y perd du contraste, d'où une
-                valeur plus haute que sur les images de premier plan. */}
-            <Noise className="media-noise" opacity={0.2} />
           </div>
 
           <div className="project-pinned-track">
             <div className="project-stage">
               <p className="project-number">(0{index + 1})</p>
-              <p className="project-label">Portfolio</p>
+              <p className="project-label">Concept</p>
               <div
                 className="project-marquee-wrapper"
                 role="heading"
@@ -100,18 +113,34 @@ function RealisationsSlides() {
                 </div>
               </div>
 
+              {/* Au-dessus du titre blanc mais sous l'image principale : le
+                  grain marque les lettres sans rendre le texte transparent. */}
+              <Noise className="project-stage-noise" opacity={0.15} />
+
               <a
                 className="project-media"
                 href="#contact"
-                aria-label={`Découvrir le projet ${project.name}`}
+                aria-label={`Créer un projet inspiré du ${project.name}`}
               >
-                <img
-                  src={project.image}
-                  alt={`Aperçu du projet ${project.name}`}
-                  decoding="async"
-                  loading={index === 0 ? "eager" : "lazy"}
-                  style={{ objectPosition: project.imagePosition }}
-                />
+                {project.video ? (
+                  <video
+                    src={project.video}
+                    poster={project.image}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="auto"
+                  />
+                ) : (
+                  <img
+                    src={project.image}
+                    alt={`Aperçu du projet ${project.name}`}
+                    decoding="async"
+                    loading={index === 0 ? "eager" : "lazy"}
+                    style={{ objectPosition: project.imagePosition }}
+                  />
+                )}
                 <Noise className="media-noise" opacity={0.11} />
               </a>
 

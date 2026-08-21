@@ -1,0 +1,382 @@
+/*
+  Page Réalisations — inspirée de Mattis /work.
+  realis-hero : ligne verticale centrale ; H1 à DROITE de la ligne (en haut),
+  paragraphe à GAUCHE de la ligne (plus bas, sous le titre), année en bas à droite.
+*/
+
+/* ---------- Hero Réalisations ---------- */
+.realis-hero {
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  min-height: 600px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 0 var(--page-pad) clamp(1.5rem, 2.8vh, 2.25rem);
+  background: var(--section-black);
+  color: var(--text-white);
+}
+
+/* Ligne verticale centrale */
+.realis-hero::before {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: var(--line);
+  content: "";
+  pointer-events: none;
+}
+
+/* Contenu poussé vers le bas : bloc titre/paragraphe puis l'année. */
+.realis-hero-content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.25rem, 3vh, 2rem);
+}
+
+/* Grille 50/50 autour de la ligne : le titre occupe la colonne droite / ligne 1,
+   le paragraphe la colonne gauche / ligne 2 → titre en haut à droite de la
+   ligne, paragraphe plus bas à gauche de la ligne. */
+.realis-hero-grid {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  row-gap: clamp(0.75rem, 1.4vh, 1.25rem);
+  width: 100%;
+}
+
+/* H1 — à droite de la ligne, bord gauche collé à la ligne */
+.realis-hero-right {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  min-width: 0;
+  margin: 0;
+  padding: 0 0 0 1px;
+}
+
+.realis-hero-title {
+  margin: 0;
+  padding: 0;
+  font-size: 98px;
+  font-weight: 560;
+  line-height: 0.82;
+  letter-spacing: -0.075em;
+  text-transform: uppercase;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.realis-hero-title span {
+  display: block;
+}
+
+/* Paragraphe — sous le titre, à gauche de la ligne, bord droit collé à la ligne */
+.realis-hero-left {
+  grid-column: 1;
+  grid-row: 2;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  margin: 0;
+  padding: 0 1px 0 0;
+}
+
+.realis-hero-sub {
+  max-width: 22rem;
+  margin: 0;
+  padding: 0;
+  color: var(--text-muted-light);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.realis-hero-sub strong {
+  color: var(--text-white);
+  font-weight: 600;
+}
+
+/* Année — en bas à droite */
+.realis-hero-bottom {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.realis-hero-year {
+  color: var(--text-muted-light);
+  font-size: 12px;
+  font-weight: 550;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* ---------- Tablette (810px - 1120px) ---------- */
+@media (min-width: 810px) and (max-width: 1120px) {
+  .realis-hero {
+    height: 82vh;
+    min-height: 480px;
+  }
+
+  .realis-hero-title {
+    font-size: 68px;
+  }
+
+  .realis-hero-sub {
+    max-width: 18rem;
+  }
+}
+
+/* ---------- Mobile (≤ 809.98px) ---------- */
+@media (max-width: 809.98px) {
+  .realis-hero {
+    height: 85vh;
+    min-height: 520px;
+    max-height: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: clamp(5rem, 14vw, 7rem) 20px clamp(1.5rem, 3vh, 2rem);
+  }
+
+  .realis-hero::before {
+    display: none;
+  }
+
+  /* Empilé : titre au-dessus (2e dans le DOM), paragraphe en dessous */
+  .realis-hero-grid {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .realis-hero-left,
+  .realis-hero-right {
+    grid-column: auto;
+    grid-row: auto;
+    width: 100%;
+    justify-content: flex-start;
+    padding: 0;
+  }
+
+  .realis-hero-title {
+    font-size: 63px;
+    line-height: 0.85;
+    white-space: normal;
+  }
+
+  .realis-hero-sub {
+    max-width: 100%;
+    text-align: left;
+    font-size: 12px;
+    line-height: 1.35;
+  }
+
+  .realis-hero-bottom {
+    margin-top: 0.5rem;
+    justify-content: flex-end;
+  }
+
+  .realis-projects .project-stage::before {
+    display: none;
+  }
+}
+
+/* ---------- Cadre + image de premier plan des cartes projet ----------
+   Scopé à la page Réalisations (le portfolio de l'accueil n'est pas touché).
+   Cause du rognage : le cadre n'avait pas de ratio fixe (hauteur et largeur
+   indépendantes) → son ratio variait selon la fenêtre, et l'image débordait
+   volontairement du cadre (top:-4rem; height:calc(100%+8rem); scale).
+   → On verrouille le cadre au ratio 16:10 (= ratio des images) et l'image le
+   remplit exactement. On CONSERVE la hauteur et la position d'origine ; c'est la
+   largeur qui est dérivée du ratio, pour ne rien décaler d'autre (les libellés
+   ne débordent pas sur l'image). z-index (ligne centrale derrière) et effet de
+   scroll épinglé inchangés. */
+.realis-projects .project-media img,
+.realis-projects .project-media video {
+  top: 0;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: none;
+}
+
+
+
+/* Desktop : hauteur conservée (58,5%), largeur dérivée du ratio, recentré.
+   Le texte sous l'image reçoit EXACTEMENT la même largeur (hauteur × ratio) et
+   le même centrage → il ne dépasse plus la largeur de l'image. */
+@media (min-width: 1121px) {
+  .realis-projects .project-media {
+    width: auto;
+    aspect-ratio: var(--project-ratio, 16 / 10);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .realis-projects .project-details {
+    left: 50%;
+    width: calc(58.5svh * var(--project-ratio, 16 / 10));
+    transform: translateX(-50%);
+  }
+}
+
+/* Tablette : cadre pinné pleine hauteur (100svh) pour que le fond + grain
+   couvrent tout l'écran ; visuel à taille fixe 518.67px x 298.63px. */
+@media (min-width: 810px) and (max-width: 1120px) {
+  .realis-projects .project-slide {
+    height: 100svh;
+  }
+
+  .realis-projects .project-pinned-track {
+    top: -100svh;
+    height: 300svh;
+  }
+
+  .realis-projects .project-stage {
+    height: 100svh;
+  }
+
+  .realis-projects .project-media {
+    top: 50%;
+    width: 518.67px;
+    height: 298.63px;
+    max-height: none;
+    aspect-ratio: 518.67 / 298.63;
+    left: 50%;
+    transform: translate(-50%, calc(-50% - 20px));
+  }
+
+  .realis-projects .project-details {
+    position: absolute;
+    top: calc(50% + (298.63px / 2) - 8px);
+    left: 50%;
+    width: 518.67px;
+    transform: translateX(-50%);
+    display: grid;
+    grid-template-columns: 50% 25% 25%;
+    align-items: start;
+  }
+}
+
+/* Mobile : cadre pinné pleine hauteur (100svh) pour que le fond + grain
+   couvrent tout l'écran ; visuel à taille fixe 390px x 224.55px. */
+@media (max-width: 809.98px) {
+  .realis-projects .project-slide {
+    height: 100svh;
+    --project-card-w: min(390px, calc(100% - 40px));
+    --project-card-h: calc(min(390px, calc(100% - 40px)) * 224.55 / 390);
+  }
+
+  .realis-projects .project-pinned-track {
+    top: -100svh;
+    height: 300svh;
+  }
+
+  .realis-projects .project-stage {
+    height: 100svh;
+  }
+
+  .realis-projects .project-media {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: var(--project-card-w);
+    height: var(--project-card-h);
+    overflow: hidden;
+    border-radius: 0;
+    z-index: 3;
+    margin: 0;
+  }
+
+  .realis-projects .project-details {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: var(--project-card-w);
+    height: var(--project-card-h);
+    pointer-events: none;
+    display: block;
+    z-index: 4;
+  }
+
+  .realis-projects .project-details p {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateY(calc(-100% - 12px));
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+  }
+
+  .realis-projects .project-details p span {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.95);
+    line-height: 1.25;
+    display: block;
+  }
+
+  .realis-projects .project-details strong {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translateY(calc(100% + 12px));
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: #fff;
+    line-height: 1.2;
+    display: block;
+    white-space: nowrap;
+  }
+
+  .realis-projects .project-details time {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translateY(calc(100% + 30px));
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.2;
+    display: block;
+  }
+}
+
+/* iPad Mini : 728px x 419.16px */
+@media (min-width: 768px) and (max-width: 809.98px) {
+  .realis-projects .project-slide {
+    --project-card-w: min(728px, calc(100% - 40px));
+    --project-card-h: calc(min(728px, calc(100% - 40px)) * 419.16 / 728);
+  }
+}

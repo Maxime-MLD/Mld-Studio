@@ -17,8 +17,12 @@ export default function SEO({
   description = siteConfig.description,
   path = "",
   image = siteConfig.ogImage,
+  imageAlt = siteConfig.ogImageAlt,
   jsonLd,
   noindex = false,
+  type = "website",
+  publishedTime,
+  modifiedTime,
 }) {
   const fullTitle = title ? `${title} — ${siteConfig.name}` : siteConfig.name;
   const canonical = `${siteConfig.url}${path}`;
@@ -32,23 +36,36 @@ export default function SEO({
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={canonical} />
-
-      {noindex && <meta name="robots" content="noindex, nofollow" />}
+      <meta
+        name="robots"
+        content={noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large"}
+      />
 
       {/* Open Graph */}
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content={type} />
       <meta property="og:site_name" content={siteConfig.name} />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={canonical} />
       <meta property="og:image" content={absoluteImage} />
+      <meta property="og:image:alt" content={imageAlt} />
       <meta property="og:locale" content={siteConfig.locale} />
+      {type === "article" && publishedTime && (
+        <meta property="article:published_time" content={publishedTime} />
+      )}
+      {type === "article" && modifiedTime && (
+        <meta property="article:modified_time" content={modifiedTime} />
+      )}
+      {type === "article" && (
+        <meta property="article:author" content={siteConfig.author} />
+      )}
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={absoluteImage} />
+      <meta name="twitter:image:alt" content={imageAlt} />
 
       {/* Données structurées */}
       {jsonLd && (
@@ -57,27 +74,3 @@ export default function SEO({
     </Helmet>
   );
 }
-
-/*
- * Exemple d'usage dans la page d'accueil :
- *
- *   import SEO from "./seo/SEO.jsx";
- *   import { localBusinessJsonLd } from "./seo/jsonld/localBusiness.js";
- *
- *   export default function Home() {
- *     return (
- *       <>
- *         <SEO
- *           title="Création de sites vitrines à Roanne"
- *           path="/"
- *           jsonLd={localBusinessJsonLd}
- *         />
- *         { ... sections existantes ... }
- *       </>
- *     );
- *   }
- *
- * Pour combiner plusieurs schémas sur une même page, on peut passer un graphe :
- *   jsonLd={{ "@context": "https://schema.org",
- *             "@graph": [localBusinessJsonLd, websiteJsonLd] }}
- */

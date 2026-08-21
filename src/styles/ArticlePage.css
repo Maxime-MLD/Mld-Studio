@@ -1,0 +1,368 @@
+/*
+  Page Article de Blog — même système visuel que À propos / Réalisations.
+  Hero avec image de fond + grain Noise + ligne centrale (titre H2 collé à droite de la ligne),
+  puis main gris (texte éditorial à droite de la ligne, visuel/encadré à gauche), cascade en haut et en bas.
+*/
+
+/* ---------- Hero avec image de fond ---------- */
+.article-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  box-sizing: border-box;
+  min-height: 82vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 var(--page-pad) clamp(1.5rem, 2.8vh, 2.25rem);
+  background: #000000;
+  color: var(--text-white);
+}
+
+/* Image en arrière-plan du hero */
+.article-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.article-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.38) contrast(1.08);
+  transform: translateZ(0);
+}
+
+/* Ligne verticale centrale */
+.article-hero::before {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: var(--line);
+  content: "";
+  pointer-events: none;
+}
+
+.article-hero-inner {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  row-gap: clamp(0.75rem, 1.4vh, 1.25rem);
+  width: 100%;
+  margin-bottom: clamp(1.25rem, 3vh, 2rem);
+}
+
+/* Titre H2 collé à droite de la ligne */
+.article-hero-title {
+  grid-column: 2;
+  grid-row: 1;
+  margin: 0;
+  padding-left: 1px;
+  font-size: clamp(2.2rem, 4.2vw, 4.8rem);
+  font-weight: 560;
+  line-height: 0.88;
+  letter-spacing: -0.065em;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.article-hero-title span {
+  display: block;
+}
+
+/* Métadonnées / sous-titre à gauche de la ligne */
+.article-hero-sub {
+  grid-column: 1;
+  grid-row: 2;
+  justify-self: end;
+  max-width: 24rem;
+  margin: 0;
+  padding-right: 1px;
+  color: var(--text-muted-light);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.article-hero-sub strong {
+  color: var(--text-white);
+  font-weight: 600;
+}
+
+/* ---------- Contenu principal (gris) ---------- */
+.article-main {
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+  overflow: visible;
+  box-sizing: border-box;
+  padding: 1.875rem var(--page-pad) clamp(3.5rem, 6vw, 5rem);
+  background: var(--grey);
+  color: var(--black);
+}
+
+/* Ligne verticale centrale */
+.article-main::before {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: rgba(10, 10, 10, 0.14);
+  content: "";
+  pointer-events: none;
+}
+
+/* Cascade hero → main */
+.article-main-accent-top {
+  position: absolute;
+  z-index: 2;
+  top: -1.875rem;
+  right: 0;
+  width: 50%;
+  height: 1.875rem;
+  background: var(--grey);
+  pointer-events: none;
+}
+
+/* Cascade main → Contact */
+.article-main-accent-bottom {
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  height: 1.875rem;
+  background: #000000;
+  pointer-events: none;
+}
+
+/* Largeur du conteneur (1440px) */
+.article-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: auto 1fr;
+  align-items: start;
+  row-gap: 1.875rem;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* Eyebrow de gauche */
+.article-eyebrow {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: start;
+  align-self: start;
+  margin: 0;
+  color: var(--text-muted-dark);
+  font-size: var(--copy-size);
+  font-weight: 540;
+  text-transform: uppercase;
+}
+
+/* Visuel de gauche */
+.article-side-visual {
+  position: relative;
+  grid-column: 1;
+  grid-row: 2;
+  justify-self: start;
+  align-self: start;
+  margin: 0;
+  overflow: hidden;
+  width: 100%;
+  max-width: 380px;
+}
+
+.article-side-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+/* Texte de l'article : collé à droite de la ligne */
+.article-text {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  display: grid;
+  gap: 1.5rem;
+  max-width: 32rem;
+  padding-left: 1px;
+  align-self: start;
+}
+
+.article-text h2 {
+  margin: 1.25rem 0 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--black);
+  line-height: 1.2;
+}
+
+.article-text h2:first-child {
+  margin-top: 0;
+}
+
+.article-text p {
+  margin: 0;
+  color: rgba(11, 11, 11, 0.85);
+  font-size: var(--copy-size);
+  font-weight: 520;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.article-text p strong {
+  color: var(--black);
+  font-weight: 600;
+}
+
+.article-text p a,
+.article-text li a {
+  color: var(--black);
+  text-decoration: underline;
+  text-decoration-color: rgba(11, 11, 11, 0.35);
+  text-underline-offset: 0.18em;
+  transition: color 0.25s ease, text-decoration-color 0.25s ease;
+}
+
+.article-text p a:hover,
+.article-text li a:hover {
+  color: var(--orange);
+  text-decoration-color: currentColor;
+}
+
+.article-text ul {
+  display: grid;
+  gap: 0.7rem;
+  margin: 0;
+  padding-left: 1.2rem;
+  color: rgba(11, 11, 11, 0.85);
+  font-size: var(--copy-size);
+  font-weight: 520;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.article-text li::marker {
+  color: var(--orange);
+}
+
+.article-sources {
+  padding-top: 0.25rem;
+  border-top: 1px solid rgba(11, 11, 11, 0.16);
+}
+
+/* Bouton retour / lien vers contact */
+.article-cta-row {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.article-back-link {
+  color: var(--text-muted-dark);
+  font-size: var(--copy-size);
+  font-weight: 540;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.article-back-link:hover {
+  color: var(--black);
+}
+
+/* ---------- Tablette (810px - 1120px) ---------- */
+@media (min-width: 810px) and (max-width: 1120px) {
+  .article-hero {
+    min-height: 74vh;
+  }
+}
+
+/* ---------- Mobile (≤ 809.98px) ---------- */
+@media (max-width: 809.98px) {
+  .article-hero {
+    min-height: 0;
+    display: block;
+    padding: clamp(6rem, 18vw, 8rem) 20px clamp(2.5rem, 8vw, 3.5rem);
+  }
+
+  .article-hero::before {
+    display: none;
+  }
+
+  .article-hero-inner {
+    display: block;
+  }
+
+  .article-hero-title {
+    grid-column: auto;
+    padding-left: 0;
+    font-size: clamp(2.25rem, 9vw, 3.75rem);
+  }
+
+  .article-hero-sub {
+    grid-column: auto;
+    justify-self: start;
+    max-width: 100%;
+    margin-top: 1rem;
+    padding-right: 0;
+    text-align: left;
+  }
+
+  .article-main {
+    padding: 40px 20px;
+  }
+
+  .article-main::before,
+  .article-main-accent-top,
+  .article-main-accent-bottom {
+    display: none;
+  }
+
+  .article-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    align-items: stretch;
+  }
+
+  .article-eyebrow {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .article-side-visual {
+    grid-column: auto;
+    grid-row: auto;
+    max-width: 100%;
+  }
+
+  .article-text {
+    grid-column: auto;
+    grid-row: auto;
+    max-width: 100%;
+    padding-left: 0;
+  }
+}

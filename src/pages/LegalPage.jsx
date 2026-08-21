@@ -5,7 +5,7 @@ import Faq from "../components/sections/Faq.jsx";
 import Contact from "../components/sections/Contact.jsx";
 import Footer from "../components/sections/Footer.jsx";
 import { faqLegalItems } from "../data/faq-legal.js";
-import "./LegalPage.css";
+import "../styles/LegalPage.css";
 
 // Page légale combinée (mentions légales + confidentialité).
 // Réutilise STRICTEMENT le système visuel du site :
@@ -51,7 +51,7 @@ export default function LegalPage({ seoTitle, path }) {
               <div className="legal-block-body">
                 <p>
                   Maxime Lagraa — Entrepreneur individuel, profession libérale
-                  non réglementée. Enseigne : MLD Dev.
+                  non réglementée. Nom légal : MLD Dev. Nom public : MLD Studio.
                 </p>
                 <p>
                   SIRET : 848&nbsp;799&nbsp;029&nbsp;00022. TVA non applicable,
@@ -60,6 +60,9 @@ export default function LegalPage({ seoTitle, path }) {
                 <p>
                   Contact :{" "}
                   <a href="mailto:contact@mld-dev.com">contact@mld-dev.com</a>.
+                </p>
+                <p>
+                  Téléphone : <a href="tel:+33662599771">06 62 59 97 71</a>.
                 </p>
                 <p>
                   Adresse : Roanne (42300). Activité exercée à domicile —
@@ -126,6 +129,7 @@ export default function LegalPage({ seoTitle, path }) {
                 <ul>
                   <li>nom ;</li>
                   <li>adresse email ;</li>
+                  <li>service recherché ;</li>
                   <li>message.</li>
                 </ul>
                 <p>Aucune autre donnée n’est recueillie.</p>
@@ -139,12 +143,13 @@ export default function LegalPage({ seoTitle, path }) {
               </div>
               <div className="legal-block-body">
                 <p>
-                  Ces données servent uniquement à répondre à votre demande de
-                  contact. Elles ne sont utilisées à aucune autre fin.
+                  Ces données servent uniquement à étudier votre demande, vous
+                  répondre et, si vous le souhaitez, préparer une proposition
+                  commerciale. Elles ne sont utilisées à aucune autre fin.
                 </p>
                 <p>
-                  Le traitement repose sur le consentement de la personne qui
-                  envoie le formulaire.
+                  Le traitement est nécessaire à l’exécution de mesures
+                  précontractuelles prises à votre demande.
                 </p>
               </div>
             </div>
@@ -156,10 +161,11 @@ export default function LegalPage({ seoTitle, path }) {
               </div>
               <div className="legal-block-body">
                 <p>
-                  L’éditeur du site est le seul destinataire des messages.
-                  L’acheminement technique est assuré par le service Web3Forms :
-                  les messages sont transmis par email et ne sont pas stockés
-                  dans une base de données par l’éditeur.
+                  L’éditeur du site est le destinataire des messages. Le
+                  formulaire passe par une fonction sécurisée hébergée chez
+                  Vercel, puis l’acheminement technique est assuré par
+                  Web3Forms vers l’adresse de réception de MLD Studio. La clé
+                  d’accès au service n’est jamais exposée dans le navigateur.
                 </p>
               </div>
             </div>
@@ -171,8 +177,9 @@ export default function LegalPage({ seoTitle, path }) {
               </div>
               <div className="legal-block-body">
                 <p>
-                  Les emails sont conservés le temps nécessaire au traitement de
-                  la demande, puis supprimés.
+                  Les messages sont conservés pendant le temps nécessaire au
+                  traitement de la demande et au suivi de la relation
+                  commerciale, puis supprimés lorsqu’ils ne sont plus utiles.
                 </p>
               </div>
             </div>

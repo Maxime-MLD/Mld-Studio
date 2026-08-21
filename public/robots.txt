@@ -1,6 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mld-dev.com/sitemap.xml
-
-# Pensez à ajouter chaque nouvelle page au sitemap (public/sitemap.xml).
+Sitemap: https://www.mld-dev.com/sitemap.xml

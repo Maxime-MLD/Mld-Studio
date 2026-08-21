@@ -7,7 +7,6 @@ import { siteConfig } from "../siteConfig.js";
  */
 export function buildBreadcrumb(items = []) {
   return {
-    "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: items.map((item, index) => ({
       "@type": "ListItem",

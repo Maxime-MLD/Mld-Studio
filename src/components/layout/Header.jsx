@@ -32,7 +32,7 @@ function Header({ menuOpen, setMenuOpen }) {
         ))}
       </nav>
 
-      <a className="project-cta" href="#contact">
+      <a className="project-cta" href="/contact">
         <span>Démarrer un projet</span>
         <span aria-hidden="true">Démarrer un projet</span>
       </a>
@@ -58,7 +58,7 @@ function Header({ menuOpen, setMenuOpen }) {
             </a>
           ))}
         </nav>
-        <a className="mobile-project-link" href="#contact" onClick={() => setMenuOpen(false)}>
+        <a className="mobile-project-link" href="/contact" onClick={() => setMenuOpen(false)}>
           Démarrer un projet <span>↗</span>
         </a>
       </div>

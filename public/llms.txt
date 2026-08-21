@@ -1,23 +1,29 @@
-# MLD Dev
+# MLD Studio
 
-> Agence web freelance spécialisée dans la création de sites vitrines pour artisans, restaurants et commerces à Roanne et dans la Loire.
+> Studio de design et développement web dirigé par Maxime Lagraa, spécialisé dans les sites vitrines modernes, rapides et sur mesure.
 
-MLD Dev est une agence web freelance basée à Roanne (Loire). Elle intervient sur Roanne, Riorges, Mably, Le Coteau, Villerest et Charlieu pour concevoir des sites vitrines modernes développés en React. La prise de contact se fait via le formulaire du site.
+MLD Studio est le nom public de MLD Dev. Le studio est basé à Roanne et travaille à distance avec des entreprises de Roanne, Mably, Le Coteau, Riorges, Villerest, Charlieu, de la Loire et de toute la France.
 
-## Pages
+## Services
 
-- [Accueil](https://mld-dev.com/) — présentation de l'agence et des services.
-- [Réalisations](https://mld-dev.com/realisations) — portfolio des sites vitrines créés par l'agence.
-- [Blog](https://mld-dev.com/blog) — conseils et actualités sur la création de sites et le référencement local.
-- [À propos](https://mld-dev.com/a-propos) — Maxime, créateur de MLD Studio, et sa vision du web sur-mesure à Roanne.
-- [Mentions légales](https://mld-dev.com/mentions-legales) — informations légales sur l'éditeur du site.
-- [Politique de confidentialité](https://mld-dev.com/politique-confidentialite) — traitement des données du formulaire de contact.
+- Site vitrine monopage — à partir de 1 000 € TTC.
+- Site vitrine multipage — à partir de 1 500 € TTC.
+- Site vitrine signature — à partir de 2 500 € TTC.
+- Création ou optimisation de fiche Google Business pour les entreprises éligibles — 200 € TTC.
+- Maintenance et hébergement — 39 € TTC par mois.
+
+## Pages principales
+
+- [Accueil](https://www.mld-dev.com/) — présentation du studio, des services et des tarifs.
+- [Concepts créatifs](https://www.mld-dev.com/realisations) — concepts de sites imaginés par MLD Studio.
+- [Conseils et actualités](https://www.mld-dev.com/blog) — articles sur la création de sites et le référencement.
+- [À propos](https://www.mld-dev.com/a-propos) — présentation de Maxime Lagraa et de MLD Studio.
+- [Contact](https://www.mld-dev.com/contact) — coordonnées et formulaire pour présenter un projet à MLD Studio.
 
 ## Contact
 
 - Email : contact@mld-dev.com
+- Téléphone : +33 6 62 59 97 71
+- Horaires : du lundi au vendredi, de 9 h à 19 h.
 - LinkedIn : https://www.linkedin.com/in/maxime-lagraa-4a4299386
 - Instagram : https://www.instagram.com/mld_developpement
-- Google Business : https://www.google.com/maps/place//data=!4m3!3m2!1s0x818e7c397bc4f969:0xab4357d73b8f262f!12e1
-
-<!-- Ajoutez chaque nouvelle page dans la section ## Pages ci-dessus. -->

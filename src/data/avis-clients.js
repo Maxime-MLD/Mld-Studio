@@ -1,27 +1,14 @@
 // Avis clients affichés dans la section AvisClients (carrousel).
+import logoMLD from "../assets/images/logo-mld-studio.png";
+
 export const clientReviews = [
   {
-    id: "sophie",
+    id: "premier-avis",
     quote:
-      "Nous avons lancé le site en deux semaines et obtenu nos premiers clients dès la troisième. D’autres agences prenaient des mois pour livrer deux fois moins.",
-    name: "Sophie Andersen",
-    role: "Cofondatrice",
-    image: "/assets/client-sophie.jpg",
-  },
-  {
-    id: "julien",
-    quote:
-      "Le site nous ressemble vraiment. Il est rapide, lisible et nos demandes de devis sont aujourd’hui beaucoup plus qualifiées.",
-    name: "Julien Morel",
-    role: "Fondateur — Atelier Morel",
-    image: "/assets/client-julien.jpg",
-  },
-  {
-    id: "claire",
-    quote:
-      "Notre positionnement est devenu évident dès la première visite. Le site valorise notre savoir-faire sans en faire trop.",
-    name: "Claire Dumas",
-    role: "Dirigeante — Studio Dumas",
-    image: "/assets/client-claire.jpg",
+      "Maxime a su comprendre mon activité et construire un site qui répond parfaitement à mes besoins. La qualité du site est au-delà de mes attentes et je suis 100 % satisfait de notre collaboration. Je recommande MLD Studio.",
+    name: "G.Denis",
+    role: "Artisan Soudeur",
+    image: logoMLD,
+    pending: true,
   },
 ];

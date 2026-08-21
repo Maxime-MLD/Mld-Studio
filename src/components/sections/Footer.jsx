@@ -23,25 +23,27 @@ function Footer() {
             <div>
               <p className="footer-eyebrow">Navigation</p>
               <nav aria-label="Navigation du pied de page">
-                <a href="#accueil">Accueil</a>
+                <a href="/#accueil">Accueil</a>
                 <Link to="/realisations">Réalisations</Link>
-                <a href="#services">Services</a>
-                <a href="#journal">Journal</a>
-                <a href="#contact">Contact</a>
+                <a href="/#services">Services</a>
+                <a href="/#journal">Journal</a>
+                <Link to="/contact">Contact</Link>
               </nav>
             </div>
 
             <div>
-              <p className="footer-eyebrow">Nous trouver</p>
+              <p className="footer-eyebrow">Zone de travail</p>
               <address>
-                <strong>Roanne, Loire<br />42300 France</strong>
-                <span>Du lundi au vendredi<br />09:00 — 18:00</span>
+                <strong>Basé à Roanne<br />À distance en France</strong>
+                <span>Du lundi au vendredi<br />09:00 — 19:00</span>
+                <a href="tel:+33662599771">06 62 59 97 71</a>
+                <a href="mailto:contact@mld-dev.com">contact@mld-dev.com</a>
               </address>
             </div>
           </div>
 
           <div className="footer-copyright">
-            <span>© 2026 MLD. Tous droits réservés.</span>
+            <span>© 2026 MLD Studio. Tous droits réservés.</span>
             <span className="footer-created">Créé par <FooterMark withName /></span>
           </div>
         </div>
