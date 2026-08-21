@@ -59,7 +59,7 @@ export default function LegalPage({ seoTitle, path }) {
                 </p>
                 <p>
                   Contact :{" "}
-                  <a href="mailto:contact@mld-dev.com">contact@mld-dev.com</a>.
+                  <a href="mailto:contact@mld-studio.fr">contact@mld-studio.fr</a>.
                 </p>
                 <p>
                   Téléphone : <a href="tel:+33662599771">06 62 59 97 71</a>.
@@ -111,7 +111,7 @@ export default function LegalPage({ seoTitle, path }) {
               <div className="legal-block-body">
                 <p>
                   Maxime Lagraa, MLD Dev. Contact :{" "}
-                  <a href="mailto:contact@mld-dev.com">contact@mld-dev.com</a>.
+                  <a href="mailto:contact@mld-studio.fr">contact@mld-studio.fr</a>.
                 </p>
               </div>
             </div>
@@ -208,7 +208,7 @@ export default function LegalPage({ seoTitle, path }) {
                   Conformément au RGPD, vous disposez d’un droit d’accès, de
                   rectification, de suppression et d’opposition sur vos données.
                   Ces droits s’exercent par email à{" "}
-                  <a href="mailto:contact@mld-dev.com">contact@mld-dev.com</a>.
+                  <a href="mailto:contact@mld-studio.fr">contact@mld-studio.fr</a>.
                 </p>
                 <p>
                   Vous pouvez également introduire une réclamation auprès de la

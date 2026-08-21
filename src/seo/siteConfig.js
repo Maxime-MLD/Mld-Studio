@@ -4,14 +4,14 @@
 export const siteConfig = {
   name: "MLD Studio",
   legalName: "MLD Dev",
-  url: "https://www.mld-dev.com",
+  url: "https://www.mld-studio.fr",
   description:
     "Création de sites internet modernes, rapides et sur mesure à Roanne, dans la Loire et partout en France.",
   locale: "fr_FR",
   ogImage: "/og-mld.webp",
   ogImageAlt: "MLD Studio, création de sites internet à Roanne",
   author: "Maxime Lagraa",
-  email: "contact@mld-dev.com",
+  email: "contact@mld-studio.fr",
   phone: "+33662599771",
   phoneDisplay: "06 62 59 97 71",
   openingHours: "Du lundi au vendredi, de 9 h à 19 h",

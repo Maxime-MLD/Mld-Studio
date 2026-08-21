@@ -14,15 +14,15 @@ MLD Studio est le nom public de MLD Dev. Le studio est basé à Roanne et travai
 
 ## Pages principales
 
-- [Accueil](https://www.mld-dev.com/) — présentation du studio, des services et des tarifs.
-- [Concepts créatifs](https://www.mld-dev.com/realisations) — concepts de sites imaginés par MLD Studio.
-- [Conseils et actualités](https://www.mld-dev.com/blog) — articles sur la création de sites et le référencement.
-- [À propos](https://www.mld-dev.com/a-propos) — présentation de Maxime Lagraa et de MLD Studio.
-- [Contact](https://www.mld-dev.com/contact) — coordonnées et formulaire pour présenter un projet à MLD Studio.
+- [Accueil](https://www.mld-studio.fr/) — présentation du studio, des services et des tarifs.
+- [Concepts créatifs](https://www.mld-studio.fr/realisations) — concepts de sites imaginés par MLD Studio.
+- [Conseils et actualités](https://www.mld-studio.fr/blog) — articles sur la création de sites et le référencement.
+- [À propos](https://www.mld-studio.fr/a-propos) — présentation de Maxime Lagraa et de MLD Studio.
+- [Contact](https://www.mld-studio.fr/contact) — coordonnées et formulaire pour présenter un projet à MLD Studio.
 
 ## Contact
 
-- Email : contact@mld-dev.com
+- Email : contact@mld-studio.fr
 - Téléphone : +33 6 62 59 97 71
 - Horaires : du lundi au vendredi, de 9 h à 19 h.
 - LinkedIn : https://www.linkedin.com/in/maxime-lagraa-4a4299386

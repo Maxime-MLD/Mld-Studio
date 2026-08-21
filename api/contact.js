@@ -64,7 +64,7 @@ export default async function handler(request, response) {
   if (!accessKey) {
     console.error("WEB3FORMS_ACCESS_KEY is missing.");
     return response.status(503).json({
-      error: "Le formulaire est temporairement indisponible. Écrivez-nous à contact@mld-dev.com.",
+      error: "Le formulaire est temporairement indisponible. Écrivez-nous à contact@mld-studio.fr.",
     });
   }
 

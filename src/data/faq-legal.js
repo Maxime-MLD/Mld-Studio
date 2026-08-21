@@ -14,7 +14,7 @@ export const faqLegalItems = [
   {
     question: "Comment exercer mes droits RGPD ?",
     answer:
-      "Vos droits d’accès, de rectification, de suppression et d’opposition s’exercent par un simple email à contact@mld-dev.com. Vous pouvez aussi saisir la CNIL (www.cnil.fr) en cas de désaccord.",
+      "Vos droits d’accès, de rectification, de suppression et d’opposition s’exercent par un simple email à contact@mld-studio.fr. Vous pouvez aussi saisir la CNIL (www.cnil.fr) en cas de désaccord.",
   },
   {
     question: "Qui héberge le site ?",

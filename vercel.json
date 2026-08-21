@@ -5,8 +5,20 @@
   "redirects": [
     {
       "source": "/:path*",
+      "has": [{ "type": "host", "value": "mld-studio.fr" }],
+      "destination": "https://www.mld-studio.fr/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
       "has": [{ "type": "host", "value": "mld-dev.com" }],
-      "destination": "https://www.mld-dev.com/:path*",
+      "destination": "https://www.mld-studio.fr/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.mld-dev.com" }],
+      "destination": "https://www.mld-studio.fr/:path*",
       "permanent": true
     },
     {

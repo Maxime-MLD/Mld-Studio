@@ -39,7 +39,7 @@ function Contact() {
         message:
           error instanceof Error
             ? error.message
-            : "Envoi impossible. Écrivez-nous à contact@mld-dev.com.",
+            : "Envoi impossible. Écrivez-nous à contact@mld-studio.fr.",
       });
     }
   };
@@ -88,7 +88,7 @@ function Contact() {
               <p className="footer-eyebrow">Contact</p>
               <address>
                 <strong>Roanne 42300</strong>
-                <a href="mailto:contact@mld-dev.com">contact@mld-dev.com</a>
+                <a href="mailto:contact@mld-studio.fr">contact@mld-studio.fr</a>
                 <a href="tel:+33662599771">06 62 59 97 71</a>
               </address>
               <p>

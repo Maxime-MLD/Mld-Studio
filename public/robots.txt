@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.mld-dev.com/sitemap.xml
+Sitemap: https://www.mld-studio.fr/sitemap.xml

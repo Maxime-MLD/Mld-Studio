@@ -14,7 +14,7 @@ export const faqBlogItems = [
   {
     question: "Puis-je suggérer un sujet d’article ?",
     answer:
-      "Bien sûr. Si une question revient souvent dans votre activité, écrivez-nous à contact@mld-dev.com : c’est souvent le point de départ d’un bon article, et cela nous aide à traiter des sujets réellement utiles.",
+      "Bien sûr. Si une question revient souvent dans votre activité, écrivez-nous à contact@mld-studio.fr : c’est souvent le point de départ d’un bon article, et cela nous aide à traiter des sujets réellement utiles.",
   },
   {
     question: "Comment être accompagné après avoir lu un article ?",

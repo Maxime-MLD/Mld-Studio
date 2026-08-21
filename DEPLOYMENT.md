@@ -22,9 +22,10 @@ valide les données avant leur transmission.
 
 ## Domaine
 
-- Définir `www.mld-dev.com` comme domaine principal du nouveau projet.
-- Faire rediriger `mld-dev.com` vers `https://www.mld-dev.com`.
-- Vérifier que les deux domaines possèdent un certificat HTTPS valide.
+- Définir `www.mld-studio.fr` comme domaine principal du nouveau projet.
+- Faire rediriger `mld-studio.fr` (sans www) vers `https://www.mld-studio.fr`.
+- Faire rediriger les anciens domaines `mld-dev.com` et `www.mld-dev.com` vers `https://www.mld-studio.fr`.
+- Vérifier que les domaines possèdent un certificat HTTPS valide.
 
 ## Paramètres de construction
 
@@ -41,6 +42,6 @@ qu'un véritable fichier `404.html`.
 2. Vérifier `/blog`, `/a-propos`, les quatre articles et les deux pages légales.
 3. Vérifier que `/blog/prix-site-internet-roanne` redirige vers l'article canonique.
 4. Vérifier qu'une URL inexistante renvoie bien le statut HTTP 404.
-5. Vérifier `https://www.mld-dev.com/sitemap.xml` et `robots.txt`.
+5. Vérifier `https://www.mld-studio.fr/sitemap.xml` et `robots.txt`.
 6. Tester un envoi réel du formulaire et sa protection en cas d'erreur.
 7. Contrôler les en-têtes CSP, HSTS, `nosniff` et anti-framing.

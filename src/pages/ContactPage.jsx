@@ -89,7 +89,7 @@ export default function ContactPage() {
                 une première orientation, sans rendez-vous commercial inutile.
               </p>
               <div className="contact-page-direct">
-                <a href="mailto:contact@mld-dev.com">contact@mld-dev.com</a>
+                <a href="mailto:contact@mld-studio.fr">contact@mld-studio.fr</a>
                 <a href="tel:+33662599771">06 62 59 97 71</a>
                 <span>Du lundi au vendredi — 9 h à 19 h</span>
               </div>

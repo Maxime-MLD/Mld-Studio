@@ -37,7 +37,7 @@ function Footer() {
                 <strong>Basé à Roanne<br />À distance en France</strong>
                 <span>Du lundi au vendredi<br />09:00 — 19:00</span>
                 <a href="tel:+33662599771">06 62 59 97 71</a>
-                <a href="mailto:contact@mld-dev.com">contact@mld-dev.com</a>
+                <a href="mailto:contact@mld-studio.fr">contact@mld-studio.fr</a>
               </address>
             </div>
           </div>

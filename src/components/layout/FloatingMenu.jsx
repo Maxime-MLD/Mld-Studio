@@ -90,11 +90,11 @@ export default function FloatingMenu() {
               <span className="floating-menu-heading">Contact</span>
               <div className="floating-menu-contact-info">
                 <a
-                  href="mailto:contact@mld-dev.com"
+                  href="mailto:contact@mld-studio.fr"
                   className="floating-contact-link"
                   onClick={() => setIsOpen(false)}
                 >
-                  contact@mld-dev.com
+                  contact@mld-studio.fr
                 </a>
                 <a
                   href="tel:+33662599771"
