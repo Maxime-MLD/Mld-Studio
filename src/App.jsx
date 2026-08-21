@@ -38,7 +38,7 @@ export function Home() {
       <SEO
         title="Création de sites internet à Roanne"
         path="/"
-        description="MLD Studio conçoit des sites internet modernes, rapides et sur mesure à Roanne, dans la Loire et partout en France."
+        description="Création de sites internet à Roanne, modernes, rapides et sur mesure. MLD Studio aide entreprises et artisans à gagner en visibilité et en clients."
         jsonLd={buildGraph(
           organizationJsonLd,
           personJsonLd,
@@ -76,7 +76,9 @@ function App() {
         />
         <Route
           path="/blog/prix-site-internet-roanne"
-          element={<Navigate replace to="/blog/importance-site-internet-roanne-2026" />}
+          element={
+            <Navigate replace to="/blog/importance-site-internet-roanne-2026" />
+          }
         />
         <Route
           path="/blog/google-maps-roanne-fiche-optimisee"
