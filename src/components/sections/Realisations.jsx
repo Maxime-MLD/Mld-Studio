@@ -3,6 +3,7 @@ import { projects } from "../../data/realisations.js";
 import {
   useRealisationsAnimation,
   useProjectMarquee,
+  useProjectParallax,
 } from "../../scripts/realisations.js";
 import reaImage from "../../assets/images/rea-image.webp";
 import reaImageMobile from "../../assets/images/rea-image-mobile.webp";
@@ -81,6 +82,7 @@ function RealisationsIntro() {
 // Diapo des 3 projets sélectionnés (pinned scroll).
 function RealisationsSlides() {
   useProjectMarquee("#realisations");
+  useProjectParallax("#realisations");
 
   return (
     <section

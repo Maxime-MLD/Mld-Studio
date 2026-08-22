@@ -224,14 +224,14 @@
   left: 0;
   width: 100% !important;
   height: 100% !important;
-  max-width: none !important;
-  max-height: none !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
   min-width: 100% !important;
   min-height: 100% !important;
   object-fit: cover !important;
   object-position: center;
   display: block;
-  transform: none;
+  transform: translateZ(0);
 }
 
 
@@ -258,16 +258,27 @@
    couvrent tout l'écran ; visuel à taille fixe 518.67px x 298.63px. */
 @media (min-width: 810px) and (max-width: 1120px) {
   .realis-projects .project-slide {
+    position: relative;
     height: 100svh;
+    overflow: clip;
+    isolation: isolate;
   }
 
   .realis-projects .project-pinned-track {
+    position: relative;
+    z-index: 2;
     top: -100svh;
+    width: 100%;
     height: 300svh;
   }
 
   .realis-projects .project-stage {
+    position: sticky;
+    top: 0;
+    width: 100%;
     height: 100svh;
+    isolation: isolate;
+    transform: translateZ(0);
   }
 
   .realis-projects .project-media {
@@ -296,14 +307,31 @@
    couvrent tout l'écran ; visuel à taille fixe 390px x 224.55px. */
 @media (max-width: 809.98px) {
   .realis-projects .project-slide {
+    position: relative;
     height: 100svh;
-    overflow: hidden;
+    overflow: clip;
+    isolation: isolate;
     --project-card-w: min(390px, calc(100% - 40px));
   }
 
   .realis-projects .project-backdrop {
-    inset: 0;
+    position: absolute;
+    z-index: 0;
+    inset: -20px;
     overflow: hidden;
+    transform: translateZ(0);
+  }
+
+  .realis-projects .project-backdrop img {
+    position: absolute;
+    top: -55px;
+    left: 0;
+    width: 100%;
+    height: calc(100% + 110px);
+    object-fit: cover;
+    object-position: center;
+    transform: translate3d(0, var(--project-bg-y, 0px), 0) scale(1.06);
+    will-change: transform;
   }
 
   /* Texte défilant (nom du projet) masqué sur mobile */
@@ -313,12 +341,20 @@
   }
 
   .realis-projects .project-pinned-track {
+    position: relative;
+    z-index: 2;
     top: -100svh;
+    width: 100%;
     height: 300svh;
   }
 
   .realis-projects .project-stage {
+    position: sticky;
+    top: 0;
+    width: 100%;
     height: 100svh;
+    isolation: isolate;
+    transform: translateZ(0);
   }
 
   .realis-projects .project-media {
@@ -408,4 +444,9 @@
     --project-card-w: min(728px, calc(100% - 40px));
     --project-card-h: calc(min(728px, calc(100% - 40px)) * 419.16 / 728);
   }
+}
+
+#faq-realisations {
+  position: relative;
+  z-index: 10;
 }

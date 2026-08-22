@@ -102,7 +102,7 @@ function Hero() {
             <i>/</i>
             <span>Développement</span>
             <i>/</i>
-            <span>Marketing</span>
+            <span>SEO</span>
           </div>
         </div>
       </section>

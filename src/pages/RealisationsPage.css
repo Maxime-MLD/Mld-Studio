@@ -213,11 +213,20 @@
    scroll épinglé inchangés. */
 .realis-projects .project-media img,
 .realis-projects .project-media video {
+  position: absolute;
+  inset: 0;
   top: 0;
-  height: 100%;
-  object-fit: cover;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  min-width: 100% !important;
+  min-height: 100% !important;
+  object-fit: cover !important;
   object-position: center;
-  transform: none;
+  display: block;
+  transform: translateZ(0);
 }
 
 

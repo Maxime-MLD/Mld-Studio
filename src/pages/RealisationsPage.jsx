@@ -6,7 +6,7 @@ import Contact from "../components/sections/Contact.jsx";
 import Footer from "../components/sections/Footer.jsx";
 import { realisationsPageProjects } from "../data/realisations-page.js";
 import { faqRealisationsItems } from "../data/faq-realisations.js";
-import { useProjectMarquee } from "../scripts/realisations.js";
+import { useProjectMarquee, useProjectParallax } from "../scripts/realisations.js";
 import "../styles/RealisationsPage.css";
 import { buildGraph } from "../seo/jsonld/graph.js";
 import { buildBreadcrumb } from "../seo/jsonld/breadcrumb.js";
@@ -22,6 +22,7 @@ export default function RealisationsPage() {
   };
 
   useProjectMarquee(".realis-projects");
+  useProjectParallax(".realis-projects");
 
   return (
     <>
