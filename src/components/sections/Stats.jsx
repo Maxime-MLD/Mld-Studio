@@ -16,7 +16,7 @@ function Stats() {
         <header className="reputation-header">
           <p>Pourquoi nous&nbsp;?</p>
           <h2 id="reputation-title">
-            <span>Bati sur la</span>
+            <span>Bâti sur la</span>{" "}
             <span>confiance.</span>
           </h2>
         </header>

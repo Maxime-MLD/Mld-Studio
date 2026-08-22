@@ -55,7 +55,7 @@ export default function RealisationsPage() {
 
               <div className="realis-hero-right">
                 <h1 id="realis-hero-title" className="realis-hero-title">
-                  <span>Concepts</span>
+                  <span>Concepts</span>{" "}
                   <span>créatifs.</span>
                 </h1>
               </div>
@@ -103,19 +103,17 @@ export default function RealisationsPage() {
                       aria-level="3"
                       aria-label={project.name}
                     >
-                      <div className="project-marquee-group">
+                      {/* Marquee décoratif : texte via ::before (data-text) pour
+                          ne pas dupliquer le nom ~16× dans le DOM. Le nom
+                          sémantique reste dans .project-details + aria-label. */}
+                      <div className="project-marquee-group" aria-hidden="true">
                         {Array.from({ length: 8 }).map((_, repeatIndex) => (
-                          <span
-                            key={repeatIndex}
-                            aria-hidden={repeatIndex !== 0}
-                          >
-                            {project.name}
-                          </span>
+                          <span key={repeatIndex} data-text={project.name} />
                         ))}
                       </div>
                       <div className="project-marquee-group" aria-hidden="true">
                         {Array.from({ length: 8 }).map((_, repeatIndex) => (
-                          <span key={repeatIndex}>{project.name}</span>
+                          <span key={repeatIndex} data-text={project.name} />
                         ))}
                       </div>
                     </div>
@@ -142,7 +140,6 @@ export default function RealisationsPage() {
                           onError={handleImageError}
                         />
                       )}
-                      <Noise className="media-noise" opacity={0.11} />
                     </div>
 
                     <div className="project-details">

@@ -33,8 +33,8 @@ function Constat() {
           className="strategy-title"
           aria-label="Stratégie avant les pixels"
         >
-          <span>Stratégie</span>
-          <span>avant les</span>
+          <span>Stratégie</span>{" "}
+          <span>avant les</span>{" "}
           <span>pixels.</span>
         </h2>
 

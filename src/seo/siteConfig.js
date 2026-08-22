@@ -8,7 +8,7 @@ export const siteConfig = {
   description:
     "Création de sites internet modernes, rapides et sur mesure à Roanne, dans la Loire et partout en France.",
   locale: "fr_FR",
-  ogImage: "/og-mld.webp",
+  ogImage: "/og-mld.jpg",
   ogImageAlt: "MLD Studio, création de sites internet à Roanne",
   author: "Maxime Lagraa",
   email: "contact@mld-studio.fr",

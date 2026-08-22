@@ -3,7 +3,6 @@ import { useEffect, useRef } from "react";
 export function useMethodeCounters() {
   const sectionRef = useRef(null);
   const projectCountRef = useRef(null);
-  const loadingTimeRef = useRef(null);
   const tailoredRateRef = useRef(null);
 
   useEffect(() => {
@@ -23,7 +22,6 @@ export function useMethodeCounters() {
 
       if (prefersReducedMotion) {
         if (projectCountRef.current) projectCountRef.current.textContent = "20+";
-        if (loadingTimeRef.current) loadingTimeRef.current.textContent = "3,2 S";
         if (tailoredRateRef.current) tailoredRateRef.current.textContent = "100%";
         return;
       }
@@ -35,9 +33,6 @@ export function useMethodeCounters() {
         const eased = 1 - (1 - elapsed) ** 3;
         if (projectCountRef.current) {
           projectCountRef.current.textContent = `${Math.round(20 * eased)}+`;
-        }
-        if (loadingTimeRef.current) {
-          loadingTimeRef.current.textContent = `${(3.2 * eased).toFixed(1).replace(".", ",")} S`;
         }
         if (tailoredRateRef.current) {
           tailoredRateRef.current.textContent = `${Math.round(100 * eased)}%`;
@@ -63,7 +58,6 @@ export function useMethodeCounters() {
   return {
     sectionRef,
     projectCountRef,
-    loadingTimeRef,
     tailoredRateRef,
   };
 }

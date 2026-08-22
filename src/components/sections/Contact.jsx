@@ -108,7 +108,7 @@ function Contact() {
           <div className="footer-project-column">
             <header className="footer-project-heading">
               <h2>
-                <span>Démarrez un</span>
+                <span>Démarrez un</span>{" "}
                 <span>projet.</span>
               </h2>
               <p>
@@ -193,11 +193,12 @@ function Contact() {
                 >
                   <span className="footer-button-label">
                     <span>Envoyer le message</span>
-                    <span aria-hidden="true">Envoyer le message</span>
+                    <span aria-hidden="true" data-label="Envoyer le message" />
                   </span>
                 </button>
                 <p>
-                  En envoyant ce formulaire, vous acceptez notre{" "}
+                  Vos données servent uniquement à répondre à votre demande.
+                  Voir notre{" "}
                   <Link to="/politique-confidentialite">
                     politique de confidentialité
                   </Link>

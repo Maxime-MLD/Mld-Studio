@@ -57,8 +57,8 @@ export default function ArticleRoannePage() {
 
           <div className="article-hero-inner">
             <h1 id="article-title" className="article-hero-title">
-              <span>Quelle est</span>
-              <span>l'importance d'un site</span>
+              <span>Quelle est</span>{" "}
+              <span>l'importance d'un site</span>{" "}
               <span>à Roanne en 2026&nbsp;?</span>
             </h1>
             <p className="article-hero-sub">

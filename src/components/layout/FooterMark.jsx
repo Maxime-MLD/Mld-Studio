@@ -7,7 +7,7 @@ function FooterMark({ withName = false }) {
         <i />
         <i />
       </span>
-      {withName && <strong>MLD.</strong>}
+      {withName && <strong>MLD</strong>}
     </span>
   );
 }

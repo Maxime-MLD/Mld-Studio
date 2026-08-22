@@ -132,7 +132,7 @@ export default function BlogPage() {
 
               <div className="blog-hero-right">
                 <h1 id="blog-hero-title" className="blog-hero-title">
-                  <span>Derniers</span>
+                  <span>Derniers</span>{" "}
                   <span>articles.</span>
                 </h1>
               </div>

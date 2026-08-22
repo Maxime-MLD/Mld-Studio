@@ -91,7 +91,7 @@ function Conseils({ fullFeatureImage = false }) {
             </a>
           )}
           <h2 id="news-title">
-            <span>Conseils et</span>
+            <span>Conseils et</span>{" "}
             <span>actualités.</span>
           </h2>
         </div>

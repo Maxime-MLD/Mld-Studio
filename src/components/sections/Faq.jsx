@@ -26,8 +26,11 @@ function Faq({
           <div className="faq-heading">
             <p>{eyebrow}</p>
             <h2 id={`${id}-title`}>
-              {titleLines.map((line) => (
-                <span key={line}>{line}</span>
+              {titleLines.map((line, i) => (
+                <span key={line}>
+                  {i > 0 ? " " : ""}
+                  {line}
+                </span>
               ))}
             </h2>
           </div>
@@ -71,7 +74,7 @@ function Faq({
         <a className="faq-contact" href={contactHref}>
           <span className="faq-contact-label">
             <span>Démarrer un projet</span>
-            <span aria-hidden="true">Démarrer un projet</span>
+            <span aria-hidden="true" data-label="Démarrer un projet" />
           </span>
         </a>
       </div>

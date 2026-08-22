@@ -201,6 +201,22 @@
   color: var(--black);
 }
 
+/* Deux liens de bas de page (page légale liée + retour accueil), à droite de la ligne. */
+.legal-links {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  margin: 2.25rem 0 0 50%;
+  padding-left: clamp(1.5rem, 3vw, 3rem);
+}
+
+.legal-links .legal-back {
+  margin: 0;
+  padding-left: 0;
+}
+
 /* ---------- Mobile : plus de ligne, tout en un seul bloc pleine largeur ----------
    Même breakpoint que le reste du site (cf. .faq-section mobile). */
 @media (max-width: 809.98px) {
@@ -242,6 +258,11 @@
 
   .legal-block-body {
     max-width: 100%;
+    padding-left: 0;
+  }
+
+  .legal-links {
+    margin: 2rem 0 0;
     padding-left: 0;
   }
 

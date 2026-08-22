@@ -10,7 +10,7 @@ function Brand() {
         <i />
         <i />
       </span>
-      <span className="brand-name">MLD.</span>
+      <span className="brand-name">MLD</span>
     </a>
   );
 }
@@ -44,7 +44,7 @@ function Navbar() {
 
       <a className="project-cta" href="/contact">
         <span>Démarrer un projet</span>
-        <span aria-hidden="true">Démarrer un projet</span>
+        <span aria-hidden="true" data-label="Démarrer un projet" />
       </a>
 
       <button

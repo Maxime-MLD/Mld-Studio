@@ -211,12 +211,26 @@
    largeur qui est dérivée du ratio, pour ne rien décaler d'autre (les libellés
    ne débordent pas sur l'image). z-index (ligne centrale derrière) et effet de
    scroll épinglé inchangés. */
+.realis-projects .project-media {
+  display: block;
+  box-sizing: border-box;
+}
+
 .realis-projects .project-media img,
 .realis-projects .project-media video {
+  position: absolute;
+  inset: 0;
   top: 0;
-  height: 100%;
-  object-fit: cover;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  min-width: 100% !important;
+  min-height: 100% !important;
+  object-fit: cover !important;
   object-position: center;
+  display: block;
   transform: none;
 }
 
@@ -283,8 +297,19 @@
 @media (max-width: 809.98px) {
   .realis-projects .project-slide {
     height: 100svh;
+    overflow: hidden;
     --project-card-w: min(390px, calc(100% - 40px));
-    --project-card-h: calc(min(390px, calc(100% - 40px)) * 224.55 / 390);
+  }
+
+  .realis-projects .project-backdrop {
+    inset: 0;
+    overflow: hidden;
+  }
+
+  /* Texte défilant (nom du projet) masqué sur mobile */
+  .realis-projects .project-marquee-wrapper,
+  .project-marquee-wrapper {
+    display: none !important;
   }
 
   .realis-projects .project-pinned-track {
@@ -302,11 +327,14 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: var(--project-card-w);
-    height: var(--project-card-h);
+    aspect-ratio: var(--project-ratio, 16 / 10);
+    height: auto;
     overflow: hidden;
     border-radius: 0;
     z-index: 3;
     margin: 0;
+    display: block;
+    box-sizing: border-box;
   }
 
   .realis-projects .project-details {
@@ -315,7 +343,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: var(--project-card-w);
-    height: var(--project-card-h);
+    aspect-ratio: var(--project-ratio, 16 / 10);
+    height: auto;
     pointer-events: none;
     display: block;
     z-index: 4;

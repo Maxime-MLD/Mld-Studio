@@ -1,53 +1,103 @@
-import { useState } from "react";
-import Noise from "../Noise.jsx";
+import { useState, useRef } from "react";
 import { services } from "../../data/prestations.js";
 import { usePrestationsAnimation } from "../../scripts/prestations.js";
 
-// Carrousel de visuels (utilisé pour « multipage » et « signature »).
+// Carrousel de visuels (utilisé pour « monopage », « multipage » et « signature »).
 // Réutilise .service-visual pour conserver le ratio 16:9 stable sans collapse de hauteur.
 function ServiceCarousel({ images, imagePosition }) {
   const [index, setIndex] = useState(0);
   const count = images.length;
+  const touchStartRef = useRef(null);
+
   const go = (e, direction) => {
-    e.preventDefault();
-    e.stopPropagation();
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
     setIndex((i) => (i + direction + count) % count);
   };
 
+  const handleTouchStart = (e) => {
+    const touch = e.touches[0];
+    touchStartRef.current = { x: touch.clientX, y: touch.clientY };
+  };
+
+  const handleTouchEnd = (e) => {
+    if (!touchStartRef.current) return;
+    const touch = e.changedTouches[0];
+    const deltaX = touch.clientX - touchStartRef.current.x;
+    const deltaY = touch.clientY - touchStartRef.current.y;
+    touchStartRef.current = null;
+
+    // Détection du geste de swipe horizontal (seuil 30px)
+    if (Math.abs(deltaX) > 30 && Math.abs(deltaX) > Math.abs(deltaY)) {
+      if (deltaX < 0) {
+        // Glissement vers la gauche -> image suivante
+        go(null, 1);
+      } else {
+        // Glissement vers la droite -> image précédente
+        go(null, -1);
+      }
+    }
+  };
+
   return (
-    <figure className="service-visual service-carousel">
-      <div className="service-carousel-track">
-        {images.map((imgSrc, i) => (
-          <img
-            key={imgSrc}
-            src={imgSrc}
-            alt={`Aperçu ${i + 1} d’une prestation web MLD`}
-            loading="eager"
-            decoding="async"
-            className={`service-carousel-img ${i === index ? "is-active" : ""}`}
-            style={{ objectPosition: imagePosition }}
+    <div className="service-carousel-container">
+      <figure
+        className="service-visual service-carousel"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
+        <div className="service-carousel-track">
+          {images.map((imgSrc, i) => (
+            <img
+              key={imgSrc}
+              src={imgSrc}
+              alt={`Aperçu ${i + 1} d’une prestation web MLD`}
+              loading="eager"
+              decoding="async"
+              className={`service-carousel-img ${i === index ? "is-active" : ""}`}
+              style={{ objectPosition: imagePosition }}
+            />
+          ))}
+        </div>
+
+        <button
+          type="button"
+          className="service-carousel-arrow service-carousel-prev"
+          onClick={(e) => go(e, -1)}
+          aria-label="Image précédente"
+        >
+          <i aria-hidden="true" />
+        </button>
+        <button
+          type="button"
+          className="service-carousel-arrow service-carousel-next"
+          onClick={(e) => go(e, 1)}
+          aria-label="Image suivante"
+        >
+          <i aria-hidden="true" />
+        </button>
+      </figure>
+
+      {/* Indicateurs de pagination (. ou - sous l'image) */}
+      <div className="service-carousel-pagination" aria-label="Sélectionner une photo">
+        {images.map((_, i) => (
+          <button
+            key={i}
+            type="button"
+            className={`service-carousel-dot ${i === index ? "is-active" : ""}`}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setIndex(i);
+            }}
+            aria-label={`Photo ${i + 1} sur ${count}`}
+            aria-current={i === index ? "true" : undefined}
           />
         ))}
       </div>
-      <Noise className="media-noise" opacity={0.11} />
-
-      <button
-        type="button"
-        className="service-carousel-arrow service-carousel-prev"
-        onClick={(e) => go(e, -1)}
-        aria-label="Image précédente"
-      >
-        <i aria-hidden="true" />
-      </button>
-      <button
-        type="button"
-        className="service-carousel-arrow service-carousel-next"
-        onClick={(e) => go(e, 1)}
-        aria-label="Image suivante"
-      >
-        <i aria-hidden="true" />
-      </button>
-    </figure>
+    </div>
   );
 }
 
@@ -131,7 +181,6 @@ function Prestations() {
                           decoding="async"
                           style={{ objectPosition: service.imagePosition }}
                         />
-                        <Noise className="media-noise" opacity={0.11} />
                       </figure>
                     )}
                   </div>

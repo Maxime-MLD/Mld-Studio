@@ -56,8 +56,8 @@ export default function ArticleGoogleMapsPage() {
 
           <div className="article-hero-inner">
             <h1 id="article-title" className="article-hero-title">
-              <span>Comment apparaître</span>
-              <span>sur Google Maps</span>
+              <span>Comment apparaître</span>{" "}
+              <span>sur Google Maps</span>{" "}
               <span>à Roanne&nbsp;?</span>
             </h1>
             <p className="article-hero-sub">

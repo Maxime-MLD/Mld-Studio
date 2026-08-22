@@ -56,8 +56,8 @@ export default function ArticleMonopageMultipagePage() {
 
           <div className="article-hero-inner">
             <h1 id="article-title" className="article-hero-title">
-              <span>Monopage ou multipage :</span>
-              <span>que choisir</span>
+              <span>Monopage ou multipage :</span>{" "}
+              <span>que choisir</span>{" "}
               <span>dans la Loire&nbsp;?</span>
             </h1>
             <p className="article-hero-sub">

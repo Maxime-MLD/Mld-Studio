@@ -38,11 +38,15 @@
 html {
   background: var(--black);
   scroll-behavior: smooth;
+  max-width: 100vw;
+  overflow-x: clip;
 }
 
 body {
   margin: 0;
   min-width: 320px;
+  max-width: 100vw;
+  overflow-x: clip;
   background: var(--black);
   color: var(--text-white);
   font-family: "Switzer", Arial, sans-serif;
@@ -1244,6 +1248,20 @@ a {
   flex-shrink: 0;
 }
 
+/* Textes décoratifs rendus via ::before (data-*) : le DOM lu par les crawlers ne
+   contient plus les copies (marquee répété, doublon des boutons au survol).
+   Le texte sémantique reste une seule fois (nom du projet dans .project-details,
+   libellé visible des boutons). */
+.project-marquee-group span::before {
+  content: attr(data-text);
+}
+
+.project-cta span:last-child::before,
+.faq-contact-label > span:nth-child(2)::before,
+.footer-button-label > span:nth-child(2)::before {
+  content: attr(data-label);
+}
+
 .project-stage-noise {
   z-index: 1;
 }
@@ -1965,6 +1983,43 @@ a {
 .service-carousel-arrow:hover i,
 .service-carousel-arrow:focus-visible i {
   color: var(--orange);
+}
+
+.service-carousel-container {
+  position: relative;
+  width: 100%;
+}
+
+.service-carousel-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: -0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+.service-carousel-dot {
+  width: 20px;
+  height: 3px;
+  padding: 0;
+  border: none;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.28);
+  cursor: pointer;
+  transition:
+    background 0.3s ease,
+    width 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.service-carousel-dot:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.service-carousel-dot.is-active {
+  background: var(--orange);
+  width: 28px;
 }
 
 .method-section {
@@ -5135,39 +5190,43 @@ a {
      pour que le fond flouté + grain couvrent tout l'écran. Visuel à taille fixe. */
   .project-slide {
     height: 100svh;
+    overflow: hidden;
     --project-card-w: min(390px, calc(100% - 40px));
-    --project-card-h: calc(min(390px, calc(100% - 40px)) * 224.55 / 390);
   }
 
-  .project-pinned-track {
-    top: -100svh;
-    height: 300svh;
+  .project-backdrop {
+    inset: 0;
+    overflow: hidden;
   }
 
-  .project-stage {
-    height: 100svh;
+  /* Texte défilant (nom du projet) masqué sur mobile : purement décoratif,
+     il débordait derrière l'image et alourdissait le rendu. */
+  .project-marquee-wrapper {
+    display: none !important;
   }
 
-  /* iPad Mini (768px – 809.98px) : 728 x 419.16 */
+  /* iPad Mini (768px – 809.98px) : largeur jusqu'à 728px */
   @media (min-width: 768px) {
     .project-slide {
       --project-card-w: min(728px, calc(100% - 40px));
-      --project-card-h: calc(min(728px, calc(100% - 40px)) * 419.16 / 728);
     }
   }
 
-  /* Image 1er plan */
+  /* Image 1er plan : occupe tout le cadre selon le ratio du projet */
   .project-media {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: var(--project-card-w);
-    height: var(--project-card-h);
+    aspect-ratio: var(--project-ratio, 16 / 10);
+    height: auto;
     overflow: hidden;
     border-radius: 0;
     z-index: 3;
     margin: 0;
+    display: block;
+    box-sizing: border-box;
   }
 
   .project-media img,
@@ -5176,10 +5235,15 @@ a {
     inset: 0;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    min-width: 100% !important;
+    min-height: 100% !important;
+    object-fit: cover !important;
     object-position: center;
+    display: block;
     transform: none;
   }
 
@@ -5190,7 +5254,8 @@ a {
     left: 50%;
     transform: translate(-50%, -50%);
     width: var(--project-card-w);
-    height: var(--project-card-h);
+    aspect-ratio: var(--project-ratio, 16 / 10);
+    height: auto;
     pointer-events: none;
     display: block;
     z-index: 4;
@@ -5555,22 +5620,35 @@ a {
     margin-top: 0.1rem;
   }
 
+  .service-details {
+    grid-template-columns: 1fr;
+  }
+
+  .service-details-inner {
+    grid-column: 1;
+    width: 100%;
+  }
+
   .service-copy {
     grid-template-columns: 1fr;
     gap: 0.9rem;
-    padding: 1.5rem 0 0 3px;
+    padding: 1.25rem 0 0 0;
+    width: 100%;
   }
 
   .service-copy p {
+    width: 90%;
+    max-width: 90%;
     font-size: 0.875rem;
-    line-height: 1.22;
+    line-height: 1.3;
   }
 
   .service-visual {
-    width: 195px;
-    height: 112.89px;
-    aspect-ratio: auto;
-    margin: 1.25rem 0;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    margin: 1.25rem 0 0.5rem;
     overflow: hidden;
     position: relative;
   }
@@ -5587,11 +5665,45 @@ a {
     object-position: center;
   }
 
-  /* iPad Mini spécifique (768px – 809.98px) : visuels d'accordéon à 364x210.73 */
+  .service-carousel-container {
+    width: 100%;
+  }
+
+  .service-carousel-arrow {
+    display: none !important;
+  }
+
+  .service-carousel-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin: 0.5rem 0 0.75rem;
+  }
+
+  .service-carousel-dot {
+    width: 20px;
+    height: 3px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.35);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: background 0.3s ease, width 0.3s ease;
+  }
+
+  .service-carousel-dot.is-active {
+    background: #ffffff;
+    width: 28px;
+  }
+
+  /* iPad Mini spécifique (768px – 809.98px) : visuels d'accordéon à 100% avec max-width */
   @media (min-width: 768px) {
     .service-visual {
-      width: 364px;
-      height: 210.73px;
+      width: 100%;
+      max-width: 580px;
+      height: auto;
+      aspect-ratio: 16 / 9;
     }
   }
 
@@ -5604,7 +5716,8 @@ a {
     background: var(--orange);
     color: #fff;
     box-sizing: border-box;
-    overflow: visible;
+    overflow-x: clip;
+    max-width: 100%;
   }
 
   .method-section::before {
@@ -5625,6 +5738,8 @@ a {
     margin: 0 auto;
     position: relative;
     z-index: 1;
+    box-sizing: border-box;
+    max-width: 100%;
   }
 
   .method-label {
@@ -5656,7 +5771,9 @@ a {
     width: auto;
     max-width: none;
     margin: 0;
-    font-size: 52px;
+    /* Les spans sont en white-space: nowrap : taille calibrée pour ne jamais
+       déborder de la largeur d'écran disponible (iPhone 13, 390px, SE 375px). */
+    font-size: clamp(1.75rem, 8.6vw, 38px);
     font-weight: 600;
     line-height: 0.82;
     letter-spacing: -0.05em;
@@ -7073,13 +7190,18 @@ a {
   .strategy-title,
   .build-title,
   .reputation-header h2,
-  .method-message h2,
   .faq-heading h2,
   .pricing-title-row h2,
   .reviews-header h2,
   .news-heading-row h2,
   .footer-project-heading h2 {
     font-size: 52px;
+  }
+
+  /* .method-message h2 exclu du groupe ci-dessus : ses spans sont en
+     white-space: nowrap et « Chaque projet » est calibré pour ne jamais déborder. */
+  .method-message h2 {
+    font-size: clamp(1.75rem, 8.6vw, 38px);
   }
 }
 

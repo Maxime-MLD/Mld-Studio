@@ -26,8 +26,8 @@ function RealisationsIntro() {
           className="build-title"
           aria-label="Nous créons des sites web"
         >
-          <span>Nous</span>
-          <span>créons des</span>
+          <span>Nous</span>{" "}
+          <span>créons des</span>{" "}
           <span>sites web.</span>
         </h2>
 
@@ -99,16 +99,17 @@ function RealisationsSlides() {
                 aria-level="3"
                 aria-label={project.name}
               >
-                <div className="project-marquee-group">
+                {/* Marquee purement décoratif : le texte est rendu via ::before
+                    (data-text) pour ne pas dupliquer le nom ~16× dans le DOM.
+                    Le nom sémantique reste dans .project-details + aria-label. */}
+                <div className="project-marquee-group" aria-hidden="true">
                   {Array.from({ length: 8 }).map((_, repeatIndex) => (
-                    <span key={repeatIndex} aria-hidden={repeatIndex !== 0}>
-                      {project.name}
-                    </span>
+                    <span key={repeatIndex} data-text={project.name} />
                   ))}
                 </div>
                 <div className="project-marquee-group" aria-hidden="true">
                   {Array.from({ length: 8 }).map((_, repeatIndex) => (
-                    <span key={repeatIndex}>{project.name}</span>
+                    <span key={repeatIndex} data-text={project.name} />
                   ))}
                 </div>
               </div>
@@ -141,7 +142,6 @@ function RealisationsSlides() {
                     style={{ objectPosition: project.imagePosition }}
                   />
                 )}
-                <Noise className="media-noise" opacity={0.11} />
               </a>
 
               <div className="project-details">

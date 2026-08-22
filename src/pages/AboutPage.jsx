@@ -51,7 +51,7 @@ export default function AboutPage() {
 
               <div className="about-hero-right">
                 <h1 id="about-title" className="about-hero-title">
-                  <span>MLD</span>
+                  <span>MLD</span>{" "}
                   <span>Studio</span>
                 </h1>
               </div>

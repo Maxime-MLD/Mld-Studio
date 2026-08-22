@@ -30,7 +30,7 @@ function AvisClients() {
         <header className="reviews-header">
           <p className="reviews-label">Avis clients</p>
           <h2 id="reviews-title">
-            <span>Avis de nos</span>
+            <span>Avis de nos</span>{" "}
             <span>clients.</span>
           </h2>
         </header>

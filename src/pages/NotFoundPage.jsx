@@ -20,7 +20,7 @@ export default function NotFoundPage() {
           <div className="legal-hero-inner">
             <p className="legal-hero-eyebrow">Erreur 404</p>
             <h1 id="not-found-title" className="legal-hero-title">
-              <span>Page</span>
+              <span>Page</span>{" "}
               <span>introuvable.</span>
             </h1>
             <p className="legal-hero-sub">

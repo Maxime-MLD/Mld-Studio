@@ -56,8 +56,8 @@ export default function ArticleErreursSeoPage() {
 
           <div className="article-hero-inner">
             <h1 id="article-title" className="article-hero-title">
-              <span>7 erreurs</span>
-              <span>qui bloquent votre visibilité</span>
+              <span>7 erreurs</span>{" "}
+              <span>qui bloquent votre visibilité</span>{" "}
               <span>à Roanne</span>
             </h1>
             <p className="article-hero-sub">

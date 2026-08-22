@@ -3,12 +3,8 @@ import avatarImage from "../../assets/images/avatar.webp";
 
 // Section Methode : chiffres clés animés + citation de la direction.
 function Methode() {
-  const {
-    sectionRef,
-    projectCountRef,
-    loadingTimeRef,
-    tailoredRateRef,
-  } = useMethodeCounters();
+  const { sectionRef, projectCountRef, tailoredRateRef } =
+    useMethodeCounters();
 
   return (
     <section
@@ -36,17 +32,6 @@ function Methode() {
             <article className="method-stat method-stat-left">
               <i aria-hidden="true" />
               <div>
-                <strong ref={loadingTimeRef}>3,2 S</strong>
-                <p>
-                  Temps de chargement visé avant une{" "}
-                  <b>première interaction fluide</b>.
-                </p>
-              </div>
-            </article>
-
-            <article className="method-stat method-stat-right">
-              <i aria-hidden="true" />
-              <div>
                 <strong ref={tailoredRateRef}>100%</strong>
                 <p>
                   Des créations <b>sur mesure</b>, rapides et entièrement{" "}
@@ -58,9 +43,9 @@ function Methode() {
 
           <div className="method-message">
             <h2 id="method-title">
-              <span>Chaque projet</span>
-              <span>commence par</span>
-              <span>un problème</span>
+              <span>Chaque projet</span>{" "}
+              <span>commence par</span>{" "}
+              <span>un problème</span>{" "}
               <span>à résoudre.</span>
             </h2>
 
