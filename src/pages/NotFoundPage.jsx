@@ -27,7 +27,22 @@ export default function NotFoundPage() {
               L'adresse demandée n'existe plus ou comporte une erreur.
             </p>
             <a className="legal-back" href="/">
-              ← Retour à l'accueil
+              <span aria-hidden="true">
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 12 12"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.6"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <line x1="9.5" y1="6" x2="2.5" y2="6" />
+                  <polyline points="6 2.5 2.5 6 6 9.5" />
+                </svg>
+              </span>{" "}
+              Retour à l'accueil
             </a>
           </div>
         </section>

@@ -210,7 +210,22 @@ export default function ArticleErreursSeoPage() {
 
               <div className="article-cta-row">
                 <a className="article-back-link" href="/blog">
-                  ← Retour à tous les articles
+                  <span aria-hidden="true">
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 12 12"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <line x1="9.5" y1="6" x2="2.5" y2="6" />
+                      <polyline points="6 2.5 2.5 6 6 9.5" />
+                    </svg>
+                  </span>{" "}
+                  Retour à tous les articles
                 </a>
               </div>
             </div>

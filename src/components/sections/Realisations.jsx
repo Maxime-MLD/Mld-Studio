@@ -56,7 +56,22 @@ function RealisationsIntro() {
         </figure>
 
         <a className="build-scroll build-reveal" href="#realisations">
-          <span>↓</span> Voir les projets
+          <span aria-hidden="true">
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="6" y1="2" x2="6" y2="9.5" />
+              <polyline points="2.5 6 6 9.5 9.5 6" />
+            </svg>
+          </span>{" "}
+          Voir les projets
         </a>
       </div>
     </section>

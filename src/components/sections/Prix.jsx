@@ -1,11 +1,15 @@
+import { useState } from "react";
 import Noise from "../Noise.jsx";
 import { pricingPlans, pricingFeatures } from "../../data/prix.js";
 import { usePrixAnimation } from "../../scripts/prix.js";
 import prixImage from "../../assets/images/prix-image.webp";
 
-// Section Prix : tableau comparatif desktop + cartes empilées sur mobile.
+// Section Prix : tableau comparatif desktop + sélecteur interactif 1 tableau sur mobile.
 function Prix() {
+  const [activePlanIndex, setActivePlanIndex] = useState(1);
   const sectionRef = usePrixAnimation();
+
+  const currentPlan = pricingPlans[activePlanIndex] || pricingPlans[0];
 
   return (
     <section
@@ -127,24 +131,44 @@ function Prix() {
             </div>
           </div>
 
-          <div className="pricing-mobile-plans">
-            {pricingPlans.map((plan, planIndex) => (
-              <article className="pricing-mobile-plan" key={plan.name}>
+          {/* Version mobile : sélecteur de formules + 1 seul tableau mis à jour dynamiquement */}
+          <div className="pricing-mobile-wrapper">
+            <div
+              className="pricing-mobile-switcher"
+              role="tablist"
+              aria-label="Sélectionner une formule"
+            >
+              {pricingPlans.map((plan, index) => (
+                <button
+                  key={plan.name}
+                  type="button"
+                  role="tab"
+                  aria-selected={activePlanIndex === index}
+                  className={`pricing-switcher-btn ${activePlanIndex === index ? "is-active" : ""}`}
+                  onClick={() => setActivePlanIndex(index)}
+                >
+                  {plan.name}
+                </button>
+              ))}
+            </div>
+
+            <div className="pricing-mobile-plans">
+              <article className="pricing-mobile-plan" key={currentPlan.name}>
                 <header>
                   <div>
-                    <h3>{plan.name}</h3>
-                    <p>{plan.description}</p>
+                    <h3>{currentPlan.name}</h3>
+                    <p>{currentPlan.description}</p>
                   </div>
                   <p>
-                    <strong>{plan.price}</strong>
-                    <small>{plan.suffix}</small>
+                    <strong>{currentPlan.price}</strong>
+                    <small>{currentPlan.suffix}</small>
                   </p>
                 </header>
                 <dl>
                   {pricingFeatures.map((feature) => (
                     <div key={feature.label}>
                       <dt>{feature.label}</dt>
-                      <dd>{feature.values[planIndex]}</dd>
+                      <dd>{feature.values[activePlanIndex]}</dd>
                     </div>
                   ))}
                 </dl>
@@ -152,7 +176,7 @@ function Prix() {
                   <span>Démarrer</span>
                 </a>
               </article>
-            ))}
+            </div>
           </div>
         </div>
       </div>

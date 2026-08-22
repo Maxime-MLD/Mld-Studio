@@ -1,7 +1,7 @@
 // Grille tarifaire affichée dans la section Prix (offres + tableau comparatif).
 export const pricingPlans = [
   {
-    name: "Essentiel",
+    name: "Monopage",
     description: "Un site monopage moderne, clair et prêt à présenter votre activité.",
     price: "1 000 €",
     suffix: "TTC",

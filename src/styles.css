@@ -859,6 +859,24 @@ a {
   transform-origin: left;
 }
 
+.strategy-copy a span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s cubic-bezier(0.2, 0.72, 0.2, 1);
+}
+
+.strategy-copy a:hover span,
+.strategy-copy a:focus-visible span {
+  transform: translate(2px, -2px);
+}
+
+.strategy-copy a svg {
+  display: block;
+  width: 12px;
+  height: 12px;
+}
+
 .strategy-visual {
   position: absolute;
   z-index: 2;
@@ -1103,7 +1121,16 @@ a {
 }
 
 .build-scroll span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   transition: transform 0.3s ease;
+}
+
+.build-scroll svg {
+  display: block;
+  width: 12px;
+  height: 12px;
 }
 
 .build-scroll:hover span,
@@ -1561,12 +1588,21 @@ a {
 }
 
 .reputation-card a span {
-  transition: transform 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s cubic-bezier(0.2, 0.72, 0.2, 1);
 }
 
 .reputation-card a:hover span,
 .reputation-card a:focus-visible span {
-  transform: rotate(45deg);
+  transform: translate(2px, -2px);
+}
+
+.reputation-card a svg {
+  display: block;
+  width: 12px;
+  height: 12px;
 }
 
 .reputation-trust-row {
@@ -2942,6 +2978,7 @@ a {
   transform: translateY(0);
 }
 
+.pricing-mobile-wrapper,
 .pricing-mobile-plans {
   display: none;
 }
@@ -3675,7 +3712,6 @@ a {
   height: 2.25rem;
   border-radius: 50%;
   object-fit: cover;
-  filter: grayscale(1);
 }
 
 .footer-person-note {
@@ -4414,10 +4450,9 @@ a {
      ============================================================ */
   .hero {
     width: 100%;
-    height: 70vh;
-    height: 70svh;
-    min-height: 70vh;
-    min-height: 70svh;
+    height: 80vh;
+    height: 80svh;
+    min-height: 560px;
     position: relative;
     overflow: hidden;
     display: flex;
@@ -4442,13 +4477,13 @@ a {
     );
   }
 
-  /* Header mobile */
+  /* Header mobile : calé à 44px du haut pour matcher l'espacement des autres sections */
   .site-header {
     position: absolute;
-    top: 0;
+    top: 44px;
     left: 0;
     width: 100%;
-    min-height: 4.8rem;
+    min-height: auto;
     padding: 0 var(--page-pad);
     display: flex;
     justify-content: space-between;
@@ -4739,11 +4774,11 @@ a {
     transform: translate(50%, 50%);
   }
 
-  /* Pied de page du Hero (SITE Signature & LOCAL TIME) */
+  /* Pied de page du Hero (SITE Signature & LOCAL TIME) : calé à 44px du bas */
   .hero-signature,
   .local-time {
     position: absolute;
-    bottom: 20px;
+    bottom: 44px;
     z-index: 4;
   }
 
@@ -4776,9 +4811,9 @@ a {
      ============================================================ */
   .strategy-section {
     width: 100%;
-    height: 580px;
-    min-height: 580px;
-    padding: 20px;
+    height: 640px;
+    min-height: 640px;
+    padding: 44px 20px;
     background: var(--orange);
     position: relative;
     overflow: hidden;
@@ -5009,7 +5044,15 @@ a {
   }
 
   .strategy-copy a span {
-    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .strategy-copy a svg {
+    display: block;
+    width: 12px;
+    height: 12px;
   }
 
   /* ============================================================
@@ -5019,7 +5062,7 @@ a {
     width: 100%;
     min-height: auto;
     height: auto;
-    padding: 20px;
+    padding: 44px 20px;
     background: var(--grey);
     color: var(--black);
     position: relative;
@@ -5318,7 +5361,7 @@ a {
      5. STATS (BÂTI SUR LA RÉPUTATION) MOBILE & IPAD MINI
      ============================================================ */
   .reputation-section {
-    padding: 24px var(--page-pad) 24px;
+    padding: 44px var(--page-pad);
     position: relative;
     background: var(--grey);
     color: var(--black);
@@ -5456,6 +5499,18 @@ a {
     white-space: nowrap;
   }
 
+  .reputation-card a span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .reputation-card a svg {
+    display: block;
+    width: 12px;
+    height: 12px;
+  }
+
   /* Image en bas à gauche sous la carte blanche avec le même gap */
   .reputation-trust-row {
     display: flex;
@@ -5542,7 +5597,7 @@ a {
   }
 
   .services-inner {
-    padding: 20px var(--page-pad) 0.625rem;
+    padding: 44px var(--page-pad) 32px;
   }
 
   .services-header {
@@ -5689,7 +5744,9 @@ a {
     border: none;
     padding: 0;
     cursor: pointer;
-    transition: background 0.3s ease, width 0.3s ease;
+    transition:
+      background 0.3s ease,
+      width 0.3s ease;
   }
 
   .service-carousel-dot.is-active {
@@ -5711,7 +5768,7 @@ a {
      6. MÉTHODE (NOTRE MÉTHODE) MOBILE
      ============================================================ */
   .method-section {
-    padding: 20px 20px 0;
+    padding: 44px 20px 0;
     position: relative;
     background: var(--orange);
     color: #fff;
@@ -5861,7 +5918,7 @@ a {
     flex-direction: column;
     gap: 48px;
     margin-top: 12px;
-    padding: 0 0 28px 0;
+    padding: 0 0 44px 0;
     width: 100%;
   }
 
@@ -5942,7 +5999,7 @@ a {
      7. FAQ (QUESTIONS FRÉQUENTES) MOBILE
      ============================================================ */
   .faq-section {
-    padding: 20px;
+    padding: 44px 20px;
     position: relative;
     background: var(--grey);
     color: var(--black);
@@ -6143,7 +6200,7 @@ a {
      8. TARIFS (PRICING) MOBILE
      ============================================================ */
   .pricing-section {
-    padding: 20px;
+    padding: 44px 20px 44px;
     position: relative;
     background: #0b0b0b;
     color: #fff;
@@ -6314,9 +6371,54 @@ a {
     display: none;
   }
 
-  .pricing-mobile-plans {
+  .pricing-mobile-wrapper {
+    display: block;
+    width: 100%;
+    margin-top: 1.5rem;
+  }
+
+  .pricing-mobile-switcher {
     display: grid;
-    gap: 2.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  .pricing-switcher-btn {
+    padding: 10px 4px;
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 550;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    text-align: center;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.2, 0.72, 0.2, 1);
+  }
+
+  .pricing-switcher-btn:hover {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .pricing-switcher-btn.is-active {
+    background: #ffffff !important;
+    color: #0a0a0a !important;
+    border-color: #ffffff !important;
+    font-weight: 650 !important;
+  }
+
+  .pricing-mobile-plans {
+    display: block;
+    width: 100%;
+    margin-bottom: 32px;
     opacity: 0;
     transform: translateY(1.5rem);
     transition:
@@ -6331,6 +6433,7 @@ a {
 
   .pricing-mobile-plan {
     border-top: 1px solid rgba(255, 255, 255, 0.18);
+    width: 100%;
   }
 
   .pricing-mobile-plan header {
@@ -6357,7 +6460,7 @@ a {
   }
 
   .pricing-mobile-plan header > div p {
-    max-width: 10rem;
+    max-width: 12rem;
     color: rgba(255, 255, 255, 0.6);
     font-size: 0.55rem;
     line-height: 1.25;
@@ -6371,13 +6474,13 @@ a {
   }
 
   .pricing-mobile-plan header strong {
-    font-size: 1.05rem;
+    font-size: 1.15rem;
     font-weight: 550;
   }
 
   .pricing-mobile-plan header small {
     color: rgba(255, 255, 255, 0.6);
-    font-size: 0.48rem;
+    font-size: 0.5rem;
   }
 
   .pricing-mobile-plan dl {
@@ -6396,7 +6499,7 @@ a {
   .pricing-mobile-plan dt,
   .pricing-mobile-plan dd {
     margin: 0;
-    font-size: 0.55rem;
+    font-size: 0.58rem;
     line-height: 1.2;
   }
 
@@ -6409,22 +6512,21 @@ a {
     position: relative;
     isolation: isolate;
     display: grid;
-    width: max-content;
-    min-width: 5.75rem;
-    height: 2.25rem;
-    margin-top: 1.25rem;
-    padding: 0 0.9rem;
+    width: 100%;
+    height: 2.75rem;
+    margin-top: 1.5rem;
+    padding: 0 1rem;
     place-items: center;
-    border: 1px solid transparent;
-    background: var(--orange);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    background: var(--black);
     color: var(--text-white);
-    font-size: 0.62rem;
+    font-size: 0.72rem;
     font-weight: 650;
-    letter-spacing: 0.025em;
+    letter-spacing: 0.04em;
     text-decoration: none;
     text-transform: uppercase;
     overflow: hidden;
-    transition: border-color 0.2s ease;
+    transition: border-color 0.25s ease;
   }
 
   .pricing-mobile-plan > a span,
@@ -6434,7 +6536,7 @@ a {
     inset: 0;
     display: grid;
     place-items: center;
-    background: var(--orange);
+    background: var(--black);
     color: var(--text-white);
     transform: translateY(0);
     transition: transform 0.3s cubic-bezier(0.7, 0, 0.2, 1);
@@ -6442,31 +6544,18 @@ a {
 
   .pricing-mobile-plan > a::after {
     content: "Démarrer";
+    background: var(--white);
+    color: var(--black);
     transform: translateY(100%);
   }
 
-  .pricing-mobile-plan:nth-child(1) > a,
-  .pricing-mobile-plan:nth-child(3) > a {
-    border-color: rgba(255, 255, 255, 0.6);
-    background: var(--black);
-  }
-
-  .pricing-mobile-plan:nth-child(1) > a span,
-  .pricing-mobile-plan:nth-child(3) > a span {
-    background: var(--black);
-  }
-
-  .pricing-mobile-plan:nth-child(1) > a::after,
-  .pricing-mobile-plan:nth-child(3) > a::after {
-    background: var(--white);
-    color: var(--black);
-  }
-
-  .pricing-mobile-plan > a:hover span {
+  .pricing-mobile-plan > a:hover span,
+  .pricing-mobile-plan > a:active span {
     transform: translateY(-100%);
   }
 
-  .pricing-mobile-plan > a:hover::after {
+  .pricing-mobile-plan > a:hover::after,
+  .pricing-mobile-plan > a:active::after {
     transform: translateY(0);
   }
 
@@ -6478,7 +6567,7 @@ a {
      9. AVIS CLIENTS (REVIEWS) MOBILE
      ============================================================ */
   .reviews-section {
-    padding: 20px;
+    padding: 44px 20px;
     position: relative;
     background: var(--grey);
     color: var(--black);
@@ -6545,9 +6634,11 @@ a {
   }
 
   .reviews-intro-row {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
     width: 100%;
     margin: 0 0 24px 0;
     padding: 0;
@@ -6555,15 +6646,16 @@ a {
   }
 
   .reviews-intro-copy {
-    grid-column: 1;
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: 100%;
     font-size: 11px;
     font-weight: 500;
     line-height: 1.35;
     letter-spacing: -0.01em;
     text-transform: uppercase;
     color: var(--text-muted-dark);
-    max-width: 100%;
-    padding-right: 20px;
+    padding-right: 0;
     margin: 0;
     box-sizing: border-box;
   }
@@ -6574,12 +6666,12 @@ a {
   }
 
   .review-controls {
-    grid-column: 2;
+    flex: 0 0 auto;
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
+    justify-content: flex-end;
+    gap: 8px;
+    width: auto;
     margin: 0;
   }
 
@@ -6771,7 +6863,7 @@ a {
   }
 
   .news-section {
-    padding: 3.75rem var(--page-pad) 2.8125rem;
+    padding: 48px var(--page-pad) 44px;
   }
 
   .news-heading-row {
@@ -6818,7 +6910,7 @@ a {
      11. CONTACT & FOOTER MOBILE
      ============================================================ */
   .contact-section {
-    padding: 20px;
+    padding: 44px 20px 32px;
     position: relative;
     background: #0b0b0b;
     color: #fff;
@@ -6826,7 +6918,7 @@ a {
   }
 
   .site-footer {
-    padding: 0 20px 2.5rem;
+    padding: 0 20px 44px;
     position: relative;
     background: #0b0b0b;
     color: #fff;

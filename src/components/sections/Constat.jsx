@@ -46,7 +46,22 @@ function Constat() {
             <strong>l’espace, la typographie, l’image et la structure.</strong>
           </p>
           <a href="#a-propos">
-            À propos <span>↗</span>
+            À propos{" "}
+            <span aria-hidden="true">
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 12 12"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <line x1="2.5" y1="9.5" x2="9.5" y2="2.5" />
+                <polyline points="4.5 2.5 9.5 2.5 9.5 7.5" />
+              </svg>
+            </span>
           </a>
         </div>
 

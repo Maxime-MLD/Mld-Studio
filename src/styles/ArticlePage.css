@@ -281,12 +281,27 @@
 }
 
 .article-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   color: var(--text-muted-dark);
   font-size: var(--copy-size);
   font-weight: 540;
   text-transform: uppercase;
   text-decoration: none;
   transition: color 0.3s ease;
+}
+
+.article-back-link span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.article-back-link svg {
+  display: block;
+  width: 12px;
+  height: 12px;
 }
 
 .article-back-link:hover {

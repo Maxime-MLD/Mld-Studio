@@ -28,7 +28,22 @@ function Stats() {
               <div className="reputation-card-bottom">
                 <strong aria-label="Un premier avis client à venir">/5</strong>
                 <a href="#avis">
-                  Voir l’avis <span aria-hidden="true">↗</span>
+                  Voir l’avis{" "}
+                  <span aria-hidden="true">
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 12 12"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <line x1="2.5" y1="9.5" x2="9.5" y2="2.5" />
+                      <polyline points="4.5 2.5 9.5 2.5 9.5 7.5" />
+                    </svg>
+                  </span>
                 </a>
               </div>
             </article>
@@ -46,7 +61,22 @@ function Stats() {
                   /100%
                 </strong>
                 <a href="#contact">
-                  Démarrer un projet <span aria-hidden="true">↗</span>
+                  Démarrer un projet{" "}
+                  <span aria-hidden="true">
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 12 12"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <line x1="2.5" y1="9.5" x2="9.5" y2="2.5" />
+                      <polyline points="4.5 2.5 9.5 2.5 9.5 7.5" />
+                    </svg>
+                  </span>
                 </a>
               </div>
             </article>

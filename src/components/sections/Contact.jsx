@@ -4,6 +4,7 @@ import Noise from "../Noise.jsx";
 import FooterMark from "../layout/FooterMark.jsx";
 import { useContactAnimation } from "../../scripts/contact.js";
 import contactImage from "../../assets/images/contact-image.webp";
+import avatarImage from "../../assets/images/avatar.webp";
 
 // Section Contact : visuel, coordonnées et formulaire « Démarrez un projet ».
 // Partage le fond sombre du bas de page avec le Footer (voir .contact-section).
@@ -68,7 +69,7 @@ function Contact() {
                 <div className="footer-person">
                   <strong>Maxime- MLD Studio</strong>
                   <img
-                    src="/assets/pricing-portrait.jpg"
+                    src={avatarImage}
                     alt="Portrait de Maxime Lagraa"
                     width="270"
                     height="341"
@@ -108,8 +109,7 @@ function Contact() {
           <div className="footer-project-column">
             <header className="footer-project-heading">
               <h2>
-                <span>Démarrez un</span>{" "}
-                <span>projet.</span>
+                <span>Démarrez un</span> <span>projet.</span>
               </h2>
               <p>
                 Que vous ayez un brief complet ou une simple idée, nous sommes
