@@ -3,8 +3,7 @@ import avatarImage from "../../assets/images/avatar.webp";
 
 // Section Methode : chiffres clés animés + citation de la direction.
 function Methode() {
-  const { sectionRef, projectCountRef, tailoredRateRef } =
-    useMethodeCounters();
+  const { sectionRef, projectCountRef, tailoredRateRef } = useMethodeCounters();
 
   return (
     <section
@@ -43,10 +42,8 @@ function Methode() {
 
           <div className="method-message">
             <h2 id="method-title">
-              <span>Chaque projet</span>{" "}
-              <span>commence par</span>{" "}
-              <span>un problème</span>{" "}
-              <span>à résoudre.</span>
+              <span>Chaque projet</span> <span>commence par</span>{" "}
+              <span>un problème</span> <span>à résoudre.</span>
             </h2>
 
             <div className="method-quote">
@@ -54,7 +51,7 @@ function Methode() {
                 <strong>Je ne cherche pas le volume.</strong> Je choisis les
                 projets où mon approche peut créer une{" "}
                 <strong>différence mesurable</strong>. Chaque site est conçu
-                pour durer, évoluer et rester unique.
+                pour <strong>durer, évoluer et rester unique.</strong>
               </p>
               <div className="method-author">
                 <figure className="method-author-avatar">

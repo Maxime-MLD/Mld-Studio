@@ -112,9 +112,10 @@ function Contact() {
                 <span>Démarrez un</span> <span>projet.</span>
               </h2>
               <p>
-                Que vous ayez un brief complet ou une simple idée, nous sommes
-                là pour lui donner forme. Aucun discours commercial inutile —
-                seulement une prochaine étape claire.
+                Que vous ayez un <strong>brief complet</strong> ou une{" "}
+                <strong>simple idée</strong>, nous sommes là pour lui donner
+                forme. Aucun discours commercial inutile — seulement une{" "}
+                <strong>prochaine étape claire</strong>.
               </p>
             </header>
 

@@ -817,14 +817,15 @@ a {
   margin: 0;
   color: rgba(255, 255, 255, 0.8);
   font-size: var(--copy-size);
-  font-weight: 520;
-  line-height: 1.12;
-  letter-spacing: -0.022em;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
   text-transform: uppercase;
 }
 
 .strategy-copy p strong {
   color: #ffffff;
+  opacity: 1;
   font-weight: 600;
 }
 
@@ -1049,25 +1050,30 @@ a {
   transform: translateY(0);
 }
 
+.build-section.is-visible .build-copy {
+  opacity: 1;
+}
+
 .build-copy {
   position: absolute;
   z-index: 3;
   top: calc(14.145rem + var(--page-pad));
   left: 50%;
   padding-left: 3px;
-  width: 22%;
+  width: 31.37%;
   margin: 0;
-  color: var(--text-muted-dark);
+  color: rgba(11, 11, 11, 0.8);
   font-size: var(--copy-size);
-  font-weight: 520;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
   text-transform: uppercase;
 }
 
 .build-copy strong {
-  color: var(--black);
-  font-weight: inherit;
+  color: #0b0b0b;
+  opacity: 1;
+  font-weight: 600;
 }
 
 .build-visual {
@@ -2248,15 +2254,19 @@ a {
 
 .method-quote > p {
   margin: 0;
-  color: var(--text-muted-light);
+  color: rgba(255, 255, 255, 0.8);
   font-size: var(--copy-size);
-  font-weight: 490;
-  line-height: 1.2;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
 }
 
-.method-quote > p strong {
-  color: var(--text-white);
-  font-weight: 570;
+.method-quote > p strong,
+.method-quote > strong {
+  color: #ffffff;
+  opacity: 1;
+  font-weight: 600;
 }
 
 .method-author {
@@ -3107,18 +3117,19 @@ a {
 
 .reviews-intro-copy {
   margin: 0;
-  max-width: 16rem;
-  color: var(--text-muted-dark);
+  max-width: 19rem;
+  color: rgba(11, 11, 11, 0.8);
   font-size: var(--copy-size);
-  font-weight: 520;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
   text-transform: uppercase;
 }
 
 .reviews-intro-copy strong {
-  color: var(--black);
-  font-weight: inherit;
+  color: #0b0b0b;
+  opacity: 1;
+  font-weight: 600;
 }
 
 .review-featured {
@@ -3762,13 +3773,21 @@ a {
 }
 
 .footer-project-heading > p {
-  width: 18.5rem;
+  width: 22rem;
+  max-width: 100%;
   margin: 2.15rem 0 0;
-  color: var(--text-muted-light);
+  color: rgba(255, 255, 255, 0.8);
   font-size: var(--copy-size);
   font-weight: 500;
-  line-height: 1.18;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
   text-transform: uppercase;
+}
+
+.footer-project-heading > p strong {
+  color: #ffffff;
+  opacity: 1;
+  font-weight: 600;
 }
 
 .footer-contact-block {
@@ -4110,11 +4129,15 @@ a {
 }
 
 .contact-section.is-visible .footer-project-heading h2 span,
-.contact-section.is-visible .footer-project-heading > p,
 .contact-section.is-visible .footer-visual,
 .contact-section.is-visible .footer-contact-block,
 .contact-section.is-visible .footer-form,
 .site-footer.is-visible .footer-bottom {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.contact-section.is-visible .footer-project-heading > p {
   opacity: 1;
   transform: translateY(0);
 }
@@ -4218,6 +4241,50 @@ a {
   }
 }
 
+/* ============================================================
+   DESKTOP (> 1120px) — Typographie paragraphes à 16px
+   ============================================================ */
+@media (min-width: 1121px) {
+  .strategy-copy p,
+  .build-copy,
+  .method-quote > p,
+  .reviews-intro-copy,
+  .footer-project-heading > p {
+    font-size: 16px;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    opacity: 1;
+  }
+
+  /* Paragraphes blancs : texte à 80% d'opacité, mots en strong à 100% */
+  .strategy-copy p,
+  .method-quote > p,
+  .footer-project-heading > p {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .strategy-copy p strong,
+  .method-quote > p strong,
+  .footer-project-heading > p strong {
+    color: #ffffff;
+    opacity: 1;
+    font-weight: 600;
+  }
+
+  /* Paragraphes noirs : texte à 80% d'opacité, mots en strong à 100% */
+  .build-copy,
+  .reviews-intro-copy {
+    color: rgba(11, 11, 11, 0.8);
+  }
+
+  .build-copy strong,
+  .reviews-intro-copy strong {
+    color: #0b0b0b;
+    opacity: 1;
+    font-weight: 600;
+  }
+}
+
 @media (max-width: 1120px) {
   .site-header {
     grid-template-columns: auto 1fr auto;
@@ -4230,6 +4297,14 @@ a {
 
   .desktop-nav {
     justify-self: end;
+  }
+
+  .strategy-copy p,
+  .build-copy,
+  .method-quote > p,
+  .reviews-intro-copy,
+  .footer-project-heading > p {
+    font-size: var(--copy-size);
   }
 }
 
@@ -5882,7 +5957,7 @@ a {
     transform: none;
   }
 
-  .method-quote > p {
+  .method-quote p {
     font-size: 12px;
     line-height: 1.35;
     letter-spacing: -0.01em;
@@ -5890,7 +5965,7 @@ a {
     margin: 0;
   }
 
-  .method-quote > p strong {
+  .method-quote p strong {
     color: #fff;
     font-weight: 600;
   }
@@ -7325,15 +7400,19 @@ a {
 /* La section Méthode conserve volontairement son traitement blanc sur orange. */
 .method-section .method-label,
 .method-section .method-stat p,
-.method-section .method-quote > p,
 .method-section .method-author small {
   color: var(--text-white);
+}
+
+.method-section .method-quote > p {
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .method-section .method-stat p b,
 .method-section .method-quote > p strong,
 .method-section .method-author strong {
   color: var(--text-white);
+  opacity: 1;
 }
 
 @media (prefers-reduced-motion: reduce) {
