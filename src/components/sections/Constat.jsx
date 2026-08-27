@@ -1,4 +1,5 @@
 import Noise from "../Noise.jsx";
+import ScrollRevealText from "../ScrollRevealText.jsx";
 import { useConstatAnimation } from "../../scripts/constat.js";
 import constatImage from "../../assets/images/constat-image.webp";
 
@@ -28,15 +29,13 @@ function Constat() {
           <span>2026©</span>
         </div>
 
-        <h2
+        <ScrollRevealText
+          as="h2"
           id="strategy-title"
           className="strategy-title"
           aria-label="Stratégie avant les pixels"
-        >
-          <span>Stratégie</span>{" "}
-          <span>avant les</span>{" "}
-          <span>pixels.</span>
-        </h2>
+          lines={["Stratégie", "avant les", "pixels."]}
+        />
 
         <div className="strategy-copy reveal-item">
           <p>

@@ -1,4 +1,5 @@
 import Noise from "../Noise.jsx";
+import ScrollRevealText from "../ScrollRevealText.jsx";
 import { projects } from "../../data/realisations.js";
 import {
   useRealisationsAnimation,
@@ -22,15 +23,13 @@ function RealisationsIntro() {
       <div className="build-inner">
         <p className="build-era build-reveal">2026©</p>
 
-        <h2
+        <ScrollRevealText
+          as="h2"
           id="build-title"
           className="build-title"
           aria-label="Nous créons des sites web"
-        >
-          <span>Nous</span>{" "}
-          <span>créons des</span>{" "}
-          <span>sites web.</span>
-        </h2>
+          lines={["Nous", "créons des", "sites web."]}
+        />
 
         <p className="build-copy build-reveal">
           Là où avancer devient <strong>évident, naturel</strong> et{" "}

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Noise from "../Noise.jsx";
+import ScrollRevealText from "../ScrollRevealText.jsx";
 import { clientReviews } from "../../data/avis-clients.js";
 import { useAvisAnimation } from "../../scripts/avis-clients.js";
 
@@ -29,10 +30,12 @@ function AvisClients() {
       <div className="reviews-inner">
         <header className="reviews-header">
           <p className="reviews-label">Avis clients</p>
-          <h2 id="reviews-title">
-            <span>Avis de nos</span>{" "}
-            <span>clients.</span>
-          </h2>
+          <ScrollRevealText
+            as="h2"
+            id="reviews-title"
+            aria-label="Avis de nos clients"
+            lines={["Avis de nos", "clients."]}
+          />
         </header>
 
         <article

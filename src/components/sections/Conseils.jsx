@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import Noise from "../Noise.jsx";
+import ScrollRevealText from "../ScrollRevealText.jsx";
 import { newsArticles } from "../../data/conseils.js";
 import { useConseilsAnimation } from "../../scripts/conseils.js";
 
@@ -90,10 +91,12 @@ function Conseils({ fullFeatureImage = false }) {
               </span>
             </a>
           )}
-          <h2 id="news-title">
-            <span>Conseils et</span>{" "}
-            <span>actualités.</span>
-          </h2>
+          <ScrollRevealText
+            as="h2"
+            id="news-title"
+            aria-label="Conseils et actualités"
+            lines={["Conseils et", "actualités."]}
+          />
         </div>
 
         <div className="news-grid">

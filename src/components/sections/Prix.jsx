@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ScrollRevealText from "../ScrollRevealText.jsx";
 import Noise from "../Noise.jsx";
 import { pricingPlans, pricingFeatures } from "../../data/prix.js";
 import { usePrixAnimation } from "../../scripts/prix.js";
@@ -71,7 +72,11 @@ function Prix() {
 
         <div className="pricing-content">
           <div className="pricing-title-row">
-            <h2 id="pricing-title">Tarifs.</h2>
+            <ScrollRevealText
+              as="h2"
+              id="pricing-title"
+              lines={["Tarifs."]}
+            />
           </div>
 
           <div className="pricing-desktop-table">

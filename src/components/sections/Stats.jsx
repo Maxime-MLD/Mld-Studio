@@ -1,4 +1,5 @@
 import statsImage from "../../assets/images/stats-image.webp";
+import ScrollRevealText from "../ScrollRevealText.jsx";
 import { useReveal } from "../../scripts/reveal.js";
 
 // Section « Bâti sur la réputation » : note Google + % de recommandations.
@@ -15,10 +16,12 @@ function Stats() {
       <div className="reputation-inner">
         <header className="reputation-header">
           <p>Pourquoi nous&nbsp;?</p>
-          <h2 id="reputation-title">
-            <span>Bâti sur la</span>{" "}
-            <span>confiance.</span>
-          </h2>
+          <ScrollRevealText
+            as="h2"
+            id="reputation-title"
+            aria-label="Bâti sur la confiance"
+            lines={["Bâti sur la", "confiance."]}
+          />
         </header>
 
         <div className="reputation-rows">

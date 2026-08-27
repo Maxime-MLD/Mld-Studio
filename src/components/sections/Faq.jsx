@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ScrollRevealText from "../ScrollRevealText.jsx";
 import { faqItems } from "../../data/faq.js";
 import { useFaqAnimation } from "../../scripts/faq.js";
 
@@ -25,14 +26,12 @@ function Faq({
         <header className="faq-header">
           <div className="faq-heading">
             <p>{eyebrow}</p>
-            <h2 id={`${id}-title`}>
-              {titleLines.map((line, i) => (
-                <span key={line}>
-                  {i > 0 ? " " : ""}
-                  {line}
-                </span>
-              ))}
-            </h2>
+            <ScrollRevealText
+              as="h2"
+              id={`${id}-title`}
+              aria-label={titleLines.join(" ")}
+              lines={titleLines}
+            />
           </div>
         </header>
 

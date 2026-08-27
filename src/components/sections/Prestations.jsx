@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import ScrollRevealText from "../ScrollRevealText.jsx";
 import { services } from "../../data/prestations.js";
 import { usePrestationsAnimation } from "../../scripts/prestations.js";
 
@@ -118,11 +119,22 @@ function Prestations() {
       <div className="services-inner">
         <header className="services-header">
           <p>Prestations</p>
-          <p id="services-title" className="services-intro">
-            Chaque projet commence par la{" "}
-            <strong>compréhension de votre activité</strong>, de vos clients et
-            de ce qui les empêche aujourd’hui de <strong>vous choisir.</strong>
-          </p>
+          <ScrollRevealText
+            as="p"
+            id="services-title"
+            className="services-intro services-intro-reveal"
+            aria-label="Chaque projet commence par la compréhension de votre activité, de vos clients et de ce qui les empêche aujourd’hui de vous choisir."
+            lines={[
+              "Chaque projet commence par la",
+              <>
+                <strong>compréhension de votre activité</strong>, de vos clients
+              </>,
+              <>
+                et de ce qui les empêche aujourd’hui de{" "}
+                <strong>vous choisir.</strong>
+              </>,
+            ]}
+          />
         </header>
 
         <div className="services-list">

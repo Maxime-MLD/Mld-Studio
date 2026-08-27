@@ -1,4 +1,5 @@
 import { useMethodeCounters } from "../../scripts/methode.js";
+import ScrollRevealText from "../ScrollRevealText.jsx";
 import avatarImage from "../../assets/images/avatar.webp";
 
 // Section Methode : chiffres clés animés + citation de la direction.
@@ -41,10 +42,17 @@ function Methode() {
           </div>
 
           <div className="method-message">
-            <h2 id="method-title">
-              <span>Chaque projet</span> <span>commence par</span>{" "}
-              <span>un problème</span> <span>à résoudre.</span>
-            </h2>
+            <ScrollRevealText
+              as="h2"
+              id="method-title"
+              aria-label="Chaque projet commence par un problème à résoudre"
+              lines={[
+                "Chaque projet",
+                "commence par",
+                "un problème",
+                "à résoudre.",
+              ]}
+            />
 
             <div className="method-quote">
               <p>
