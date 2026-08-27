@@ -7445,6 +7445,8 @@ a {
 .title-reveal .title-line-mask {
   display: block !important;
   overflow: hidden !important;
+  margin: -0.18em -0.12em -0.12em !important;
+  padding: 0.18em 0.12em 0.12em !important;
   opacity: 1 !important;
   transform: none !important;
   clip-path: none !important;
