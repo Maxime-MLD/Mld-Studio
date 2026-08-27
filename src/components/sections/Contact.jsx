@@ -19,14 +19,44 @@ function Contact() {
 
     try {
       const payload = Object.fromEntries(new FormData(form).entries());
-      const response = await fetch("/api/contact", {
+      const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+
+      if (payload.company) {
+        form.reset();
+        setFormState({
+          status: "success",
+          message: "Merci, votre message a bien été envoyé.",
+        });
+        return;
+      }
+
+      if (!accessKey) {
+        throw new Error(
+          "Le formulaire est temporairement indisponible. Écrivez-nous à contact@mld-studio.fr.",
+        );
+      }
+
+      delete payload.company;
+
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          ...payload,
+          access_key: accessKey,
+          from_name: "Site MLD Studio",
+          subject: `Nouvelle demande MLD Studio — ${payload.service}`,
+          replyto: payload.email,
+        }),
       });
       const result = await response.json().catch(() => ({}));
 
-      if (!response.ok) throw new Error(result.error || "Envoi impossible.");
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || "Envoi impossible.");
+      }
 
       form.reset();
       setFormState({
