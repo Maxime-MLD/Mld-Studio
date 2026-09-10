@@ -246,6 +246,105 @@ a {
   text-transform: uppercase;
 }
 
+
+
+/*
+  font-weight: 520;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+}
+
+.footer-directory nav a {
+  transition: color 0.25s ease;
+}
+
+.footer-directory nav a:hover {
+  color: var(--orange);
+}
+
+.footer-directory address span {
+  margin-top: 1.3rem;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 0.625rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.footer-copyright {
+  display: flex;
+  grid-column: 2;
+  grid-row: 2;
+  align-self: end;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 0 0 0 3px;
+}
+
+.footer-reference a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.25s ease;
+}
+
+.footer-reference a:hover {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.footer-created {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-created .footer-mark {
+  color: white;
+  transform: scale(0.72);
+  transform-origin: right center;
+}
+
+.footer-project-heading h2 span,
+.footer-project-heading > p,
+.footer-visual,
+.footer-contact-block,
+.footer-form,
+.footer-bottom {
+  opacity: 0;
+  transform: translateY(1.5rem);
+  transition:
+    opacity 0.75s ease,
+    transform 0.95s cubic-bezier(0.2, 0.72, 0.2, 1);
+}
+
+.footer-project-heading h2 span:nth-child(2) {
+  transition-delay: 0.05s;
+}
+.footer-project-heading > p {
+  transition-delay: 0.1s;
+}
+.footer-visual {
+  transition-delay: 0.05s;
+}
+.footer-form {
+  transition-delay: 0.14s;
+}
+.footer-contact-block {
+  transition-delay: 0.16s;
+}
+.footer-bottom {
+  transition-delay: 0.2s;
+}
+
+.contact-section.is-visible .footer-project-heading h2 span,
+.contact-section.is-visible .footer-visual,
+.contact-section.is-visible .footer-contact-block,
+.contact-section.is-visible .footer-form,
+.site-footer.is-visible .footer-bottom {
+  opacity: 1;
+  transform: translateY(0);
+}*/
+
 .desktop-nav a::after {
   content: "";
   position: absolute;
@@ -4104,20 +4203,31 @@ a {
   align-self: end;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 1.5rem;
   padding: 0 0 0 3px;
+}
+
+.footer-reference a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.25s ease;
+}
+
+.footer-reference a:hover {
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .footer-created {
   display: inline-flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: 6px;
 }
 
 .footer-created .footer-mark {
   color: white;
   transform: scale(0.72);
-  transform-origin: right center;
+  transform-origin: left center;
 }
 
 .footer-project-heading h2 span,
@@ -7360,6 +7470,7 @@ a {
     grid-row: 3;
     flex-direction: column;
     align-items: flex-start;
+    gap: 14px;
     margin-top: 2rem;
     padding: 2rem 0 0;
     border-top: 1px solid rgba(255, 255, 255, 0.14);

@@ -44,7 +44,20 @@ function Footer() {
 
           <div className="footer-copyright">
             <span>© 2026 MLD Studio. Tous droits réservés.</span>
-            <span className="footer-created">Créé par <FooterMark withName /></span>
+            <span className="footer-reference">
+              MLD Studio est référencé sur{" "}
+              <a
+                href="https://www.jesuisnumerique.fr"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Je suis numérique
+              </a>
+            </span>
+            <span className="footer-created">
+              <span>Créé par</span>
+              <FooterMark withName />
+            </span>
           </div>
         </div>
       </div>
