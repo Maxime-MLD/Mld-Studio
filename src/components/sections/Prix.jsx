@@ -19,6 +19,12 @@ function Prix() {
       className="pricing-section"
       aria-labelledby="pricing-title"
     >
+      {/* Lueur animée cantonnée à la grande zone vide en haut à gauche.
+          Placée SOUS le grain (noise) pour rester texturée et intégrée. */}
+      <div className="pricing-light-zone" aria-hidden="true">
+        <span className="pricing-light" />
+      </div>
+
       <Noise className="noise-behind" opacity={0.11} />
 
       <div className="pricing-inner">

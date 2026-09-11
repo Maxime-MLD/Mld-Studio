@@ -2719,9 +2719,132 @@ a {
   pointer-events: none;
 }
 
+/* ------------------------------------------------------------------
+   Faisceau lumineux animé qui TRAVERSE la section en diagonale.
+   L'intensité monte puis redescend (pulsation premium), avec une pause
+   invisible avant le passage suivant.
+   Ordre des calques dans .pricing-section (isolation: isolate) :
+     z-index 0 : fond de section + ::before (ligne centrale)
+     z-index 1 : .pricing-light-zone (faisceau)
+     z-index 2 : .noise-behind (grain existant, passe AU-DESSUS)
+     z-index 3 : .pricing-inner (contenu — reste net et lisible)
+   ------------------------------------------------------------------ */
+.pricing-light-zone {
+  position: absolute;
+  z-index: 1;
+  /* Couvre toute la section : le faisceau peut la traverser de bord à bord. */
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  /* --- ZONE VERTICALE où la lumière est visible ---
+     Fondu haut + bas : entrée/sortie douces et le bas du tableau reste propre
+     (pas de coupure nette, la lumière s'éteint avant le bas de section). */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    #000 5%,
+    #000 56%,
+    rgba(0, 0, 0, 0) 84%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    #000 5%,
+    #000 56%,
+    rgba(0, 0, 0, 0) 84%
+  );
+}
+
+.pricing-light {
+  position: absolute;
+  inset: 0;
+  /* --- QUELQUES traînées diagonales IRRÉGULIÈRES (largeurs, intensités et
+     espaces différents → rendu naturel, pas un motif répété). Chaque paire
+     "transparent → blanc → transparent" est une strie ; les zones larges
+     "transparent" entre elles sont les espaces. --- */
+  /* --- Chaque couche = UNE strie indépendante, avec sa propre LARGEUR
+     (écart des stops du dégradé) et sa propre LONGUEUR/position
+     (background-size + background-position ci-dessous). Largeurs et
+     longueurs volontairement inégales → rendu naturel, jamais répété. --- */
+  background-image:
+    linear-gradient(
+      45deg,
+      transparent 42%,
+      rgba(255, 255, 255, 0.17) 50%,
+      transparent 58%
+    ),
+    linear-gradient(
+      45deg,
+      transparent 46%,
+      rgba(255, 255, 255, 0.12) 50%,
+      transparent 54%
+    ),
+    linear-gradient(
+      45deg,
+      transparent 39%,
+      rgba(255, 255, 255, 0.085) 50%,
+      transparent 61%
+    ),
+    linear-gradient(
+      45deg,
+      transparent 47%,
+      rgba(255, 255, 255, 0.11) 50%,
+      transparent 53%
+    ),
+    linear-gradient(
+      45deg,
+      transparent 44%,
+      rgba(255, 255, 255, 0.075) 50%,
+      transparent 56%
+    );
+  background-repeat: no-repeat;
+  /* Longueur de chaque strie (couche 1 = la plus longue, etc.). */
+  background-size: 48% 54%, 22% 26%, 38% 44%, 16% 18%, 30% 34%;
+  /* Position de chaque strie (toutes ancrées vers le haut-gauche). */
+  background-position: 0% 0%, 22% 6%, 12% 16%, 30% 4%, 34% 20%;
+  /* --- FLOU : adoucit les stries sans refermer les espaces entre elles. --- */
+  filter: blur(10px);
+  /* --- CONTENANCE : la lumière part du haut-gauche et s'éteint
+     progressivement vers le milieu de la section (le rayon du dégradé radial
+     règle jusqu'où elle va : ~mid-écran ici). --- */
+  -webkit-mask-image: radial-gradient(
+    72% 85% at 3% 2%,
+    #000 0%,
+    rgba(0, 0, 0, 0.4) 40%,
+    rgba(0, 0, 0, 0) 66%
+  );
+  mask-image: radial-gradient(
+    72% 85% at 3% 2%,
+    #000 0%,
+    rgba(0, 0, 0, 0.4) 40%,
+    rgba(0, 0, 0, 0) 66%
+  );
+  will-change: opacity;
+  /* --- Respiration : SEULE l'intensité est animée (monte/descend). --- */
+  animation: pricing-light-breathe 9s ease-in-out infinite;
+}
+
+/* --- Pulsation d'intensité douce (premium) ---
+   La traînée reste TOUJOURS visible ; seule l'opacité varie légèrement.
+   Ajuster l'écart 0.7 → 1 pour une respiration plus ou moins marquée. */
+@keyframes pricing-light-breathe {
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Le grain existant repasse au-dessus de la lueur pour la texturer. */
+.pricing-section > .noise-behind {
+  z-index: 2;
+}
+
 .pricing-inner {
   position: relative;
-  z-index: 1;
+  z-index: 3;
   width: min(100%, 90rem);
   margin: 0 auto;
 }
@@ -3099,7 +3222,7 @@ a {
 
 .pricing-bottom-accent {
   position: absolute;
-  z-index: 2;
+  z-index: 4;
   right: 0;
   bottom: 0;
   width: 50%;
@@ -6447,6 +6570,64 @@ a {
     display: none;
   }
 
+  /* Faisceau mobile : plus fin, intensité et flou réduits pour la lisibilité.
+     La zone reste plein cadre (inset:0) mais on resserre le fondu vertical. */
+  .pricing-light-zone {
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      #000 8%,
+      #000 42%,
+      rgba(0, 0, 0, 0) 66%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      #000 8%,
+      #000 42%,
+      rgba(0, 0, 0, 0) 66%
+    );
+  }
+
+  .pricing-light {
+    /* Mêmes stries irrégulières, un peu plus douces sur mobile.
+       (le masque radial de contenance est hérité du bloc de base) */
+    /* Mêmes stries, intensité un peu plus douce sur mobile.
+       (background-size / -position hérités du bloc de base) */
+    background-image:
+      linear-gradient(
+        45deg,
+        transparent 42%,
+        rgba(255, 255, 255, 0.15) 50%,
+        transparent 58%
+      ),
+      linear-gradient(
+        45deg,
+        transparent 46%,
+        rgba(255, 255, 255, 0.1) 50%,
+        transparent 54%
+      ),
+      linear-gradient(
+        45deg,
+        transparent 39%,
+        rgba(255, 255, 255, 0.07) 50%,
+        transparent 61%
+      ),
+      linear-gradient(
+        45deg,
+        transparent 47%,
+        rgba(255, 255, 255, 0.09) 50%,
+        transparent 53%
+      ),
+      linear-gradient(
+        45deg,
+        transparent 44%,
+        rgba(255, 255, 255, 0.06) 50%,
+        transparent 56%
+      );
+    filter: blur(7px);
+  }
+
   .pricing-inner {
     width: 100%;
     margin: 0 auto;
@@ -7608,5 +7789,11 @@ a {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
+  }
+
+  /* Lueur tarifs : animation coupée et lueur masquée. */
+  .pricing-light {
+    animation: none !important;
+    opacity: 0 !important;
   }
 }
