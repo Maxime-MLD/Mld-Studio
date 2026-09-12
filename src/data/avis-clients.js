@@ -1,14 +1,14 @@
-// Avis clients affichés dans la section AvisClients (carrousel).
-import logoMLD from "../assets/images/logo-mld-studio.png";
+import avisDenis from "../assets/images/avis-denis.webp";
 
 export const clientReviews = [
   {
-    id: "premier-avis",
-    quote:
-      "Maxime a su comprendre mon activité et construire un site qui répond parfaitement à mes besoins. La qualité du site est au-delà de mes attentes et je suis 100 % satisfait de notre collaboration. Je recommande MLD Studio.",
+    id: "g-denis",
     name: "G.Denis",
-    role: "Artisan Soudeur",
-    image: logoMLD,
-    pending: true,
+    role: "Artisan soudeur.",
+    rating: 5,
+    quote:
+      "Maxime a su écouter mes attentes et créer un site qui me corresponde et qui représente bien mon travail. Il est à l'écoute, ses propositions ont toujours été juste. Je recommande son travail de qualité.",
+    source: "Google",
+    image: avisDenis,
   },
 ];

@@ -29,9 +29,11 @@ function Stats() {
             <article className="reputation-card reputation-card-dark">
               <p>Note moyenne des clients sur Google</p>
               <div className="reputation-card-bottom">
-                <strong aria-label="Un premier avis client à venir">/5</strong>
+                <strong aria-label="Note moyenne Google 5 sur 5">
+                  5/5
+                </strong>
                 <a href="#avis">
-                  Voir l’avis{" "}
+                  Voir les avis{" "}
                   <span aria-hidden="true">
                     <svg
                       width="12"
