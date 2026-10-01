@@ -77,6 +77,7 @@ export default function RealisationsPage() {
         >
           {realisationsPageProjects.map((project, index) => {
             const image = project.image || fallbackImage;
+            const ProjectMedia = project.url ? "a" : "div";
 
             return (
               <article
@@ -121,7 +122,17 @@ export default function RealisationsPage() {
 
                     <Noise className="project-stage-noise" opacity={0.15} />
 
-                    <div className="project-media">
+                    <ProjectMedia
+                      className="project-media"
+                      {...(project.url
+                        ? {
+                            href: project.url,
+                            target: "_blank",
+                            rel: "noopener noreferrer",
+                            "aria-label": `Voir le site ${project.name} dans un nouvel onglet`,
+                          }
+                        : {})}
+                    >
                       {project.video ? (
                         <video
                           src={project.video}
@@ -141,7 +152,7 @@ export default function RealisationsPage() {
                           onError={handleImageError}
                         />
                       )}
-                    </div>
+                    </ProjectMedia>
 
                     <div className="project-details">
                       <strong>{project.name}</strong>

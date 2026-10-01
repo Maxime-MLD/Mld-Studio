@@ -136,8 +136,10 @@ function RealisationsSlides() {
 
               <a
                 className="project-media"
-                href="#contact"
-                aria-label={`Créer un projet inspiré du ${project.name}`}
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Voir le site ${project.name} dans un nouvel onglet`}
               >
                 {project.video ? (
                   <video
