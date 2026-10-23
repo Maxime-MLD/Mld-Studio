@@ -30,4 +30,9 @@ export const faqItems = [
     answer:
       "L’abonnement à 39 € TTC par mois comprend l’hébergement, la surveillance technique, la maintenance courante et jusqu’à trois demandes de modification par mois, d’une heure maximum chacune, pour vos textes, images ou nouveaux visuels.",
   },
+  {
+    question: "Puis-je payer mon site web en une fois ou par abonnement ?",
+    answer:
+      "Oui, chez MLD Studio, vous avez le choix ! Vous pouvez régler votre site en une seule fois, à partir de 500 €, ou opter pour un abonnement dès 59 €/mois avec un engagement de 12 mois. L'abonnement inclut la création de votre site, l'hébergement, la maintenance et les petites modifications. À la fin des 12 mois, vous êtes libre de récupérer votre site ou de continuer à nous confier son hébergement et sa maintenance.",
+  },
 ];

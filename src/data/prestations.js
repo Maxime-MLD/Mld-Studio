@@ -21,7 +21,7 @@ export const services = [
   {
     title: "Site vitrine monopage",
     priceLabel: "À partir de",
-    price: "1 000 € TTC",
+    price: "500 € ou 59 €/mois TTC",
     description: [
       "Une page unique, moderne et structurée pour présenter votre activité, vos services et transformer rapidement les visiteurs en demandes de contact.",
       "Le site est responsive, rapide et préparé pour le SEO local afin que vos futurs clients vous trouvent facilement dans votre zone.",
@@ -34,7 +34,7 @@ export const services = [
   {
     title: "Site vitrine multipage",
     priceLabel: "À partir de",
-    price: "1 500 € TTC",
+    price: "990 € ou 99€/mois TTC",
     description: [
       "Un site moderne composé d’une page principale et de 1 à 5 pages supplémentaires pour organiser clairement votre activité : prestations, réalisations, à propos ou contact.",
       "La navigation, la vitesse, le responsive et les bases du SEO local sont travaillés ensemble pour informer, rassurer et être trouvé localement.",
@@ -47,7 +47,7 @@ export const services = [
   {
     title: "Site vitrine signature",
     priceLabel: "À partir de",
-    price: "2 500 € TTC",
+    price: "1490 € ou 149 €/mois TTC",
     description: [
       "Une expérience web haut de gamme de 1 à 5 pages, conçue après une recherche approfondie de votre activité, de vos clients et de votre univers visuel.",
       "Design exclusif, animations premium et interactions sur mesure : un site que personne d’autre n’aura, rapide, responsive et pensé pour mettre votre savoir-faire en valeur tout en renforçant votre visibilité locale.",
@@ -60,7 +60,7 @@ export const services = [
   {
     title: "Fiche Google Business",
     priceLabel: "Tarif",
-    price: "200 € TTC",
+    price: "149 € TTC",
     description: [
       "Création et optimisation de votre fiche Google avec les bonnes catégories, vos services, vos coordonnées, votre zone d’intervention et une présentation claire, uniquement si votre activité respecte les règles d’éligibilité de Google.",
       "Une base complète pour apparaître plus efficacement dans Google Maps et dans les recherches locales liées à votre activité.",
@@ -71,7 +71,7 @@ export const services = [
   {
     title: "Maintenance & hébergement",
     priceLabel: "Abonnement",
-    price: "39 € TTC / mois",
+    price: "29 € TTC / mois",
     description: [
       "Hébergement, surveillance technique et maintenance courante pour conserver un site rapide, disponible et correctement mis à jour.",
       "Jusqu’à trois demandes de modification par mois, d’une heure maximum chacune, pour changer vos textes ou images et importer de nouveaux visuels.",

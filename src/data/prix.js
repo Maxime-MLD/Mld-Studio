@@ -4,21 +4,21 @@ export const pricingPlans = [
     name: "Monopage",
     description:
       "Un site monopage moderne, clair et prêt à présenter votre activité.",
-    price: "1 000 €",
+    price: "500 € ou 59 €/mois",
     suffix: "TTC",
   },
   {
     name: "Multipage",
     description:
       "Plus d’espace pour détailler vos services et développer votre visibilité.",
-    price: "1 500 €",
+    price: "990 € ou 99€/mois",
     suffix: "TTC",
   },
   {
     name: "Signature",
     description:
-      "Une expérience premium, recherchée et entièrement conçue sur mesure.",
-    price: "2 500 €",
+      "Une expérience premium, direction artistique poussée, animations avancées, sections et interactions personnalisées.",
+    price: "1490 € ou 149 €/mois",
     suffix: "TTC",
   },
 ];
@@ -49,10 +49,10 @@ export const pricingFeatures = [
   },
   {
     label: "Fiche Google Business",
-    values: ["+ 200 € TTC", "+ 200 € TTC", "+ 200 € TTC"],
+    values: ["+ 99 € TTC", "+ 99 € TTC", "+ 99 € TTC"],
   },
   {
     label: "Maintenance & hébergement",
-    values: ["39 € / mois", "39 € / mois", "39 € / mois"],
+    values: ["Inclus", "Inclus", "Inclus"],
   },
 ];
